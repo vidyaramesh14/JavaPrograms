@@ -1,27 +1,25 @@
 package com.bridgelabz.functionality;
 
+import java.util.Scanner;
+
 import com.bridgelabz.utility.Utility;
 
 public class Gambler 
 {
-	
-	    /*
-	    * The main function is written to take input from the user and
-	    * call gambler function that calculate win and lose percentage
-	    */
 	    public static void main(String[] args)
-	    {
-	       Utility u=new Utility();
-	        System.out.println("enter the stake value ");
-	       int stake=u.inputInteger();
-	        System.out.println("enter the goal ");
-	        int goal=u.inputInteger();
-	        System.out.println("enter the no of times to gamble");
-	        int no_of_times=u.inputInteger();;
-	       
-	        u.playthegame(stake, goal, no_of_times);
-
-	    }
-
-	
+	    {	
+			Scanner sc1=new Scanner(System.in);
+			System.out.println("enter stack value:");
+			int stake=sc1.nextInt();
+			
+			System.out.println("enter Goal value:");
+			int Goal=sc1.nextInt();
+			
+			System.out.println("enter Number of time:");
+			int Num=sc1.nextInt();
+			int winpercentage=Utility.gamblerGame(stake,Goal,Num);
+			int loosepercentage=100-winpercentage;
+			System.out.println("Percentage of Win and Loss:\t" +winpercentage+ ":"+loosepercentage);
+	    	
+	     }
 }

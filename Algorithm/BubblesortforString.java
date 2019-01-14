@@ -13,7 +13,7 @@ public class BubblesortforString
         int i;
         for( i=0;i<n;i++)
         {
-          str[i]=u.inputStringWithNext(); 
+          //str[i]=u.inputStringWithNext(); 
         }
            
         System.out.println("the original array is:");
