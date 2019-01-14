@@ -41,6 +41,7 @@ public class Utility
 	 */
 	public static int flipCoin(int range)
 	{
+		//creating random function
 		Random r=new Random();
 		int head=0,tail=0;  //assigning the values
 		int num=range;
