@@ -21,13 +21,13 @@ public class Utility
 	 * @param userName the input string given by the user
 	 * @return output the modified string
 	 */
-	public String replaceString(String userName) {
+	public static String replaceString(String userName) {
 		String template = "Hello <<UserName>>, How are you?";
 
 		if (userName.length() < 3)
 			return "Please input name with more than 3 characters";
 		else {
-	 		String output = template.replace("<<UserName>>", userName);
+			String output = template.replace("<<UserName>>", userName);
 			return output;
 		}
 	}
@@ -36,7 +36,7 @@ public class Utility
 
 	/** This method generate random numbers and check whether 
 	 * it is head or tail
-	 * @param n is the range..and till that range
+	 * @param range ,till that range
 	 * you have to generate random numbers.
 	 */
 	public static int flipCoin(int range)
@@ -68,22 +68,22 @@ public class Utility
 	 */
 	public static boolean leapYear(int yearnumber)
 	{	boolean temp=false;
-		int count=0;
-		while(yearnumber>=1)
+	int count=0;
+	while(yearnumber>=1)
+	{
+		yearnumber/=10;
+		count++;
+	}System.out.println(count);
+	if(count==4)
+	{
+		if(yearnumber%400==0 || ((yearnumber%100==0) && (yearnumber%4==0)))
 		{
-			yearnumber/=10;
-			count++;
-		}System.out.println(count);
-		if(count==4)
-		{
-			if(yearnumber%400==0 || ((yearnumber%100==0) && (yearnumber%4==0)))
-			{
-				temp=true;
-			}
-			
+			temp=true;
 		}
-		
-			return temp;
+
+	}
+
+	return temp;
 	}
 
 	/***********************Power Of 2*****************************/
@@ -96,7 +96,7 @@ public class Utility
 	public static  int powerOfTwo(int base,int power)
 	{  	
 		int i = 1,result=1,n=0;
-		 
+
 		if(n<=31)
 		{
 			for(i=0;i<=n;i++)
@@ -104,14 +104,14 @@ public class Utility
 				//mul=(int) Math.pow(2,i);
 				while(power!=0)
 				{
-					 result*=base;
-					 power--;
+					result*=base;
+					power--;
 				}
 				return result;
 			}
 		}
 		return -1;
-			
+
 	}
 
 	/***********************Harmonic Number**********************/
@@ -139,7 +139,7 @@ public class Utility
 	/**This method calculate factors of prime no.
 	 * example: factors of 14 are 2 and 7, because 2 × 7 = 14.
 	 * @param n is a input given by user
-	 * @return the prime factor
+	 * @return the list of prime factor
 	 */
 	public static List primeFactors(int n)
 	{	
@@ -188,32 +188,32 @@ public class Utility
 	 * you wants to generate
 	 * @return Set of Distinct Coupon
 	 */
-public static Set<Double> distinctCoupon(int total_coupon)
-{
-	Set<Double> set=new LinkedHashSet<>();
-	while(total_coupon !=0)
+	public static Set<Double> distinctCoupon(int total_coupon)
 	{
-		double ran=Math.random()*total_coupon;
-		set.add(ran);
-		total_coupon --;
-	}
-	return set;
+		Set<Double> set=new LinkedHashSet<>();
+		while(total_coupon !=0)
+		{
+			double ran=Math.random()*total_coupon;
+			set.add(ran);
+			total_coupon --;
+		}
+		return set;
 
-}
+	}
 
 	/**************************2D Array*****************************/		
 
-static 	PrintWriter printwriter = new PrintWriter(System.out, true);
+	static 	PrintWriter printwriter = new PrintWriter(System.out, true);
 	/**This method generate two dimensional array and print using 
 	 * printWriter function
-	 * @param Row this parameter is for entering number 
+	 * @param row this parameter is for entering number 
 	 * 			of rows
-	 * @param N this parameter is for entering number
+	 * @param column this parameter is for entering number
 	 * 			of columns 
-	 * @return will null value
+	 * @return 2D array
 	 */
 	public static int[][] twoDarray(int row,int column)
-	
+
 	{	
 		Scanner sc1=new Scanner(System.in);
 		int[][] array = new int[row][column];
@@ -223,10 +223,10 @@ static 	PrintWriter printwriter = new PrintWriter(System.out, true);
 			for(int j=0;j<column;j++)
 			{
 				array[i][j]=sc1.nextInt(); //accept array elements 
-				
+
 			}
 		}
-	
+
 		for(int i=0;i<row;i++)
 		{
 			for(int j=0;j<column;j++)
@@ -248,82 +248,93 @@ static 	PrintWriter printwriter = new PrintWriter(System.out, true);
 	 * @param number is array range which store total number of 
 	 *  elements you entered in array
 	 */
-	public static void cal(int[] arr,int number) 
+	public static int triplets(int[] arr,int number) 
+	{	int count=0;
+	for(int i=0;i<number-2;i++)
 	{
-		for(int i=0;i<number-2;i++)
+		for(int j=i+1;j<number-1;j++) 
 		{
-			for(int j=i+1;j<number-1;j++) 
+			for(int k=j+1;k<number;k++)
 			{
-				for(int k=j+1;k<number;k++)
-				{
-					//addition should be equals to 0
-					if(arr[i]+arr[j]+arr[k]==0) //check addition of 3
-						//number in array is 0 
-					{
-						System.out.println("\nTriplets are : ");
-						System.out.print(arr[i]); 
-						System.out.print(" "); 
-						System.out.print(arr[j]); 
-						System.out.print(" "); 
-						System.out.print(arr[k]); 
-						System.out.print("\n");
 
-					}
+				if(arr[i]+arr[j]+arr[k]==0) //check addition of 3
+
+				{
+					System.out.println("distinct triplrt are: \n"+arr[i]+" "+arr[j]+" "+arr[k]);
+					count++;
 				}
 			}
 		}
-		//If in array there is no any 3 number whose addition
-		//is 0 then it will print that there is no any triplet
+	}return count;
+
 	}	
 
-	/*****************Euclidian Distance************************/	
+	/*****************Euclidean Distance************************/	
 
-	public void euclidianDistance(int x , int y)
-	{
-		int distance = (int) Math.sqrt(Math.pow(x, 2)+(Math.pow(y, 2)));
-		System.out.println("Eucludian distance : " + distance );
+	/**Euclidean distance is the "ordinary" straight-line distance  between two points
+	 * in Euclidean space. With this distance, Euclidean space becomes a metric space.
+	 * formula distence^2=x^2 +y^2 for 2D
+	 * formula distence^2=x^2 +y^2+z^2 for 3D
+	 */
+	public static double euclideanDistance(int x , int y)
+	{	
+
+		return Math.sqrt(Math.pow(x, 2)+(Math.pow(y, 2)));
 	}
 
 
 	/***************************Permutation*************************/
 
 	/** This method swap the elements in array
-	 * @param ch store character array
-	 * @param i store index element
-	 * @param j this also point to array element
+	 * @param str is a string
+	 * @param i store  stating index element
+	 * @param j this also point to last  array element
 	 */
-	public static void swap(char[] ch, int i , int j)
-	{
-		char temp=ch[i];
-		ch[i]=ch[j];
-		ch[j]=temp;		
+	public static String swap(String str, int i , int j)//take String=abc 
+	{char[] c=str.toCharArray();
+	char temp=c[i];
+	c[i]=c[j];
+	c[j]=temp;
+	return str.valueOf(c);
+
 	}
+
 	/**This method find permutation of string using recursion
-	 * @param ch store character array of string for permutation
-	 * @param currentIndex point to current index in array 
+	 * @param str is a String
+	 * @param first store  stating index element
+	 * @param last this also point to last  array element
+	 * @return
 	 */
-	public static void permutationRecursion(char ch[] , int currentIndex)
+	public static List permutationRecursion(String str,int first,int last)
 	{
-		if(currentIndex==ch.length-1)
-			System.out.println(String.valueOf(ch));
-		for(int i=currentIndex;i<ch.length;i++)
+		List<String> l=new ArrayList<>();
+
+		if(first==last)
 		{
-			swap(ch,currentIndex,i);
-			permutationRecursion(ch,currentIndex + 1);
-			swap(ch,currentIndex,i);
+			l.add(str);
+
 		}
+		else
+		{
+			for(int i=first;i<=last;i++)
+			{
+				str=swap(str,first,i);
+				permutationRecursion( str, first+1, last);
+				str=swap(str,first,i);
+			}
+
+		}return l;
+
 	}		
 
-	/**This method is to find permutation of string using recursion
-	 * @param ch is used to store character array of string
-	 */
+
 	/***************************Stopwatch***********************/	
 	/**This method takes current time of system  
 	 * @param start_time in this we store current system
 	 * time
-	 * @return will return start-time
+	 * @return the start-time
 	 */
-	public Long StartTime(long start_time)
+	public static Long StartTime(long start_time)
 	{
 		//System.out.println("\nPress 1 start time");
 		if(start_time==0)
@@ -332,17 +343,16 @@ static 	PrintWriter printwriter = new PrintWriter(System.out, true);
 			return start_time; 
 		}
 		else
-			System.out.println("\n*********Invalid input*******");
-
-		return (long) 0;
+			return (long) 0;
 	}
 
 	/**This mathod takes end time of current working system
 	 *  when we stop or when we entered time 
-	 * @param end_time
-	 * @return
+	 * @param end_time in this we store end system
+	 * time
+	 * @return the end_time
 	 */
-	public Long EndTime(long end_time) 
+	public static Long EndTime(long end_time) 
 	{	
 		if(end_time==1)
 		{
@@ -350,8 +360,7 @@ static 	PrintWriter printwriter = new PrintWriter(System.out, true);
 			return end_time;
 		}
 		else
-			System.out.println("\n*********Invalid input********");
-		return (long) 0; 
+			return (long) 0; 
 	}
 
 	/**This method calculate elapsed time for stopwatch
@@ -359,7 +368,7 @@ static 	PrintWriter printwriter = new PrintWriter(System.out, true);
 	 * @param end_time store time when we stop stopwatch
 	 * @return
 	 */
-	public Long ElapsedTime(long start_time , long end_time)
+	public static Long ElapsedTime(long start_time , long end_time)
 	{
 		long elapsed_time = end_time - start_time;
 		return elapsed_time/1000;
@@ -367,20 +376,36 @@ static 	PrintWriter printwriter = new PrintWriter(System.out, true);
 
 	/****************************Quadratic*************************/
 
-	int root1_x ,root2_x;
+
 	/**This method is used to calculate roots for
 	 * quadratic equation
 	 * @param a is user input to making quadratic equation
 	 * @param b is user input to making quadratic equation
 	 * @param c is user input to making quadratic equation
 	 */
-	public void CalculatingRoots(int a , int b , int c)
-	{
+	public static double[] calculatingRoots(int a , int b , int c)
+	{ 
+		double[] roots=new double[2];
 		double delta =( b*b) - (4*a*c);
-		root1_x=(int) ((-b+Math.sqrt(delta))/(2*a));
-		root2_x=(int) ((-b-Math.sqrt(delta))/(2*a));
-		System.out.println("X = "+root1_x);
-		System.out.println("X = "+root2_x);
+    
+		if(delta>0)
+		{
+			System.out.println("roots are real and un-equal");
+			double root1_x= ((-b+Math.sqrt(delta))/(2*a));
+			double root2_x= ((-b-Math.sqrt(delta))/(2*a));
+			roots[0]=root1_x;
+			roots[1]=root2_x;
+		}
+		else if(delta==0)
+		{System.out.println("roots are real and equal");
+		double root1_x=(int) ((-b+Math.sqrt(delta))/(2*a));
+		roots[0]=root1_x;
+		}
+		else
+		{
+			System.out.println("roots are imaginary");
+		}
+		return roots;
 	}
 	/************************Wind chill*******************************/
 
@@ -389,24 +414,15 @@ static 	PrintWriter printwriter = new PrintWriter(System.out, true);
 	 * @param v is speed  miles per hour
 	 * @return effective wind chill temperature
 	 */
-	public void windChillCalculation(double t , double v)
+	public static long windChillCalculation(double t , double v)
 	{
 		if(t>50 || (v<3 || v>120))  //This is recursion..to allow user
 		{							// to enter input again and again
-			System.out.println("You have entered wrong input:");
-			System.out.println("Enter T :=");
-			//t=scanner.nextInt();
-			System.out.println("Enter V :=");
-			//v=scanner.nextInt();
-			windChillCalculation(t, v);
+			return (long)0;
 		}
-		else if(t <=50 && (v>=3 && v<=120))
-		{
-			long w = 0;
-			double raiseToPower = Math.pow(v,0.16);
-			w = (long) ((long)35.74 + 0.6215*t+ (0.4275*t-35.75)*raiseToPower);
-			System.out.println("Wind chill is : "+w);
-		}		
+		else 
+			return (long) ((long)35.74 + 0.6215*t+ (0.4275*t-35.75)*(Math.pow(v,0.16)));
+
 	}
 
 	/************************Algorithm Programs*********************/	

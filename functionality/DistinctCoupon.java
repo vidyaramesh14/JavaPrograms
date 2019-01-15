@@ -16,5 +16,6 @@ public class DistinctCoupon
 		
 			Set s=Utility.distinctCoupon(No_Of_Times);
 			System.out.println("distinct coupon are:\n "+s);
+			
 		}
 	}

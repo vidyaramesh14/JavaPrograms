@@ -10,11 +10,11 @@ public class ArrayOf2D {
 	{Scanner sc1=new Scanner(System.in);
 	System.out.println("enter number of rows");
 	int row=sc1.nextInt();
-	
+
 	System.out.println("enter number of column");
 	int column=sc1.nextInt();
 	int[][] res=Utility.twoDarray(row, column);
-	//System.out.println(res);
+	
 	}
 
 }

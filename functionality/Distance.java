@@ -6,10 +6,11 @@ public class Distance
 {
 		public static void main(String[] args) 
 		{
-			Utility utility = new Utility();
+			
 			int x = Integer.parseInt(args[0]);
 			int y = Integer.parseInt(args[1]);
-			utility.euclidianDistance(x, y);
+			double result=Utility.euclideanDistance(x, y);
+			System.out.println("the EuclideanDistance is:  "+result);
 		}	
 	
 }
