@@ -472,15 +472,11 @@ public class Utility
 					break;
 				}
 				else
-					//temp=false;
-					list.add(i);
-				
-			}if(temp==false
-					)
+					temp=false;
+			}if(temp==false)
 			{
 				list.add(i);
 			}
-			     
 			
 		}return list;
 		
