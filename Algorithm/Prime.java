@@ -8,7 +8,8 @@ public class Prime
 {
 	public static void main(String[] args)
 	{
-		 int[] Prime_Numbers=Utility.printingPrimeNumber(999);
+		
+		List Prime_Numbers=Utility.printingPrimeNumber(20);
 		System.out.println(Prime_Numbers);
 	}
 }

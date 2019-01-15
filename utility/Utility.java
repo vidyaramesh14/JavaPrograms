@@ -387,7 +387,7 @@ public class Utility
 	{ 
 		double[] roots=new double[2];
 		double delta =( b*b) - (4*a*c);
-    
+
 		if(delta>0)
 		{
 			System.out.println("roots are real and un-equal");
@@ -429,27 +429,28 @@ public class Utility
 
 	/****************************Anagram*****************************/
 
-	/**This method check entered two string are anagram or not
-	 * @param str1 store first string
-	 * @param str2 store second string
-	 * Now later it compare both strings are anagram or not 
+	
+
+
+	/**this method check whether 2 given String are Anagram are Not
+	 * @param first is 1st String
+	 * @param second is 2nd String
+	 * @return boolean value
 	 */
-	public void checkAnangram(String str3 , String str4 )
-	{			
-		char array1[] = str3.toCharArray();      //convert string 
-		char array2[] = str4.toCharArray(); 	//in character array	        
-		Arrays.sort(array1);
-		Arrays.sort(array2);
-
-		if(Arrays.equals(array1, array2))   //check characters of both 
-		{									//array is same or not
-
-			System.out.println("String is anangram");
+	public static boolean checkAnagram(String first, String second)
+	{
+		char[] characters = first.toCharArray();
+		for(char c:characters)
+		{
+			if(second.contains(new String(""+c))) {
+				second.replace('c',' ');
+			}else {
+				return false;
+			}
 		}
-		else 
-			System.out.println("String is not anangram");
-
+		return true;
 	}
+	
 	/*************************Prime Number of range 0 to 1000***************/
 
 	/**This method print prime number from 0 to till the range
@@ -457,27 +458,32 @@ public class Utility
 	 * @param range store number and till that it will print
 	 * prime numbers
 	 */
-	public static int[] printingPrimeNumber(int range) 
-	{
-		boolean isPrime = true;
-		int count = 0;
-		int primeno[]=new int[range];		   
+	public static List printingPrimeNumber(int range) 
+	{	
+		List<Integer> list=new ArrayList<>();
+			   boolean temp=false;
 		for (int i = 0; i <= range; i++)         
 		{ 		  
-			for(int j=2; j<i ;j++)
+			for(int j=2; j<i;j++)
 			{
 				if(i%j==0)
 				{
-					isPrime=false;
+					temp=true;
 					break;
 				}
-				else 	
-					isPrime=true;
+				else
+					//temp=false;
+					list.add(i);
+				
+			}if(temp==false
+					)
+			{
+				list.add(i);
 			}
-			if(isPrime==true)
-				primeno[count++]=i;
-		}
-		return primeno ;		     
+			     
+			
+		}return list;
+		
 	}
 
 
