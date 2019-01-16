@@ -3,12 +3,15 @@ package com.bridgelabz.utility;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
+
+import com.bridgelabz.functionality.FindLeapYear;
 
 public class Utility 
 {
@@ -54,6 +57,7 @@ public class Utility
 				head++;
 			range--;
 		}
+		System.out.println("head"+head+"    "+"tail"+tail);
 		int percentage_tail = ((tail*100)/ num);
 
 		return percentage_tail;
@@ -66,24 +70,39 @@ public class Utility
 	/**This method check that entered year is leap 
 	 * year or not
 	 */
-	public static boolean leapYear(int yearnumber)
-	{	boolean temp=false;
-	int count=0;
-	while(yearnumber>=1)
-	{
-		yearnumber/=10;
-		count++;
-	}System.out.println(count);
-	if(count==4)
-	{
-		if(yearnumber%400==0 || ((yearnumber%100==0) && (yearnumber%4==0)))
+	public static void leapYear(int year)
+	{	
+		int temp=year;
+		int count=0;	
+		while(temp>=1)
 		{
-			temp=true;
+			temp/=10;
+			count++;
+		}//System.out.println(count);
+		if(count==4)
+		{	
+			if(year%4==0)
+			{
+				if(year % 100 ==0 && year%400==0)
+					System.out.println("is leap year");
+				else
+					System.out.println("not a leap year");
+			}
+			else
+				System.out.println("is not leap year");
 		}
+		else
+			try {
+				throw new NumberFormatException();
+			} catch (Exception e) {
+				System.out.println("is not leap reenter");
+				//FindLeapYear.main(null);
+			}
 
-	}
 
-	return temp;
+
+
+
 	}
 
 	/***********************Power Of 2*****************************/
@@ -167,19 +186,30 @@ public class Utility
 	{
 		int win=0,loose=0;
 		int winpercentage=0,loosepercentage=0;
-		while(Goal!=0)
+		int temp=Num_of_times;
+		if(Stake>0 && Stake<=Goal)
 		{
-			double random=Math.random();
-			if(random<0.5)
+			while(Num_of_times!=0)
 			{
-				win++;
+				double random=Math.random();
+				if(random<0.5)
+				{
+					win++;
+					Stake++;
 
-			}else
-			{
-				loose++;
-			}Goal--;
-		}System.out.println("Number of Wins :\t"+win);
-		winpercentage=((win*100)/Num_of_times);
+
+				}else
+				{
+					loose++;
+					Stake--;
+
+				}Num_of_times--;
+			}
+		}
+		System.out.println("Stake value "+Stake);
+		System.out.println("Goal value "+Goal);
+		System.out.println("Number of Wins :\t"+win);
+		winpercentage=((win*100)/temp);
 		return winpercentage;
 	}
 	/***************************Coupon Number ********************/
@@ -194,6 +224,7 @@ public class Utility
 		while(total_coupon !=0)
 		{
 			double ran=Math.random()*total_coupon;
+
 			set.add(ran);
 			total_coupon --;
 		}
@@ -276,6 +307,18 @@ public class Utility
 	 * formula distence^2=x^2 +y^2 for 2D
 	 * formula distence^2=x^2 +y^2+z^2 for 3D
 	 */
+	/*int x=9;
+	if (x == 0 || x == 1) 
+		System.out.println(x);
+
+
+	int i = 1, result = 1; 
+
+	while (result <= x) { 
+		i++; 
+		result = i * i; 
+	} 
+	System.out.println(i-1);*/
 	public static double euclideanDistance(int x , int y)
 	{	
 
@@ -391,15 +434,22 @@ public class Utility
 		if(delta>0)
 		{
 			System.out.println("roots are real and un-equal");
+			try {
 			double root1_x= ((-b+Math.sqrt(delta))/(2*a));
 			double root2_x= ((-b-Math.sqrt(delta))/(2*a));
 			roots[0]=root1_x;
 			roots[1]=root2_x;
+			}
+			catch(Exception e) {
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			}
 		}
 		else if(delta==0)
-		{System.out.println("roots are real and equal");
-		double root1_x=(int) ((-b+Math.sqrt(delta))/(2*a));
-		roots[0]=root1_x;
+		{
+		  System.out.println("roots are real and equal");
+		  double root1_x=(int)(-b/(2*a));
+		  roots[0]=root1_x;
 		}
 		else
 		{
@@ -429,7 +479,7 @@ public class Utility
 
 	/****************************Anagram*****************************/
 
-	
+
 
 
 	/**this method check whether 2 given String are Anagram are Not
@@ -450,7 +500,7 @@ public class Utility
 		}
 		return true;
 	}
-	
+
 	/*************************Prime Number of range 0 to 1000***************/
 
 	/**This method print prime number from 0 to till the range
@@ -461,7 +511,7 @@ public class Utility
 	public static List printingPrimeNumber(int range) 
 	{	
 		List<Integer> list=new ArrayList<>();
-			   boolean temp=false;
+		boolean temp=false;
 		for (int i = 0; i <= range; i++)         
 		{ 		  
 			for(int j=2; j<i;j++)
@@ -477,38 +527,40 @@ public class Utility
 			{
 				list.add(i);
 			}
-			
+			//Utility.checkPalindrome(list);
 		}return list;
-		
+
 	}
 
 
-	/************************PrimeAnangramPalindrome*********************/	
+	/************************PrimePalindrome*********************/	
 
 	/**This method check prime numbers are palindrome or not
 	 * @param primenumber: store prime number which we have to check 
 	 * whether it is palindrome or not
 	 */
-	static int reversenum = 0;
-	static int remainder=0;
 
-	public static void checkPalindrome(int[] primenumber) {
-
+	public static Set checkPalindrome( int[] primenumber) 
+	{
+		Set<Integer> set=new HashSet<>();
 		for (int i = 0; i < primenumber.length; i++) {
-			reversenum=0;
+			int reversenum=0;
 			if (primenumber[i] > 0) {
 				int temp = primenumber[i];
 				while (temp > 0) 
 				{
-					remainder = temp % 10;
+					int remainder = temp % 10;
 					temp = temp / 10;
 					reversenum = reversenum * 10 + remainder;
 				}
 				temp=primenumber[i];
 				if (temp == reversenum) 
-					System.out.print(reversenum + " ");                
+				{
+					set.add(temp);
+				}
+					               
 			}
-		}
+		}return set;
 	}
 
 	/**This method check that prime number is anagram or not
@@ -517,26 +569,26 @@ public class Utility
 	 */
 	public static int[] checkAnagram(int[] primenumber)
 	{
-		System.out.println("\nThe prime number which are Anagram:");
-		int anagram = 0;
-		int[] anagramArray = new int[primenumber.length]; 
-		for (int  i = 0; i < primenumber.length; i++)
-		{
-			for (int j = i+1; j < primenumber.length-1; j++)
-			{
-				if(primenumber[i]>0 && primenumber[j]>0 && primenumber[i]!=primenumber[j])
-				{     
-					String string1 = Integer.toString(primenumber[i]);
-					String string2 = Integer.toString(primenumber[j]);
-					anagram = Utility.checkPrimeAnagram(string1, string2);
-					if(anagram>0)
-					{
-						anagramArray[i] = anagram;
-						//anagramArray[i]
-					}
-				}
-			}
-		}
+	    System.out.println("\nThe prime number which are Anagram:");
+	    int anagram = 0;
+	    int[] anagramArray = new int[primenumber.length]; 
+	    for (int  i = 0; i < primenumber.length; i++)
+	    {
+	        for (int j = 0; j < primenumber.length; j++)
+	        {
+	             if(primenumber[i]>0 && primenumber[j]>0 && primenumber[i]!=primenumber[j])
+	             {     
+	                 String string1 = Integer.toString(primenumber[i]);
+	                 String string2 = Integer.toString(primenumber[j]);
+	                 anagram = Utility.checkPrimeAnagram(string1, string2);
+	                 if(anagram>0)
+	                 {
+	                	 anagramArray[i] = anagram;
+	                	 //anagramArray[i]
+	                 }
+	             }
+	        }
+	    }
 		return anagramArray;				        
 	}
 
@@ -544,17 +596,17 @@ public class Utility
 	{
 		int anagram =0 ;
 		char[] ch1 = string1.toCharArray();
-		char[] ch2 = string2.toCharArray();
-		boolean result=false;
-		Arrays.sort(ch1);
-		Arrays.sort(ch2);
-		result = Arrays.equals(ch1,ch2);
-		if(result==true)
-		{
-			anagram = Integer.parseInt(string1);
-			//System.out.print(anagram+" ");
-			return anagram;
-		}
+	    char[] ch2 = string2.toCharArray();
+	    boolean result=false;
+	    Arrays.sort(ch1);
+	    Arrays.sort(ch2);
+	    result = Arrays.equals(ch1,ch2);
+	    if(result==true)
+	    {
+	    	anagram = Integer.parseInt(string1);
+	    	//System.out.print(anagram+" ");
+	    	return anagram;
+	    }
 		return anagram;		
 	}  		
 
@@ -673,21 +725,20 @@ public class Utility
 		return stringArray;         // sorted strings 
 	}
 	/*****************BubbleSort for Integer************************/
-	public static void BubbleSortInteger(int[]array)
+	public static int[] BubbleSortInteger(int[]array)
 	{
-		int length=array.length-1;
-		int temp;
-		for(int i=0;i<length;i++)
+
+		for(int i=0;i<array.length;i++)
 		{
-			
-				if(array[i]>array[i+1])
+			for(int j=0;j<array.length-1;j++)
+				if(array[j]>array[j+1])
 				{
-					temp=array[i];
-					array[i]=array[i+1];
-					array[i+1]=temp;
+					int temp=array[j];
+					array[j]=array[j+1];
+					array[j+1]=temp;
 				}
-			
-		}
+
+		}return array;
 
 	}
 	/*****************BubbleSort for String************************/
@@ -698,16 +749,16 @@ public class Utility
 	 */
 	public static String[] bubbleString(String[] stringArray)
 	{	
-		
-		
+
+
 		for(int i=0;i<stringArray.length;i++)
 		{
-			for(int j=1;j<stringArray.length-i;j++)
+			for(int j=0;j<stringArray.length-1;j++)
 			{
 				if((stringArray[j]).compareTo(stringArray[j+1]) > 0)
 				{
 					//swapping
-				String	temp=stringArray[j];
+					String	temp=stringArray[j];
 					stringArray[j]=stringArray[j+1];
 					stringArray[j+1]=temp;
 				}

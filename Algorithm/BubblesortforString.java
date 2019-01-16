@@ -6,7 +6,7 @@ public class BubblesortforString
 {
 	public static void main(String[] args)
     {
-       String[] str= {"a","vidya","chandu","Addhi"};
+       String[] str= {"a","vidya","chandu","addhi"};
         String[] str1=Utility.bubbleString(str);
        
         System.out.println("Sorted array list is:");
