@@ -675,19 +675,18 @@ public class Utility
 	/*****************BubbleSort for Integer************************/
 	public static void BubbleSortInteger(int[]array)
 	{
-		int length=array.length;
+		int length=array.length-1;
 		int temp;
 		for(int i=0;i<length;i++)
 		{
-			for(int j=1;j<(length-i);j++)
-			{
-				if(array[j-1]>array[j])
+			
+				if(array[i]>array[i+1])
 				{
-					temp=array[j-1];
-					array[j-1]=array[j];
-					array[j]=temp;
+					temp=array[i];
+					array[i]=array[i+1];
+					array[i+1]=temp;
 				}
-			}
+			
 		}
 
 	}
@@ -697,18 +696,18 @@ public class Utility
 	 * @param stringArray : store number of strings 
 	 * @return :string array ,where sorted strings are stored
 	 */
-	public static String[] bubbleString(int nString,String[] stringArray)
+	public static String[] bubbleString(String[] stringArray)
 	{	
-		int i,j;
-		String temp;
-		for(i=0;i<nString-1;i++)
+		
+		
+		for(int i=0;i<stringArray.length;i++)
 		{
-			for(j=0;j<nString-i-1;j++)
+			for(int j=1;j<stringArray.length-i;j++)
 			{
 				if((stringArray[j]).compareTo(stringArray[j+1]) > 0)
 				{
 					//swapping
-					temp=stringArray[j];
+				String	temp=stringArray[j];
 					stringArray[j]=stringArray[j+1];
 					stringArray[j+1]=temp;
 				}

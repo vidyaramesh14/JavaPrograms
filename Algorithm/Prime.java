@@ -9,7 +9,7 @@ public class Prime
 	public static void main(String[] args)
 	{
 		
-		List Prime_Numbers=Utility.printingPrimeNumber(20);
+		List Prime_Numbers=Utility.printingPrimeNumber(29);
 		System.out.println(Prime_Numbers);
 	}
 }
