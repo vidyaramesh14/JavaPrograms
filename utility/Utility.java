@@ -112,25 +112,12 @@ public class Utility
 	 * @param n is the range..and till that range 
 	 * it generate the table 
 	 */
-	public static  int powerOfTwo(int base,int power)
+	public static  void powerOfTwo(int base,int power)
 	{  	
-		int i = 1,result=1,n=0;
-
-		if(n<=31)
-		{
-			for(i=0;i<=n;i++)
-			{     
-				//mul=(int) Math.pow(2,i);
-				while(power!=0)
-				{
-					result*=base;
-					power--;
-				}
-				return result;
-			}
+		for(int i=0;i<=power;i++)
+		{     
+			System.out.println("2^"+i+" = "+Math.pow(base, i));
 		}
-		return -1;
-
 	}
 
 	/***********************Harmonic Number**********************/
@@ -435,10 +422,10 @@ public class Utility
 		{
 			System.out.println("roots are real and un-equal");
 			try {
-			double root1_x= ((-b+Math.sqrt(delta))/(2*a));
-			double root2_x= ((-b-Math.sqrt(delta))/(2*a));
-			roots[0]=root1_x;
-			roots[1]=root2_x;
+				double root1_x= ((-b+Math.sqrt(delta))/(2*a));
+				double root2_x= ((-b-Math.sqrt(delta))/(2*a));
+				roots[0]=root1_x;
+				roots[1]=root2_x;
 			}
 			catch(Exception e) {
 				System.out.println(e.getMessage());
@@ -447,9 +434,9 @@ public class Utility
 		}
 		else if(delta==0)
 		{
-		  System.out.println("roots are real and equal");
-		  double root1_x=(int)(-b/(2*a));
-		  roots[0]=root1_x;
+			System.out.println("roots are real and equal");
+			double root1_x=(int)(-b/(2*a));
+			roots[0]=root1_x;
 		}
 		else
 		{
@@ -489,6 +476,10 @@ public class Utility
 	 */
 	public static boolean checkAnagram(String first, String second)
 	{
+		if(first.length()!=second.length())
+		{
+			return false;
+		}
 		char[] characters = first.toCharArray();
 		for(char c:characters)
 		{
@@ -511,6 +502,7 @@ public class Utility
 	public static List printingPrimeNumber(int range) 
 	{	
 		List<Integer> list=new ArrayList<>();
+
 		boolean temp=false;
 		for (int i = 0; i <= range; i++)         
 		{ 		  
@@ -558,7 +550,7 @@ public class Utility
 				{
 					set.add(temp);
 				}
-					               
+
 			}
 		}return set;
 	}
@@ -569,26 +561,26 @@ public class Utility
 	 */
 	public static int[] checkAnagram(int[] primenumber)
 	{
-	    System.out.println("\nThe prime number which are Anagram:");
-	    int anagram = 0;
-	    int[] anagramArray = new int[primenumber.length]; 
-	    for (int  i = 0; i < primenumber.length; i++)
-	    {
-	        for (int j = 0; j < primenumber.length; j++)
-	        {
-	             if(primenumber[i]>0 && primenumber[j]>0 && primenumber[i]!=primenumber[j])
-	             {     
-	                 String string1 = Integer.toString(primenumber[i]);
-	                 String string2 = Integer.toString(primenumber[j]);
-	                 anagram = Utility.checkPrimeAnagram(string1, string2);
-	                 if(anagram>0)
-	                 {
-	                	 anagramArray[i] = anagram;
-	                	 //anagramArray[i]
-	                 }
-	             }
-	        }
-	    }
+		System.out.println("\nThe prime number which are Anagram:");
+		int anagram = 0;
+		int[] anagramArray = new int[primenumber.length]; 
+		for (int  i = 0; i < primenumber.length; i++)
+		{
+			for (int j = 0; j < primenumber.length; j++)
+			{
+				if(primenumber[i]>0 && primenumber[j]>0 && primenumber[i]!=primenumber[j])
+				{     
+					String string1 = Integer.toString(primenumber[i]);
+					String string2 = Integer.toString(primenumber[j]);
+					anagram = Utility.checkPrimeAnagram(string1, string2);
+					if(anagram>0)
+					{
+						anagramArray[i] = anagram;
+						//anagramArray[i]
+					}
+				}
+			}
+		}
 		return anagramArray;				        
 	}
 
@@ -596,17 +588,17 @@ public class Utility
 	{
 		int anagram =0 ;
 		char[] ch1 = string1.toCharArray();
-	    char[] ch2 = string2.toCharArray();
-	    boolean result=false;
-	    Arrays.sort(ch1);
-	    Arrays.sort(ch2);
-	    result = Arrays.equals(ch1,ch2);
-	    if(result==true)
-	    {
-	    	anagram = Integer.parseInt(string1);
-	    	//System.out.print(anagram+" ");
-	    	return anagram;
-	    }
+		char[] ch2 = string2.toCharArray();
+		boolean result=false;
+		Arrays.sort(ch1);
+		Arrays.sort(ch2);
+		result = Arrays.equals(ch1,ch2);
+		if(result==true)
+		{
+			anagram = Integer.parseInt(string1);
+			//System.out.print(anagram+" ");
+			return anagram;
+		}
 		return anagram;		
 	}  		
 
@@ -614,27 +606,30 @@ public class Utility
 	/**************************All sorting algo **************************/
 
 
-	/*************************Binarysearch method for integer******************/
+	/*************************Binarysearch ******************/
 
 
-	/**this method search a integer in sorted array
-	 * @param arr store sorted int
-	 * @param Search_ele  is a integer which is to be search
-	 * @return searching element
+	/**this method search a given value in sorted array
+	 * @param arr is a T type array
+	 * @param Search_ele  is a element which is to be search
+	 * @return searching element position
 	 */
-	public static int BinarySearchInt(int[] arr,int Search_ele)
+
+
+
+	public static <T extends Comparable<T> >int genericsBinarySearch(T[] arr,T Search_ele)
 	{
 		int low=0;
 		int high=arr.length-1;
-		int mid;
+
 		while(low<=high)
 		{
-			mid=(low+high)/2;
-			if(arr[mid]==Search_ele)
+			int mid=(low+high)/2;
+			if(arr[mid].equals(Search_ele))
 			{
 				return mid;
 			}
-			else if(arr[mid]<Search_ele)
+			else if(arr[mid].compareTo(Search_ele)<0)
 			{
 				low=mid+1;
 			}else 
@@ -645,69 +640,36 @@ public class Utility
 		}return -1;
 
 	}
-	/******************************Binarysearch method for String*********/
-	/** this method search a string or word in sorted list 
-	 * @param bubbleStringArray store sorted strings 
-	 * @param stringsearch is a string which is to be search
-	 * @return searching element
+
+	/*****************insertion sort for Integer************************/
+
+	/**this method sort the array in ascending order using insertion sort
+	 * @param array store total number of integer given by user
+	 * @return sorted integer array
 	 */
-	public static int binaryString(String[] bubbleStringArray , String stringsearch)
+	public static <T extends Comparable<T>> T[] InsertionSortInteger(T[] array)
+	{	for(int i=1;i<array.length;i++)
+	{	T temp=array[i];
+	int j=i-1;
+	while(j>=0 && array[j].compareTo(temp)>0)
 	{
-		int first = 0;
-		int last = bubbleStringArray.length;
-		int mid = 0;
-		while (first <= last) {
-			mid = (first + last) / 2;
-
-			if (bubbleStringArray[mid].compareTo(stringsearch) == 0) 
-			{
-				return mid;
-
-			} 
-			else if (bubbleStringArray[mid].compareTo(stringsearch) < 0) 
-			{
-				first = mid + 1;
-			} else 
-			{
-				last = mid - 1;
-			}
-		}
-
-		return -1;
+		array[j+1]=array[j];
+		j=j-1;
+	}array[j+1]=temp;
+	}return array;
 	}
-
-	/*****************insertionsort for Integer************************/
-
-	public static void InsertionSortInteger(int[] array)
-	{
-		int n = array.length; 
-		for (int j = 1; j < n; j++)
-		{ 
-			int key = array[j]; 
-			int i = j-1; 
-			/**Move elements of array[0..i-1], that are 
-            greater than key, to one position ahead 
-            of their current position */
-			while ( (i > -1) && ( array [i] > key ) )
-			{ 
-				array [i+1] = array [i]; 
-				i--; 
-			} 
-			array[i+1] = key; 
-		}
-	}
-	/*****************insertionsort for Integer************************/
+	/*****************insertion sort for Integer************************/
 	/**This method sort string data in ascending order using insertion sort
 	 * @param nString store total number of string given by user
 	 * @param stringArray store strings entered by user 
 	 * @return sorted strings 
 	 */
-	public static String[] insertionString(int nString , String[] stringArray)
+	/*public static String[] insertionString( String[] stringArray)
 	{
 
 		String key;
 		int j,i;
-		for (j = 1; j < stringArray.length; j++) 
+		for (i = 1; i< stringArray.length; j++) 
 		{
 			key=stringArray[j];      //store original in any temporary variable
 			i=j-1;
@@ -723,51 +685,28 @@ public class Utility
 			stringArray[i+1]=key;         
 		}
 		return stringArray;         // sorted strings 
-	}
-	/*****************BubbleSort for Integer************************/
-	public static int[] BubbleSortInteger(int[]array)
+	}*/
+	/*****************BubbleSort************************/
+	/** this method sort the array in ascending order
+	 * @param array is a given array 
+	 * @return sorted array
+	 */
+	public static <T extends Comparable<T>> T[] genericsBubbleSort(T[] array)
 	{
 
 		for(int i=0;i<array.length;i++)
 		{
 			for(int j=0;j<array.length-1;j++)
-				if(array[j]>array[j+1])
+			{
+				if(array[j].compareTo(array[j+1])>0)
 				{
-					int temp=array[j];
+					T temp=array[j];
 					array[j]=array[j+1];
 					array[j+1]=temp;
 				}
-
+			}
 		}return array;
 
 	}
-	/*****************BubbleSort for String************************/
-	/** This method sort the strings in ascending order
-	 * @param nString :store total how many strings are their in array 
-	 * @param stringArray : store number of strings 
-	 * @return :string array ,where sorted strings are stored
-	 */
-	public static String[] bubbleString(String[] stringArray)
-	{	
-
-
-		for(int i=0;i<stringArray.length;i++)
-		{
-			for(int j=0;j<stringArray.length-1;j++)
-			{
-				if((stringArray[j]).compareTo(stringArray[j+1]) > 0)
-				{
-					//swapping
-					String	temp=stringArray[j];
-					stringArray[j]=stringArray[j+1];
-					stringArray[j+1]=temp;
-				}
-			}
-		}
-
-		return stringArray;		
-	}	
-
-}
-
+}	
 

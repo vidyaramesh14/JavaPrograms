@@ -5,30 +5,21 @@ import java.util.Scanner;
 
 import com.bridgelabz.utility.Utility;
 
-public class FindPowerOfTwo 
-{
-	static int p;
-	
-		public static void main(String[] args)throws IOException  
+public class FindPowerOfTwo {
+	public static void main(String[] args) throws IOException {
+		Scanner sc1 = new Scanner(System.in);
+		int input=0;
+		do
 		{
-			Scanner sc1=new Scanner(System.in);
-				int b=2;
-			System.out.println("Enter power value :");
-		    int p=sc1.nextInt();
+			System.out.println("Enter power value");
+			input = sc1.nextInt();
+		}while(input > 31 || input < 0);
 		
-		/*	while(p>=31 || p<=0)
-			{
-				Scanner sc1=new Scanner(System.in);
-				System.out.println("Enter power value :");
-				 p=sc1.nextInt();
-			}*/
-			int result=Utility.powerOfTwo(b,p);
-			if(result==-1)
-			{
-				System.out.println("give correct value");
-			}
-			else
-				System.out.println(result);
-		}
-	
+			
+			
+		System.out.println();
+		int base =2;
+		Utility.powerOfTwo(base, input);
+	}
+
 }
