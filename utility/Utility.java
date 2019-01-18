@@ -1,5 +1,7 @@
 package com.bridgelabz.utility;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -205,14 +207,15 @@ public class Utility
 	 * you wants to generate
 	 * @return Set of Distinct Coupon
 	 */
-	public static Set<Double> distinctCoupon(int total_coupon)
+	public static Set<String> distinctCoupon(int total_coupon)
 	{
-		Set<Double> set=new LinkedHashSet<>();
+		Set<String> set=new LinkedHashSet<>();
 		while(total_coupon !=0)
 		{
-			double ran=Math.random()*total_coupon;
-
-			set.add(ran);
+			
+			Random random=new Random();
+			String random4=String.format("%04d", random.nextInt(10000));
+			set.add(random4);
 			total_coupon --;
 		}
 		return set;
@@ -494,113 +497,117 @@ public class Utility
 
 	/*************************Prime Number of range 0 to 1000***************/
 
+	/***********************Prime Number(0-1000)*******************/
+	
 	/**This method print prime number from 0 to till the range
 	 * whatever you want  
 	 * @param range store number and till that it will print
 	 * prime numbers
 	 */
-	public static List printingPrimeNumber(int range) 
-	{	
-		List<Integer> list=new ArrayList<>();
-
-		boolean temp=false;
-		for (int i = 0; i <= range; i++)         
-		{ 		  
-			for(int j=2; j<i;j++)
-			{
-				if(i%j==0)
-				{
-					temp=true;
-					break;
-				}
-				else
-					temp=false;
-			}if(temp==false)
-			{
-				list.add(i);
-			}
-			//Utility.checkPalindrome(list);
-		}return list;
-
+	public static int[] printingPrimeNumber(int range) 
+	{
+		   boolean isPrime = true;
+		   int count = 0;
+		   int primeno[]=new int[range];		   
+		   for (int i = 0; i <= range; i++)         
+	       { 		  
+	          for(int j=2; j<i ;j++)
+	          {
+	        	     if(i%j==0)
+	             	 {
+	             	 	isPrime=false;
+	             	 	break;
+	             	 }
+	             	 else 	
+	        	     	isPrime=true;
+	          	}
+	          	if(isPrime==true)
+	        	  primeno[count++]=i;
+	       }
+		return primeno ;		     
 	}
-
-
-	/************************PrimePalindrome*********************/	
-
+	
+/************************PrimeAnangramPalindrome*********************/	
+	
 	/**This method check prime numbers are palindrome or not
 	 * @param primenumber: store prime number which we have to check 
 	 * whether it is palindrome or not
 	 */
+	
+  
 
-	public static Set checkPalindrome( int[] primenumber) 
-	{
-		Set<Integer> set=new HashSet<>();
-		for (int i = 0; i < primenumber.length; i++) {
-			int reversenum=0;
-			if (primenumber[i] > 0) {
-				int temp = primenumber[i];
-				while (temp > 0) 
-				{
-					int remainder = temp % 10;
-					temp = temp / 10;
-					reversenum = reversenum * 10 + remainder;
-				}
-				temp=primenumber[i];
-				if (temp == reversenum) 
-				{
-					set.add(temp);
-				}
-
-			}
-		}return set;
-	}
+    public static List checkPalindrome(int[] primenumber) {
+    	int[] palindrome=new int[primenumber.length];
+    	int count=0;
+    	List l=new ArrayList();
+        for (int i = 0; i < primenumber.length; i++) {
+          int  reversenum=0;
+            if (primenumber[i] > 0) {
+                int temp = primenumber[i];
+                while (temp > 0) 
+                {
+                  int  remainder = temp % 10;
+                    temp = temp / 10;
+                    reversenum = reversenum * 10 + remainder;
+                }
+                       temp=primenumber[i];
+                if (temp == reversenum) 
+                {
+                	l.add(temp);
+                	
+                }
+                    
+              
+            }
+        }return l;
+    }
 
 	/**This method check that prime number is anagram or not
 	 * @param primenumber:is prime numbers which we check that numbers are
 	 * anangram or not
 	 */
-	public static int[] checkAnagram(int[] primenumber)
-	{
-		System.out.println("\nThe prime number which are Anagram:");
-		int anagram = 0;
-		int[] anagramArray = new int[primenumber.length]; 
-		for (int  i = 0; i < primenumber.length; i++)
-		{
-			for (int j = 0; j < primenumber.length; j++)
-			{
-				if(primenumber[i]>0 && primenumber[j]>0 && primenumber[i]!=primenumber[j])
-				{     
-					String string1 = Integer.toString(primenumber[i]);
-					String string2 = Integer.toString(primenumber[j]);
-					anagram = Utility.checkPrimeAnagram(string1, string2);
-					if(anagram>0)
-					{
-						anagramArray[i] = anagram;
-						//anagramArray[i]
-					}
-				}
-			}
-		}
+    public static int[] checkAnagram(int[] primenumber)
+    {
+        System.out.println("\nThe prime number which are Anagram:");
+        int anagram = 0;
+        int[] anagramArray = new int[primenumber.length]; 
+        for (int  i = 0; i < primenumber.length; i++)
+        {
+            for (int j = 0; j < primenumber.length; j++)
+            {
+                 if(primenumber[i]>0 && primenumber[j]>0 && primenumber[i]!=primenumber[j])
+                 {     
+	                 String string1 = Integer.toString(primenumber[i]);
+	                 String string2 = Integer.toString(primenumber[j]);
+	                 anagram = Utility.checkPrimeAnagram(string1, string2);
+	                 if(anagram>0)
+	                 {
+	                	 anagramArray[i] = anagram;
+	                	 //anagramArray[i]
+	                 }
+                 }
+            }
+        }
 		return anagramArray;				        
-	}
-
-	private static int checkPrimeAnagram(String string1, String string2)
-	{
+    }
+    
+    private static int checkPrimeAnagram(String string1, String string2)
+    {
 		int anagram =0 ;
 		char[] ch1 = string1.toCharArray();
-		char[] ch2 = string2.toCharArray();
-		boolean result=false;
-		Arrays.sort(ch1);
-		Arrays.sort(ch2);
-		result = Arrays.equals(ch1,ch2);
-		if(result==true)
-		{
-			anagram = Integer.parseInt(string1);
-			//System.out.print(anagram+" ");
-			return anagram;
-		}
+	    char[] ch2 = string2.toCharArray();
+	    boolean result=false;
+	    Arrays.sort(ch1);
+	    Arrays.sort(ch2);
+	    result = Arrays.equals(ch1,ch2);
+	    if(result==true)
+	    {
+	    	anagram = Integer.parseInt(string1);
+	    	//System.out.print(anagram+" ");
+	    	return anagram;
+	    }
 		return anagram;		
-	}  		
+    }  		
 
 
 	/**************************All sorting algo **************************/
@@ -617,31 +624,33 @@ public class Utility
 
 
 
-	public static <T extends Comparable<T> >int genericsBinarySearch(T[] arr,T Search_ele)
+	public static <T extends Comparable<T> > int genericsBinarySearch(T[] arr,T Search_ele)
 	{
 		int low=0;
 		int high=arr.length-1;
-
+		int mid=0;
 		while(low<=high)
 		{
-			int mid=(low+high)/2;
-			if(arr[mid].equals(Search_ele))
+		 mid=(low+high)/2;
+		 if(arr[mid].compareTo(Search_ele)<0)
 			{
-				return mid;
+				low = mid+1;
 			}
-			else if(arr[mid].compareTo(Search_ele)<0)
+			else if(arr[mid].equals(Search_ele))
 			{
-				low=mid+1;
-			}else 
-			{
-				high=mid-1;
+				System.out.println("Element found at " +(mid)+ " location ");
+				break;
 			}
-
+			else
+			{
+				high = mid-1;
+				
+			}
 		}return -1;
 
 	}
 
-	/*****************insertion sort for Integer************************/
+	/*****************insertion sort************************/
 
 	/**this method sort the array in ascending order using insertion sort
 	 * @param array store total number of integer given by user
@@ -658,34 +667,7 @@ public class Utility
 	}array[j+1]=temp;
 	}return array;
 	}
-	/*****************insertion sort for Integer************************/
-	/**This method sort string data in ascending order using insertion sort
-	 * @param nString store total number of string given by user
-	 * @param stringArray store strings entered by user 
-	 * @return sorted strings 
-	 */
-	/*public static String[] insertionString( String[] stringArray)
-	{
-
-		String key;
-		int j,i;
-		for (i = 1; i< stringArray.length; j++) 
-		{
-			key=stringArray[j];      //store original in any temporary variable
-			i=j-1;
-			while(i>=0)
-			{
-				if(stringArray[i].compareTo(key)<0)  //comparing 2 strings
-				{
-					break;
-				}
-				stringArray[i+1]=stringArray[i];    //swapping
-				i--;
-			}
-			stringArray[i+1]=key;         
-		}
-		return stringArray;         // sorted strings 
-	}*/
+	
 	/*****************BubbleSort************************/
 	/** this method sort the array in ascending order
 	 * @param array is a given array 
@@ -708,5 +690,89 @@ public class Utility
 		}return array;
 
 	}
+	/*********************** find your number**********************/
+	/**
+	 * @param range is provided by the computer to select 
+	 * secret number
+	 * @return a count of computer took to find secret number
+	 */
+	public static int findSecretNumber(int range)
+	{int low=0;
+	int high=range-1;
+	int mid=0;
+	int count=0;
+		Scanner sc1=new Scanner(System.in);
+		int result=0;
+		while(result!=3)
+		{
+		System.out.println("is "+ mid +" your secret number ?" );
+		System.out.println("press 1 if your secret number less than "+mid+" number");
+		System.out.println("press 2 if your secret number greater than "+mid+" number");
+		System.out.println("press 3 if your secret number is "+mid+" number");
+	
+		 result=sc1.nextInt();
+		if(result==1)
+			{
+				high=mid-1;
+				count++;
+				mid=(low+high)/2;
+			  
+			}
+		else if(result==2)
+		{
+			low=mid+1;
+			count++;
+			mid=(low+high)/2;
+		}
+
+		
+		}
+		System.out.println("your number is "+mid );
+	
+		return count;
+		
+		
+	}
+	
+	/********************binary search file*****************************/
+	/**this method read input from file and then search the given element
+	 * @param path is a file location
+	 * @param key is a searching element
+	 * @throws Exception
+	 */
+	public static void  binaryFile(String  path,String key) throws Exception
+	{	//List<String> list=new ArrayList<>(); 
+		String[] array;
+		
+		BufferedReader br=new BufferedReader(new FileReader(path));
+		String line="";
+		String str="";
+		while((str=br.readLine())!=null)
+		{
+			line+=str;
+					
+			//list.add(str);
+			System.out.println(line);
+			
+		}	
+		array=line.split(" ");
+		Arrays.sort(array);
+		System.out.println("Words list is :");
+		for(int i = 0 ; i< array.length ;i++ )
+		{
+			System.out.print(array[i]+"  ");
+		}
+		System.out.println();
+		int result=	Utility.genericsBinarySearch(array, key);	
+		/*if(result < 0)
+	    	System.out.println("found");
+	    else
+	    	System.out.println(" not found");
+	*/
+	}
+	
+	/***********************merge sort***********************/
+	
+	
 }	
 

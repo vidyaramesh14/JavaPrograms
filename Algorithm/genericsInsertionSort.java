@@ -2,7 +2,7 @@ package com.bridgelabz.Algorithm;
 
 import com.bridgelabz.utility.Utility;
 
-public class genericsInsersionSort
+public class genericsInsertionSort
 {
 	public static void main(String[] args)
     {

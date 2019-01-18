@@ -17,7 +17,7 @@ public class StopWatch {
 		int end=sc1.nextInt();
 		long res2=Utility.EndTime(end);
 		long result =Utility.ElapsedTime(res1, res2);
-		System.out.println("ElapsedTime is:\t"+result);
+		System.out.println("ElapsedTime is:\t"+result+"sec");
 
 	}
 
