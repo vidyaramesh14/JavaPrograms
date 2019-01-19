@@ -3,8 +3,10 @@ package com.bridgelabz.utility;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -18,6 +20,7 @@ import com.bridgelabz.functionality.FindLeapYear;
 public class Utility 
 {
 
+	private static final Class Utility = null;
 	/************************String Replace **************************/
 	/**
 	 * This method replaces the template with the given input string
@@ -561,6 +564,9 @@ public class Utility
             }
         }return l;
     }
+    
+    
+
 
 	/**This method check that prime number is anagram or not
 	 * @param primenumber:is prime numbers which we check that numbers are
@@ -579,11 +585,25 @@ public class Utility
                  {     
 	                 String string1 = Integer.toString(primenumber[i]);
 	                 String string2 = Integer.toString(primenumber[j]);
-	                 anagram = Utility.checkPrimeAnagram(string1, string2);
+	               
+	                 
+	                
+	         		char[] ch1 = string1.toCharArray();
+	         	    char[] ch2 = string2.toCharArray();
+	         	    boolean result=false;
+	         	    Arrays.sort(ch1);
+	         	    Arrays.sort(ch2);
+	         	    result = Arrays.equals(ch1,ch2);
+	         	    if(result==true)
+	         	    {
+	         	    	anagram = Integer.parseInt(string1);
+	         	    	
+	         	    }
+	         		
 	                 if(anagram>0)
 	                 {
 	                	 anagramArray[i] = anagram;
-	                	 //anagramArray[i]
+	                	 
 	                 }
                  }
             }
@@ -591,24 +611,7 @@ public class Utility
 		return anagramArray;				        
     }
     
-    private static int checkPrimeAnagram(String string1, String string2)
-    {
-		int anagram =0 ;
-		char[] ch1 = string1.toCharArray();
-	    char[] ch2 = string2.toCharArray();
-	    boolean result=false;
-	    Arrays.sort(ch1);
-	    Arrays.sort(ch2);
-	    result = Arrays.equals(ch1,ch2);
-	    if(result==true)
-	    {
-	    	anagram = Integer.parseInt(string1);
-	    	//System.out.print(anagram+" ");
-	    	return anagram;
-	    }
-		return anagram;		
-    }  		
-
+    
 
 	/**************************All sorting algo **************************/
 
@@ -740,7 +743,7 @@ public class Utility
 	 * @param key is a searching element
 	 * @throws Exception
 	 */
-	public static void  binaryFile(String  path,String key) throws Exception
+	public static int  binaryFile(String  path,String key) throws Exception
 	{	//List<String> list=new ArrayList<>(); 
 		String[] array;
 		
@@ -763,7 +766,28 @@ public class Utility
 			System.out.print(array[i]+"  ");
 		}
 		System.out.println();
-		int result=	Utility.genericsBinarySearch(array, key);	
+		int low=0;
+		int mid=0;
+		int high=array.length;
+		while(low<=high)
+		{
+		 mid=(low+high)/2;
+		 if(array[mid].compareTo(key)<0)
+			{
+				low = mid+1;
+			}
+			else if(array[mid].equals(key))
+			{
+				System.out.println("Element found at " +(mid)+ " location ");
+				break;
+			}
+			else
+			{
+				high = mid-1;
+				
+			}
+		}return -1;
+		//int result=	Utility.genericsBinarySearch(array, key);	
 		/*if(result < 0)
 	    	System.out.println("found");
 	    else
@@ -774,5 +798,224 @@ public class Utility
 	/***********************merge sort***********************/
 	
 	
+/**this method sort the array in ascending order using merge sort
+ * @param arr is given array
+ * @param start is stating position of array
+ * @param mid is middle position of array
+ * @param end is ending position  of array
+ */
+public static <T extends Comparable<T>> void merge(T[] arr, Class Utility, int start, int mid, int end)
+{
+	int left = mid-start+1;
+	int right = end - mid;  
+	Utility u=new Utility();
+	T LeftArray[] = (T[])Array.newInstance(Utility, left); 
+	T RightArray[] =(T[])Array.newInstance(Utility, right); 
+	  
+	for (int i=0; i<left; ++i)  
+	LeftArray[i] = arr[start + i];  
+	  
+	for (int j=0; j<right; ++j)  
+	RightArray[j] = arr[mid + 1+ j];  
+	  
+	  
+	int i = 0, j = 0;  
+	int k = start;  
+	while (i<left&&j<right)  
+	{  
+	if (LeftArray[i].compareTo(RightArray[j])<=0)  
+	{  
+	arr[k] = LeftArray[i];  
+	i++;  
+	}  
+	else  
+	{  
+	arr[k] = RightArray[j];  
+	j++;  
+	}  
+	k++;  
+	}  
+	while (i<left)  
+	{  
+	arr[k] = LeftArray[i];  
+	i++;  
+	k++;  
+	}  
+	  
+	while (j<right)  
+	{  
+	arr[k] = RightArray[j];  
+	j++;  
+	k++;  
+	}  
+	}  
+	  
+public static<T extends Comparable<T>>void sort(T[] arr,Class Utility, int start, int end)  
+	{  
+	if (start<end)  
+	{  
+	int mid = (start+end)/2;  
+	sort(arr,Utility,start, mid);  
+	sort(arr ,Utility, mid+1, end);  
+	merge(arr,Utility,start, mid, end);  
+	}  
+
 }	
+
+/****************Vending machine***********************/
+
+public static int vendingMachine (int rupees,int[] notes)
+{	int total_notes=0;
+	if(rupees==0)
+	{
+	return -1;
+	}
+	else
+	for(int i=0;i<notes.length;i++ )
+	{
+		if(rupees>0)
+		{
+			total_notes=rupees/notes[i];
+			if(total_notes>0)
+			{
+			System.out.println(notes[i]+":"+total_notes);
+			}
+			rupees=rupees%notes[i];
+		}
+	}return rupees;
+	
+}
+
+
+/*****************************Week Day*******************************/
+	
+	/**This method find day of any entered date 
+	 * @param m store month given by user
+	 * @param d store date given by user
+	 * @param y is year given by user
+	 * @return day present on that day
+	 */
+	public static int dayOfWeek(int m, int d, int y) 
+	{			
+	
+		int y0=y-(14-m)/12;;
+		int x = y0+(y0/4)-y0/100+y0/400;
+		int m0 = m+12*((14-m)/12)-2;
+		int d0 = (d+x+31*m0/12)%7;
+		return d0;
+	}	
+	/***********************Temperature Conversion **********************/    
+    
+    /**This method convert temperature from celsius to fahrenheit
+	 * and from fahrenheit to celsius
+	 * @param temperature 
+	 */
+	public static void temperatureConversion(int temperature) 
+	{
+		Scanner sc1=new Scanner(System.in);
+		System.out.println("select your choice");
+		System.out.println("Press 1 for,Fahrenheit to celsius conversion  :");
+		System.out.println("Press 2 for,Celsius to Fahrenheit conversion  :");
+		int i=sc1.nextInt();
+		switch(i)
+		{
+		case 1:
+		float celsius = ((temperature-32) * 5)/9 ;
+		System.out.println("Temperature in celsius : "+celsius);
+		break;
+		
+		case 2:	
+		float fahrenheit = (temperature *9/5+32);
+		System.out.println("Temperature in fahrenheit : "+fahrenheit );
+		break;
+		
+		default :
+			System.out.println("Invalid input");
+		}
+	} 	
+	
+	
+/***************************Monthly Payment ************************/
+		
+		/**
+		 * @param P is loan amount
+		 * @param Y is year 
+		 * @param R is interestRate
+		 * @return
+		 */
+		public static double monthlyPayment( int P , int Y , double R ) 
+		{
+			int  terms_in_month= (12 * Y);
+			double monthly_rate = R / (12*100);
+			double power = Math.pow((1+ monthly_rate ), -terms_in_month);
+			double	monthlyPay = ((P*terms_in_month)/ (1 - power));
+			return monthlyPay;
+		}
+			
+	
+/************************Sqrt using newtons method******************/
+	
+	/**This method is used to find square root of a nonnegative number
+	 * @param c is user input
+	 */
+	public static void sqrtNewtons(double c)
+	{
+		double epsilon = 1e-15;
+		double t = c;			
+		while(Math.abs(t - c/t) > epsilon*t)
+		{
+			t=(c/t + t)/2.0;
+		}
+		System.out.println(" "+t);
+	}
+	
+ /*****************************ToBinary*******************************/
+	
+	/**This method convert decimal number to binary number without
+	 * using toBinary() function
+	 * @param decimal is decimal number given by user
+	 */
+	public static void toBinary(int decimal)
+	{
+		Scanner scanner = new Scanner(System.in);
+		int temp= decimal;
+		int[] remainder = new int[100];
+		int i=0;
+		while(decimal > 0)
+		{
+			remainder[i] =( decimal % 2);
+			decimal = decimal / 2 ;
+			i++;
+		}
+		for(int j = i-1 ; j>=0 ; j--)
+		{
+			System.out.print(remainder[j]);
+		}
+	}
+	/*********************nibbles*************************/
+	public static int nibbles(int Number )
+	{
+		String result=" ";
+		while(Number>0)
+		{
+			int remainder=Number%2;
+			result+=remainder;
+			Number=Number/2;
+		}
+		result=0+result;
+		String left=result.substring(0,4);
+		String right=result.substring(4);
+		String binary_value=right+right;
+		
+		int pos=0;
+		int sum=0;
+		for(int i=binary_value.length()-1;i>=0;i--)
+		{
+			char j=binary_value.charAt(pos);
+			pos++;
+			int num=Character.getNumericValue(j);
+			 sum=(int)(num*Math.pow(2, i)+sum);
+		}return sum;
+	}
+}
 
