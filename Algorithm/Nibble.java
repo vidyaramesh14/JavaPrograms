@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 import com.bridgelabz.utility.Utility;
 
-public class Nibble {
+public class Nibble 
+{
 
 	public static void main(String[] args) 
 	{
@@ -15,5 +16,5 @@ public class Nibble {
 	System.out.println(" Decimal value is "+res);
 	}
 	
-
+	
 }

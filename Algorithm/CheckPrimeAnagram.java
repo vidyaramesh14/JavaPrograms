@@ -10,7 +10,7 @@ public class CheckPrimeAnagram {
 
 	public static void main(String[] args) 
 	{
-		int[] sample= {121,131,113,112};
+		int[] sample= {121,131,113,890};
 		int[] result=Utility.checkAnagram(sample);
 		for(int i:result)
 		{

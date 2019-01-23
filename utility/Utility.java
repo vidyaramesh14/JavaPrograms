@@ -409,6 +409,36 @@ public class Utility
 		long elapsed_time = end_time - start_time;
 		return elapsed_time/1000;
 	}	
+	
+	
+	/***********************TicTac Toe************************/
+	public static int[][] initializeGame() 
+	{
+		int[][] game=new int[3][3];
+		for(int row=0;row<game.length; row++)
+		{
+			for(int column=0;column<game.length; column++)
+			{
+				game[row][column]='-';
+			}
+		}return game;
+	}
+	
+	
+	public static double ramdom()
+	{
+		int value=(int)(Math.random()*3);
+		System.out.println(value+1);
+		return value;
+	}
+	
+	public static int[][] mark(int[][] game,int row,int col,int value)
+	{
+		if(game[row][col]=='-')
+		{
+			game[row][col]=value;
+		}
+	}
 
 	/****************************Quadratic*************************/
 
@@ -530,43 +560,33 @@ public class Utility
 		return primeno ;		     
 	}
 	
-/************************PrimeAnangramPalindrome*********************/	
+	/************************PrimeAnangramPalindrome*********************/	
 	
 	/**This method check prime numbers are palindrome or not
 	 * @param primenumber: store prime number which we have to check 
 	 * whether it is palindrome or not
 	 */
-	
-  
+	static int reversenum = 0;
+    static int remainder=0;
 
-    public static List checkPalindrome(int[] primenumber) {
-    	int[] palindrome=new int[primenumber.length];
-    	int count=0;
-    	List l=new ArrayList();
+    public static void checkPalindrome(int[] primenumber) {
+
         for (int i = 0; i < primenumber.length; i++) {
-          int  reversenum=0;
+            reversenum=0;
             if (primenumber[i] > 0) {
                 int temp = primenumber[i];
                 while (temp > 0) 
                 {
-                  int  remainder = temp % 10;
+                    remainder = temp % 10;
                     temp = temp / 10;
                     reversenum = reversenum * 10 + remainder;
                 }
                        temp=primenumber[i];
                 if (temp == reversenum) 
-                {
-                	l.add(temp);
-                	
-                }
-                    
-              
+                    System.out.print(reversenum + " ");                
             }
-        }return l;
+        }
     }
-    
-    
-
 
 	/**This method check that prime number is anagram or not
 	 * @param primenumber:is prime numbers which we check that numbers are
@@ -585,25 +605,11 @@ public class Utility
                  {     
 	                 String string1 = Integer.toString(primenumber[i]);
 	                 String string2 = Integer.toString(primenumber[j]);
-	               
-	                 
-	                
-	         		char[] ch1 = string1.toCharArray();
-	         	    char[] ch2 = string2.toCharArray();
-	         	    boolean result=false;
-	         	    Arrays.sort(ch1);
-	         	    Arrays.sort(ch2);
-	         	    result = Arrays.equals(ch1,ch2);
-	         	    if(result==true)
-	         	    {
-	         	    	anagram = Integer.parseInt(string1);
-	         	    	
-	         	    }
-	         		
+	                anagram = checkPrimeAnagram(string1, string2);
 	                 if(anagram>0)
 	                 {
 	                	 anagramArray[i] = anagram;
-	                	 
+	                	 //anagramArray[i]
 	                 }
                  }
             }
@@ -611,7 +617,25 @@ public class Utility
 		return anagramArray;				        
     }
     
-    
+    private static int checkPrimeAnagram(String string1, String string2)
+    {
+		int anagram =0 ;
+		char[] ch1 = string1.toCharArray();
+	    char[] ch2 = string2.toCharArray();
+	    boolean result=false;
+	    Arrays.sort(ch1);
+	    Arrays.sort(ch2);
+	    result = Arrays.equals(ch1,ch2);
+	    if(result==true)
+	    {
+	    	anagram = Integer.parseInt(string1);
+	    	//System.out.print(anagram+" ");
+	    	return anagram;
+	    }
+		return anagram;		
+    }  		
+
+
 
 	/**************************All sorting algo **************************/
 
@@ -823,42 +847,42 @@ public static <T extends Comparable<T>> void merge(T[] arr, Class Utility, int s
 	int k = start;  
 	while (i<left&&j<right)  
 	{  
-	if (LeftArray[i].compareTo(RightArray[j])<=0)  
-	{  
-	arr[k] = LeftArray[i];  
-	i++;  
-	}  
-	else  
-	{  
-	arr[k] = RightArray[j];  
-	j++;  
-	}  
-	k++;  
+		if (LeftArray[i].compareTo(RightArray[j])<=0)  
+		{  
+		arr[k] = LeftArray[i];  
+		i++;  
+		}  
+		else  
+		{  
+		arr[k] = RightArray[j];  
+		j++;  
+		}  
+		k++;  
 	}  
 	while (i<left)  
 	{  
-	arr[k] = LeftArray[i];  
-	i++;  
-	k++;  
+		arr[k] = LeftArray[i];  
+		i++;  
+		k++;  
 	}  
 	  
 	while (j<right)  
 	{  
-	arr[k] = RightArray[j];  
-	j++;  
-	k++;  
+		arr[k] = RightArray[j];  
+		j++;  
+		k++;  
 	}  
 	}  
 	  
 public static<T extends Comparable<T>>void sort(T[] arr,Class Utility, int start, int end)  
 	{  
-	if (start<end)  
-	{  
-	int mid = (start+end)/2;  
-	sort(arr,Utility,start, mid);  
-	sort(arr ,Utility, mid+1, end);  
-	merge(arr,Utility,start, mid, end);  
-	}  
+		if (start<end)  
+		{  
+			int mid = (start+end)/2;  
+			sort(arr,Utility,start, mid);  
+			sort(arr ,Utility, mid+1, end);  
+			merge(arr,Utility,start, mid, end);  
+		}  
 
 }	
 
@@ -975,23 +999,17 @@ public static int vendingMachine (int rupees,int[] notes)
 	 * using toBinary() function
 	 * @param decimal is decimal number given by user
 	 */
-	public static void toBinary(int decimal)
+	
+	public static char[] toBinary(int decimal)
 	{
-		Scanner scanner = new Scanner(System.in);
-		int temp= decimal;
-		int[] remainder = new int[100];
-		int i=0;
+		String binaryDigits = "";
 		while(decimal > 0)
 		{
-			remainder[i] =( decimal % 2);
+			binaryDigits += decimal % 2;
 			decimal = decimal / 2 ;
-			i++;
 		}
-		for(int j = i-1 ; j>=0 ; j--)
-		{
-			System.out.print(remainder[j]);
-		}
-	}
+		return binaryDigits.toCharArray();
+}
 	/*********************nibbles*************************/
 	public static int nibbles(int Number )
 	{
@@ -1017,5 +1035,147 @@ public static int vendingMachine (int rupees,int[] notes)
 			 sum=(int)(num*Math.pow(2, i)+sum);
 		}return sum;
 	}
+	
+	
+	
+	
+	public static int swapNibbles(int decimal) 
+	{ 
+	    return ((decimal & 0x0F) << 4 | (decimal & 0xF0) >> 4); 
+	} 
+	public void isPowerTwo(int decimal) //check entered number is 
+										//power of two
+	{
+		if(decimal%2==0)
+		{
+			System.out.println("\nNumber is power of two ");
+		}
+		else
+			System.out.println("\n"+decimal+" is  not power of two ");
+	}	
+	
+	
+	/***************************Binary slots factorial***************************/
+	
+	/** This method find in binary search tree how many slots can be created using 
+	 * factorial 
+	 * @param n is user input to take factorial
+	 * @return factorial number of n user input
+	 */
+	public static int factorial(int n)
+	{
+		int fact=1;
+		for(int i=1;i<=n;i++)
+		{
+			fact = fact*i; 
+		}
+		
+		return fact;
+	}
+
+	
+	public static boolean isprime(int num)
+	{
+		for(int i=2;i<num/2;i++)
+		{
+			if(num%i!=0)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public static int[] stringToIntArray(String[] strarray)
+	{
+		int[] intarray=new int[strarray.length];
+		for(int i=0;i<strarray.length;i++)
+		{
+			intarray[i]=Integer.parseInt(strarray[i]);
+		}return intarray;
+	}
+	/********************PrimeNumber in 2d array ***********************/
+	
+	/**This method print prime number from 0 to n in 2 dimensional array
+	 * @param primenumber is list of prime number from 1 to n
+	 */
+	public static int[][] twoDPrime(int[] primenumber)
+	{
+		int row = 10 ,column = 27;
+ 		int[][] array = new int[row][column];
+ 		int temp = 100 , primeindex=0;
+ 		for(int i = 0;i<row; i++)
+ 		{
+ 			for(int j= 0 ; j<column ; j++)
+ 			{
+ 				if(primenumber[primeindex] <= temp )
+ 					{
+ 						array[i][j] = primenumber[ primeindex];
+ 						 primeindex++;
+ 					}
+ 			} 	
+ 			temp = temp + 100;
+ 		}
+ 		//printing in 2D array
+ 		System.out.println("");
+ 		for(int i = 0 ;i<row ; i++)
+ 		{
+ 			for(int j= 0 ; j<column ; j++)
+ 			{
+ 				if(primenumber[j]>2)
+ 				{
+ 					if(array[i][j] != 0)
+ 					{
+ 						System.out.print(array[i][j]+"\t");
+ 					}
+ 				}
+ 			}
+ 			System.out.println();
+ 		}return array;
+	}	
+	/******************Prime Anagram 2D*****************************/		
+	
+	 /**This method print prime numbers which are anagram in 2D array
+	 * @param anagram is prime number which are anagram 
+	 */
+	public static int[][] twoDPrimeAnagram(int[] anagram)
+		{
+			int row = 20 ,column = 26;
+	 		int[][] anagramArray = new int[row][column];
+	 		int temp = 100 , primeindex=0;
+	 		for(int i = 0 ;i<row; i++)
+	 		{
+	 			for(int j= 0 ; j<column ; j++)
+	 			{
+	 					if(primeindex<anagramArray.length)
+	 					{
+		 					if(anagram[primeindex] <= temp )
+		 					{
+		 						anagramArray[i][j] = anagram[primeindex];
+		 						primeindex++;
+		 					}
+	 					}
+	 			} 	
+	 			temp = temp + 100;
+	 		}
+	 		
+	 		System.out.println("");
+	 		for(int i = 0 ;i<row ; i++)
+	 		{
+	 			for(int j= 0 ; j<column ; j++)
+	 			{/*
+	 				if(anagram[j]>0)
+	 				{*/
+	 					//printing prime anagram numbers in 2D array
+	 					if(anagramArray[i][j] != 0)
+	 					{
+	 						System.out.print(anagramArray[i][j]+"\t");
+	 					}
+	 				//}
+	 			}
+	 			System.out.println();
+	 		}return anagramArray;	 
+	 		
+		}
 }
 
