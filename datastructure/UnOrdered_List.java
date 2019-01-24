@@ -112,6 +112,7 @@ import java.util.Scanner;
 			if(isEmpty())
 			{
 				first = new_node;
+				last=first;
 			}
 			else if(search(item))
 				System.out.printf("Item already exits in the list...!");

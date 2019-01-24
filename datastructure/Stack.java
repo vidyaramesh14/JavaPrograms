@@ -9,7 +9,7 @@ private int top;
 @SuppressWarnings("unchecked")
 public Stack()
 {
-maxsize=10;
+maxsize=1000;
 stack_array=(T[])new Object[maxsize];
 top=-1;
 }

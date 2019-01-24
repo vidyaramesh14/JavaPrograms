@@ -84,7 +84,7 @@ public Deque()
 		}
 		else if(front>0)
 		{
-			rear=(rear-1)%capacity;
+			rear=(rear+1)%capacity;
 			items[rear]=element;
 			size++;
 		}

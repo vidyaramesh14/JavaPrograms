@@ -15,6 +15,8 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
+import com.bridgelabz.datastructure.MyQueue;
+import com.bridgelabz.datastructure.Stack;
 import com.bridgelabz.functionality.FindLeapYear;
 
 public class Utility 
@@ -215,7 +217,7 @@ public class Utility
 		Set<String> set=new LinkedHashSet<>();
 		while(total_coupon !=0)
 		{
-			
+
 			Random random=new Random();
 			String random4=String.format("%04d", random.nextInt(10000));
 			set.add(random4);
@@ -409,8 +411,8 @@ public class Utility
 		long elapsed_time = end_time - start_time;
 		return elapsed_time/1000;
 	}	
-	
-	
+
+
 	/***********************TicTac Toe************************/
 	public static int[][] initializeGame() 
 	{
@@ -423,23 +425,30 @@ public class Utility
 			}
 		}return game;
 	}
-	
-	
+
+
 	public static double ramdom()
 	{
 		int value=(int)(Math.random()*3);
 		System.out.println(value+1);
 		return value;
 	}
-	
+
 	public static int[][] mark(int[][] game,int row,int col,int value)
 	{
 		if(game[row][col]=='-')
 		{
 			game[row][col]=value;
-		}
+		}return game;
 	}
+	/*public static int[][] player(int[][] game)
+	{
+		boolean flag=false;
+		while(flag==false)
+		{
 
+		}
+	}*/
 	/****************************Quadratic*************************/
 
 
@@ -531,7 +540,7 @@ public class Utility
 	/*************************Prime Number of range 0 to 1000***************/
 
 	/***********************Prime Number(0-1000)*******************/
-	
+
 	/**This method print prime number from 0 to till the range
 	 * whatever you want  
 	 * @param range store number and till that it will print
@@ -539,101 +548,101 @@ public class Utility
 	 */
 	public static int[] printingPrimeNumber(int range) 
 	{
-		   boolean isPrime = true;
-		   int count = 0;
-		   int primeno[]=new int[range];		   
-		   for (int i = 0; i <= range; i++)         
-	       { 		  
-	          for(int j=2; j<i ;j++)
-	          {
-	        	     if(i%j==0)
-	             	 {
-	             	 	isPrime=false;
-	             	 	break;
-	             	 }
-	             	 else 	
-	        	     	isPrime=true;
-	          	}
-	          	if(isPrime==true)
-	        	  primeno[count++]=i;
-	       }
+		boolean isPrime = true;
+		int count = 0;
+		int primeno[]=new int[range];		   
+		for (int i = 0; i <= range; i++)         
+		{ 		  
+			for(int j=2; j<i ;j++)
+			{
+				if(i%j==0)
+				{
+					isPrime=false;
+					break;
+				}
+				else 	
+					isPrime=true;
+			}
+			if(isPrime==true)
+				primeno[count++]=i;
+		}
 		return primeno ;		     
 	}
-	
+
 	/************************PrimeAnangramPalindrome*********************/	
-	
+
 	/**This method check prime numbers are palindrome or not
 	 * @param primenumber: store prime number which we have to check 
 	 * whether it is palindrome or not
 	 */
 	static int reversenum = 0;
-    static int remainder=0;
+	static int remainder=0;
 
-    public static void checkPalindrome(int[] primenumber) {
+	public static void checkPalindrome(int[] primenumber) {
 
-        for (int i = 0; i < primenumber.length; i++) {
-            reversenum=0;
-            if (primenumber[i] > 0) {
-                int temp = primenumber[i];
-                while (temp > 0) 
-                {
-                    remainder = temp % 10;
-                    temp = temp / 10;
-                    reversenum = reversenum * 10 + remainder;
-                }
-                       temp=primenumber[i];
-                if (temp == reversenum) 
-                    System.out.print(reversenum + " ");                
-            }
-        }
-    }
+		for (int i = 0; i < primenumber.length; i++) {
+			reversenum=0;
+			if (primenumber[i] > 0) {
+				int temp = primenumber[i];
+				while (temp > 0) 
+				{
+					remainder = temp % 10;
+					temp = temp / 10;
+					reversenum = reversenum * 10 + remainder;
+				}
+				temp=primenumber[i];
+				if (temp == reversenum) 
+					System.out.print(reversenum + " ");                
+			}
+		}
+	}
 
 	/**This method check that prime number is anagram or not
 	 * @param primenumber:is prime numbers which we check that numbers are
 	 * anangram or not
 	 */
-    public static int[] checkAnagram(int[] primenumber)
-    {
-        System.out.println("\nThe prime number which are Anagram:");
-        int anagram = 0;
-        int[] anagramArray = new int[primenumber.length]; 
-        for (int  i = 0; i < primenumber.length; i++)
-        {
-            for (int j = 0; j < primenumber.length; j++)
-            {
-                 if(primenumber[i]>0 && primenumber[j]>0 && primenumber[i]!=primenumber[j])
-                 {     
-	                 String string1 = Integer.toString(primenumber[i]);
-	                 String string2 = Integer.toString(primenumber[j]);
-	                anagram = checkPrimeAnagram(string1, string2);
-	                 if(anagram>0)
-	                 {
-	                	 anagramArray[i] = anagram;
-	                	 //anagramArray[i]
-	                 }
-                 }
-            }
-        }
+	public static int[] checkAnagram(int[] primenumber)
+	{
+		System.out.println("\nThe prime number which are Anagram:");
+		int anagram = 0;
+		int[] anagramArray = new int[primenumber.length]; 
+		for (int  i = 0; i < primenumber.length; i++)
+		{
+			for (int j = 0; j < primenumber.length; j++)
+			{
+				if(primenumber[i]>0 && primenumber[j]>0 && primenumber[i]!=primenumber[j])
+				{     
+					String string1 = Integer.toString(primenumber[i]);
+					String string2 = Integer.toString(primenumber[j]);
+					anagram = checkPrimeAnagram(string1, string2);
+					if(anagram>0)
+					{
+						anagramArray[i] = anagram;
+						//anagramArray[i]
+					}
+				}
+			}
+		}
 		return anagramArray;				        
-    }
-    
-    private static int checkPrimeAnagram(String string1, String string2)
-    {
+	}
+
+	private static int checkPrimeAnagram(String string1, String string2)
+	{
 		int anagram =0 ;
 		char[] ch1 = string1.toCharArray();
-	    char[] ch2 = string2.toCharArray();
-	    boolean result=false;
-	    Arrays.sort(ch1);
-	    Arrays.sort(ch2);
-	    result = Arrays.equals(ch1,ch2);
-	    if(result==true)
-	    {
-	    	anagram = Integer.parseInt(string1);
-	    	//System.out.print(anagram+" ");
-	    	return anagram;
-	    }
+		char[] ch2 = string2.toCharArray();
+		boolean result=false;
+		Arrays.sort(ch1);
+		Arrays.sort(ch2);
+		result = Arrays.equals(ch1,ch2);
+		if(result==true)
+		{
+			anagram = Integer.parseInt(string1);
+			//System.out.print(anagram+" ");
+			return anagram;
+		}
 		return anagram;		
-    }  		
+	}  		
 
 
 
@@ -658,8 +667,8 @@ public class Utility
 		int mid=0;
 		while(low<=high)
 		{
-		 mid=(low+high)/2;
-		 if(arr[mid].compareTo(Search_ele)<0)
+			mid=(low+high)/2;
+			if(arr[mid].compareTo(Search_ele)<0)
 			{
 				low = mid+1;
 			}
@@ -671,7 +680,7 @@ public class Utility
 			else
 			{
 				high = mid-1;
-				
+
 			}
 		}return -1;
 
@@ -694,7 +703,7 @@ public class Utility
 	}array[j+1]=temp;
 	}return array;
 	}
-	
+
 	/*****************BubbleSort************************/
 	/** this method sort the array in ascending order
 	 * @param array is a given array 
@@ -728,23 +737,23 @@ public class Utility
 	int high=range-1;
 	int mid=0;
 	int count=0;
-		Scanner sc1=new Scanner(System.in);
-		int result=0;
-		while(result!=3)
-		{
+	Scanner sc1=new Scanner(System.in);
+	int result=0;
+	while(result!=3)
+	{
 		System.out.println("is "+ mid +" your secret number ?" );
 		System.out.println("press 1 if your secret number less than "+mid+" number");
 		System.out.println("press 2 if your secret number greater than "+mid+" number");
 		System.out.println("press 3 if your secret number is "+mid+" number");
-	
-		 result=sc1.nextInt();
+
+		result=sc1.nextInt();
 		if(result==1)
-			{
-				high=mid-1;
-				count++;
-				mid=(low+high)/2;
-			  
-			}
+		{
+			high=mid-1;
+			count++;
+			mid=(low+high)/2;
+
+		}
 		else if(result==2)
 		{
 			low=mid+1;
@@ -752,15 +761,15 @@ public class Utility
 			mid=(low+high)/2;
 		}
 
-		
-		}
-		System.out.println("your number is "+mid );
-	
-		return count;
-		
-		
+
 	}
-	
+	System.out.println("your number is "+mid );
+
+	return count;
+
+
+	}
+
 	/********************binary search file*****************************/
 	/**this method read input from file and then search the given element
 	 * @param path is a file location
@@ -770,17 +779,17 @@ public class Utility
 	public static int  binaryFile(String  path,String key) throws Exception
 	{	//List<String> list=new ArrayList<>(); 
 		String[] array;
-		
+
 		BufferedReader br=new BufferedReader(new FileReader(path));
 		String line="";
 		String str="";
 		while((str=br.readLine())!=null)
 		{
 			line+=str;
-					
+
 			//list.add(str);
 			System.out.println(line);
-			
+
 		}	
 		array=line.split(" ");
 		Arrays.sort(array);
@@ -795,8 +804,8 @@ public class Utility
 		int high=array.length;
 		while(low<=high)
 		{
-		 mid=(low+high)/2;
-		 if(array[mid].compareTo(key)<0)
+			mid=(low+high)/2;
+			if(array[mid].compareTo(key)<0)
 			{
 				low = mid+1;
 			}
@@ -808,7 +817,7 @@ public class Utility
 			else
 			{
 				high = mid-1;
-				
+
 			}
 		}return -1;
 		//int result=	Utility.genericsBinarySearch(array, key);	
@@ -816,65 +825,65 @@ public class Utility
 	    	System.out.println("found");
 	    else
 	    	System.out.println(" not found");
-	*/
+		 */
 	}
-	
+
 	/***********************merge sort***********************/
-	
-	
-/**this method sort the array in ascending order using merge sort
- * @param arr is given array
- * @param start is stating position of array
- * @param mid is middle position of array
- * @param end is ending position  of array
- */
-public static <T extends Comparable<T>> void merge(T[] arr, Class Utility, int start, int mid, int end)
-{
-	int left = mid-start+1;
-	int right = end - mid;  
-	Utility u=new Utility();
-	T LeftArray[] = (T[])Array.newInstance(Utility, left); 
-	T RightArray[] =(T[])Array.newInstance(Utility, right); 
-	  
-	for (int i=0; i<left; ++i)  
-	LeftArray[i] = arr[start + i];  
-	  
-	for (int j=0; j<right; ++j)  
-	RightArray[j] = arr[mid + 1+ j];  
-	  
-	  
-	int i = 0, j = 0;  
-	int k = start;  
-	while (i<left&&j<right)  
-	{  
-		if (LeftArray[i].compareTo(RightArray[j])<=0)  
+
+
+	/**this method sort the array in ascending order using merge sort
+	 * @param arr is given array
+	 * @param start is stating position of array
+	 * @param mid is middle position of array
+	 * @param end is ending position  of array
+	 */
+	public static <T extends Comparable<T>> void merge(T[] arr, Class Utility, int start, int mid, int end)
+	{
+		int left = mid-start+1;
+		int right = end - mid;  
+		Utility u=new Utility();
+		T LeftArray[] = (T[])Array.newInstance(Utility, left); 
+		T RightArray[] =(T[])Array.newInstance(Utility, right); 
+
+		for (int i=0; i<left; ++i)  
+			LeftArray[i] = arr[start + i];  
+
+		for (int j=0; j<right; ++j)  
+			RightArray[j] = arr[mid + 1+ j];  
+
+
+		int i = 0, j = 0;  
+		int k = start;  
+		while (i<left&&j<right)  
 		{  
-		arr[k] = LeftArray[i];  
-		i++;  
+			if (LeftArray[i].compareTo(RightArray[j])<=0)  
+			{  
+				arr[k] = LeftArray[i];  
+				i++;  
+			}  
+			else  
+			{  
+				arr[k] = RightArray[j];  
+				j++;  
+			}  
+			k++;  
 		}  
-		else  
+		while (i<left)  
 		{  
-		arr[k] = RightArray[j];  
-		j++;  
+			arr[k] = LeftArray[i];  
+			i++;  
+			k++;  
 		}  
-		k++;  
+
+		while (j<right)  
+		{  
+			arr[k] = RightArray[j];  
+			j++;  
+			k++;  
+		}  
 	}  
-	while (i<left)  
-	{  
-		arr[k] = LeftArray[i];  
-		i++;  
-		k++;  
-	}  
-	  
-	while (j<right)  
-	{  
-		arr[k] = RightArray[j];  
-		j++;  
-		k++;  
-	}  
-	}  
-	  
-public static<T extends Comparable<T>>void sort(T[] arr,Class Utility, int start, int end)  
+
+	public static<T extends Comparable<T>>void sort(T[] arr,Class Utility, int start, int end)  
 	{  
 		if (start<end)  
 		{  
@@ -884,35 +893,35 @@ public static<T extends Comparable<T>>void sort(T[] arr,Class Utility, int start
 			merge(arr,Utility,start, mid, end);  
 		}  
 
-}	
+	}	
 
-/****************Vending machine***********************/
+	/****************Vending machine***********************/
 
-public static int vendingMachine (int rupees,int[] notes)
-{	int total_notes=0;
+	public static int vendingMachine (int rupees,int[] notes)
+	{	int total_notes=0;
 	if(rupees==0)
 	{
-	return -1;
+		return -1;
 	}
 	else
-	for(int i=0;i<notes.length;i++ )
-	{
-		if(rupees>0)
+		for(int i=0;i<notes.length;i++ )
 		{
-			total_notes=rupees/notes[i];
-			if(total_notes>0)
+			if(rupees>0)
 			{
-			System.out.println(notes[i]+":"+total_notes);
+				total_notes=rupees/notes[i];
+				if(total_notes>0)
+				{
+					System.out.println(notes[i]+":"+total_notes);
+				}
+				rupees=rupees%notes[i];
 			}
-			rupees=rupees%notes[i];
-		}
-	}return rupees;
-	
-}
+		}return rupees;
+
+	}
 
 
-/*****************************Week Day*******************************/
-	
+	/*****************************Week Day*******************************/
+
 	/**This method find day of any entered date 
 	 * @param m store month given by user
 	 * @param d store date given by user
@@ -921,7 +930,7 @@ public static int vendingMachine (int rupees,int[] notes)
 	 */
 	public static int dayOfWeek(int m, int d, int y) 
 	{			
-	
+
 		int y0=y-(14-m)/12;;
 		int x = y0+(y0/4)-y0/100+y0/400;
 		int m0 = m+12*((14-m)/12)-2;
@@ -929,8 +938,8 @@ public static int vendingMachine (int rupees,int[] notes)
 		return d0;
 	}	
 	/***********************Temperature Conversion **********************/    
-    
-    /**This method convert temperature from celsius to fahrenheit
+
+	/**This method convert temperature from celsius to fahrenheit
 	 * and from fahrenheit to celsius
 	 * @param temperature 
 	 */
@@ -944,41 +953,41 @@ public static int vendingMachine (int rupees,int[] notes)
 		switch(i)
 		{
 		case 1:
-		float celsius = ((temperature-32) * 5)/9 ;
-		System.out.println("Temperature in celsius : "+celsius);
-		break;
-		
+			float celsius = ((temperature-32) * 5)/9 ;
+			System.out.println("Temperature in celsius : "+celsius);
+			break;
+
 		case 2:	
-		float fahrenheit = (temperature *9/5+32);
-		System.out.println("Temperature in fahrenheit : "+fahrenheit );
-		break;
-		
+			float fahrenheit = (temperature *9/5+32);
+			System.out.println("Temperature in fahrenheit : "+fahrenheit );
+			break;
+
 		default :
 			System.out.println("Invalid input");
 		}
 	} 	
-	
-	
-/***************************Monthly Payment ************************/
-		
-		/**
-		 * @param P is loan amount
-		 * @param Y is year 
-		 * @param R is interestRate
-		 * @return
-		 */
-		public static double monthlyPayment( int P , int Y , double R ) 
-		{
-			int  terms_in_month= (12 * Y);
-			double monthly_rate = R / (12*100);
-			double power = Math.pow((1+ monthly_rate ), -terms_in_month);
-			double	monthlyPay = ((P*terms_in_month)/ (1 - power));
-			return monthlyPay;
-		}
-			
-	
-/************************Sqrt using newtons method******************/
-	
+
+
+	/***************************Monthly Payment ************************/
+
+	/**
+	 * @param P is loan amount
+	 * @param Y is year 
+	 * @param R is interestRate
+	 * @return
+	 */
+	public static double monthlyPayment( int P , int Y , double R ) 
+	{
+		int  terms_in_month= (12 * Y);
+		double monthly_rate = R / (12*100);
+		double power = Math.pow((1+ monthly_rate ), -terms_in_month);
+		double	monthlyPay = ((P*terms_in_month)/ (1 - power));
+		return monthlyPay;
+	}
+
+
+	/************************Sqrt using newtons method******************/
+
 	/**This method is used to find square root of a nonnegative number
 	 * @param c is user input
 	 */
@@ -992,14 +1001,14 @@ public static int vendingMachine (int rupees,int[] notes)
 		}
 		System.out.println(" "+t);
 	}
-	
- /*****************************ToBinary*******************************/
-	
+
+	/*****************************ToBinary*******************************/
+
 	/**This method convert decimal number to binary number without
 	 * using toBinary() function
 	 * @param decimal is decimal number given by user
 	 */
-	
+
 	public static char[] toBinary(int decimal)
 	{
 		String binaryDigits = "";
@@ -1009,7 +1018,7 @@ public static int vendingMachine (int rupees,int[] notes)
 			decimal = decimal / 2 ;
 		}
 		return binaryDigits.toCharArray();
-}
+	}
 	/*********************nibbles*************************/
 	public static int nibbles(int Number )
 	{
@@ -1024,7 +1033,7 @@ public static int vendingMachine (int rupees,int[] notes)
 		String left=result.substring(0,4);
 		String right=result.substring(4);
 		String binary_value=right+right;
-		
+
 		int pos=0;
 		int sum=0;
 		for(int i=binary_value.length()-1;i>=0;i--)
@@ -1032,19 +1041,19 @@ public static int vendingMachine (int rupees,int[] notes)
 			char j=binary_value.charAt(pos);
 			pos++;
 			int num=Character.getNumericValue(j);
-			 sum=(int)(num*Math.pow(2, i)+sum);
+			sum=(int)(num*Math.pow(2, i)+sum);
 		}return sum;
 	}
-	
-	
-	
-	
+
+
+
+
 	public static int swapNibbles(int decimal) 
 	{ 
-	    return ((decimal & 0x0F) << 4 | (decimal & 0xF0) >> 4); 
+		return ((decimal & 0x0F) << 4 | (decimal & 0xF0) >> 4); 
 	} 
 	public void isPowerTwo(int decimal) //check entered number is 
-										//power of two
+	//power of two
 	{
 		if(decimal%2==0)
 		{
@@ -1053,10 +1062,189 @@ public static int vendingMachine (int rupees,int[] notes)
 		else
 			System.out.println("\n"+decimal+" is  not power of two ");
 	}	
+
+
+	/*******************************Calender***************************/
+
+
+	/**This method check that entered year is leap 
+	 * year or not
+	 * 
+	 */
+	public boolean leapforCalender(int yearnumber)
+	{Scanner scanner=new Scanner(System.in);
+	boolean isLeapYear = true; 
+	if(String.valueOf(yearnumber).length()<4)
+	{
+		System.out.println("Please enter 4 digit number :");
+		yearnumber=scanner.nextInt();
+
+	}
+
+	else if(yearnumber%4==0)
+	{
+		//if yr no. is divisible by 4 then check by 100
+		if(yearnumber%100==0)
+		{
+			//now checking no. is divisible by 400 or not
+			if(yearnumber%400==0)
+			{
+				//if no. divisible by 4,100 and 400 ie. leap year
+				return true;
+			}
+			else
+				return false;
+		}
+		//if no is divisible by 4 and not by 100 ,that is leap yr
+		else
+			return true;
+	}
+	else
+		return false;
+	return isLeapYear;
+	}
+	/** This method print calendar of any month and year 
+	 * @param month is user input that which month calender you want to print
+	 * @param year is user input whose calendar you want to print 
+	 */
+	public void printCalender(int month , int year)
+	{
+		String[] Month = {"January","February", "March","April", "May", "June","July", "August", "September",
+				"October", "November", "December"};
+		int[] noOfDays  = {31,28,31,30,31,30,31,31,30,31,30,31};
+		int result = dayOfWeek(month, 1, year);
+		System.out.println("   "+Month[month-1]+" "+year);
+		if( month == 2 && leapforCalender(year) )
+		{
+			noOfDays[2] = 29;  //For leap year days will be 29
+		}									
+		System.out.println("S  M  Tu W  Th F  Sa  ");
+		for(int i = 0 ;i<result ; i++)
+		{
+			System.out.print("   ");
+		}
+		for(int i=1;i<=noOfDays[month];i++)
+		{
+			if(i<=9)
+			{
+				System.out.print(i+"  ");
+			}
+			else if(i>9)
+			{
+				System.out.print(i+" ");
+			}
+			if((result+i)%7==0)
+				System.out.println();
+		}
+
+	}	
+
+
+	/**********************Calender Queue*****************************/
+
+	/** This method print calendar using queue 
+	 * @param month is user input for month
+	 * @param year
+	 */
+	public void calenderQueue(int month , int year)
+	{
+		String[] Month = {"January","February", "March","April", "May", "June","July", "August", "September",
+				"October", "November", "December"};
+		int[] noOfDays  = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+		int result = dayOfWeek(month, 1, year);
+
+		//	CalenderQueueMethod deque = new CalenderQueueMethod();
+		MyQueue<String> queue=new MyQueue<>();
+		System.out.println("   \t\t\t"+Month[month-1]+" "+year);
+		if( month == 2 && leapforCalender(year) )
+		{
+			noOfDays[2] = 29;
+		}									
+		
+		for(int i = 0 ;i<result ; i++)
+		{
+			//System.out.print("   ");
+			queue.enqueue("\t");
+		}
+		
+		for(int i=1;i<=noOfDays[month];i++)
+		{
+			if(i<=9)
+			{
+				queue.enqueue("\t"+i);
+			}
+			else if(i>9)
+			{
+				queue.enqueue("\t"+i);
+			}
+
+			if((result+i)%7==0)
+				queue.enqueue("\n");
+			//System.out.println();
+		}
+		System.out.println("\tS\tM\tTu\tW\tTh\tF\tSa");
+		while(queue.size()>0)
+		{
+			String res=queue.dequeue();
+			System.out.print(res);
+		}
+	}
+
 	
+	/**********************Calender Stack*****************************/
+
+	/** This method print calendar using Stack
+	 * @param month is user input for month
+	 * @param year
+	 */
+	public void calenderStack(int month , int year)
+	{
+		String[] Month = {"January","February", "March","April", "May", "June","July", "August", "September",
+				"October", "November", "December"};
+		int[] noOfDays  = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+		int result = dayOfWeek(month, 1, year);
+
+		//	CalenderQueueMethod deque = new CalenderQueueMethod();
+		Stack<String> stack=new Stack<>();
+		System.out.println("   \t\t\t"+Month[month-1]+" "+year);
+		if( month == 2 && leapforCalender(year) )
+		{
+			noOfDays[2] = 29;
+		}									
+		
 	
+		//	for(int i=1;i<=noOfDays[month];i++)
+		for(int i=noOfDays[month];i>=1;i--)
+		{
+			if(i<=9)
+			{
+				stack.push("\t"+i);
+			}
+			else if(i>9)
+			{
+				stack.push("\t"+i);
+			}
+
+			if((result-1+i)%7==0)
+				stack.push("\n");
+			//System.out.println();
+		}
+	for(int i = result -1 ;i>=0 ; i--)	
+		{
+			//System.out.print("   ");
+			stack.push("\t");
+		}
+		System.out.println("\tS\tM\tTu\tW\tTh\tF\tSa");
+		while(stack.size()>0)
+		{
+			String res=stack.pop();
+			System.out.print(res);
+		}
+	}
+
+
 	/***************************Binary slots factorial***************************/
-	
+
 	/** This method find in binary search tree how many slots can be created using 
 	 * factorial 
 	 * @param n is user input to take factorial
@@ -1069,11 +1257,11 @@ public static int vendingMachine (int rupees,int[] notes)
 		{
 			fact = fact*i; 
 		}
-		
+
 		return fact;
 	}
 
-	
+
 	public static boolean isprime(int num)
 	{
 		for(int i=2;i<num/2;i++)
@@ -1085,7 +1273,7 @@ public static int vendingMachine (int rupees,int[] notes)
 		}
 		return true;
 	}
-	
+
 	public static int[] stringToIntArray(String[] strarray)
 	{
 		int[] intarray=new int[strarray.length];
@@ -1095,87 +1283,87 @@ public static int vendingMachine (int rupees,int[] notes)
 		}return intarray;
 	}
 	/********************PrimeNumber in 2d array ***********************/
-	
+
 	/**This method print prime number from 0 to n in 2 dimensional array
 	 * @param primenumber is list of prime number from 1 to n
 	 */
 	public static int[][] twoDPrime(int[] primenumber)
 	{
 		int row = 10 ,column = 27;
- 		int[][] array = new int[row][column];
- 		int temp = 100 , primeindex=0;
- 		for(int i = 0;i<row; i++)
- 		{
- 			for(int j= 0 ; j<column ; j++)
- 			{
- 				if(primenumber[primeindex] <= temp )
- 					{
- 						array[i][j] = primenumber[ primeindex];
- 						 primeindex++;
- 					}
- 			} 	
- 			temp = temp + 100;
- 		}
- 		//printing in 2D array
- 		System.out.println("");
- 		for(int i = 0 ;i<row ; i++)
- 		{
- 			for(int j= 0 ; j<column ; j++)
- 			{
- 				if(primenumber[j]>2)
- 				{
- 					if(array[i][j] != 0)
- 					{
- 						System.out.print(array[i][j]+"\t");
- 					}
- 				}
- 			}
- 			System.out.println();
- 		}return array;
+		int[][] array = new int[row][column];
+		int temp = 100 , primeindex=0;
+		for(int i = 0;i<row; i++)
+		{
+			for(int j= 0 ; j<column ; j++)
+			{
+				if(primenumber[primeindex] <= temp )
+				{
+					array[i][j] = primenumber[ primeindex];
+					primeindex++;
+				}
+			} 	
+			temp = temp + 100;
+		}
+		//printing in 2D array
+		System.out.println("");
+		for(int i = 0 ;i<row ; i++)
+		{
+			for(int j= 0 ; j<column ; j++)
+			{
+				if(primenumber[j]>2)
+				{
+					if(array[i][j] != 0)
+					{
+						System.out.print(array[i][j]+"\t");
+					}
+				}
+			}
+			System.out.println();
+		}return array;
 	}	
 	/******************Prime Anagram 2D*****************************/		
-	
-	 /**This method print prime numbers which are anagram in 2D array
+
+	/**This method print prime numbers which are anagram in 2D array
 	 * @param anagram is prime number which are anagram 
 	 */
 	public static int[][] twoDPrimeAnagram(int[] anagram)
+	{
+		int row = 20 ,column = 26;
+		int[][] anagramArray = new int[row][column];
+		int temp = 100 , primeindex=0;
+		for(int i = 0 ;i<row; i++)
 		{
-			int row = 20 ,column = 26;
-	 		int[][] anagramArray = new int[row][column];
-	 		int temp = 100 , primeindex=0;
-	 		for(int i = 0 ;i<row; i++)
-	 		{
-	 			for(int j= 0 ; j<column ; j++)
-	 			{
-	 					if(primeindex<anagramArray.length)
-	 					{
-		 					if(anagram[primeindex] <= temp )
-		 					{
-		 						anagramArray[i][j] = anagram[primeindex];
-		 						primeindex++;
-		 					}
-	 					}
-	 			} 	
-	 			temp = temp + 100;
-	 		}
-	 		
-	 		System.out.println("");
-	 		for(int i = 0 ;i<row ; i++)
-	 		{
-	 			for(int j= 0 ; j<column ; j++)
-	 			{/*
-	 				if(anagram[j]>0)
-	 				{*/
-	 					//printing prime anagram numbers in 2D array
-	 					if(anagramArray[i][j] != 0)
-	 					{
-	 						System.out.print(anagramArray[i][j]+"\t");
-	 					}
-	 				//}
-	 			}
-	 			System.out.println();
-	 		}return anagramArray;	 
-	 		
+			for(int j= 0 ; j<column ; j++)
+			{
+				if(primeindex<anagramArray.length)
+				{
+					if(anagram[primeindex] <= temp )
+					{
+						anagramArray[i][j] = anagram[primeindex];
+						primeindex++;
+					}
+				}
+			} 	
+			temp = temp + 100;
 		}
-}
 
+		System.out.println("");
+		for(int i = 0 ;i<row ; i++)
+		{
+			for(int j= 0 ; j<column ; j++)
+			{
+	 				if(anagram[j]>0)
+	 				{
+			
+				if(anagramArray[i][j] != 0)
+				{
+					System.out.print(anagramArray[i][j]+"\t");
+				}
+				
+			}
+		
+		}	 
+
+	}return anagramArray;
+	}
+}

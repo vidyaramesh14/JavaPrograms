@@ -9,14 +9,14 @@ public class MyQueue<T>
 	private int capacity;
 	
 	//empty Constructor
+	@SuppressWarnings("unchecked")
 	public MyQueue()
 	{
-		items =(T[])new Object();
-		int front=0;
-		int rear=-1;
-		int size=0;
-		int capacity=500;
-
+		capacity=1000;
+		items =(T[])new Object[capacity];
+		front=0;
+		rear=-1;
+		size=0;
 	}
 	//Constructor
 	public MyQueue(int capacity)
@@ -44,6 +44,7 @@ public class MyQueue<T>
 	if(isFull())
 	{
 		System.out.println("the queue is full");
+		return;
 	}
 	rear = (rear +1) % capacity;
 	items[rear] =  element;
@@ -76,4 +77,5 @@ public class MyQueue<T>
 	{
 		return size;
 	}
+
 }
