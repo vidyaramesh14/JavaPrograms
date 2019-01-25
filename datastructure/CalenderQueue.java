@@ -1,7 +1,5 @@
 package com.bridgelabz.datastructure;
 
-import java.util.Scanner;
-
 import com.bridgelabz.utility.Utility;
 
 public class CalenderQueue

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Queue;
+
 import java.util.Set;
 
 import com.bridgelabz.utility.Utility;
@@ -15,7 +15,7 @@ public class PrimeQueue
 
 		public static void main(String[] args) 
 		{
-			MyQueue<Integer> queue=new MyQueue();	// creating the queue objects
+			MyQueue<Integer> queue=new MyQueue<>();	// creating the queue objects
 			Set<String>set=new HashSet<String>();
 			List<Integer>list=new ArrayList<Integer>();
 			List<Integer>list1=new ArrayList<Integer>();

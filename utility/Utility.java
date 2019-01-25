@@ -1183,32 +1183,26 @@ public class Utility
 	 */
 	public void printCalender(int month , int year)
 	{
-		String[] Month = {"January","February", "March","April", "May", "June","July", "August", "September",
+		String[] Month = {"","January","February", "March","April", "May", "June","July", "August", "September",
 				"October", "November", "December"};
-		int[] noOfDays  = {31,28,31,30,31,30,31,31,30,31,30,31};
+		int[] noOfDays  = {0,31,28,31,30,31,30,31,31,30,31,30,31};
 		int result = dayOfWeek(month, 1, year);
-		System.out.println("   "+Month[month-1]+" "+year);
+		System.out.println("   "+Month[month]+" "+year);
 		if( month == 2 && leapforCalender(year) )
 		{
 			noOfDays[2] = 29;  //For leap year days will be 29
 		}									
-		System.out.println("S  M  Tu W  Th F  Sa  ");
+		System.out.println("S\tM\tTu\tW\tTh\tF\tSa");
 		for(int i = 0 ;i<result ; i++)
 		{
-			System.out.print("   ");
+			System.out.print("\t");
 		}
 		for(int i=1;i<=noOfDays[month];i++)
 		{
-			if(i<=9)
-			{
-				System.out.print(i+"  ");
-			}
-			else if(i>9)
-			{
-				System.out.print(i+" ");
-			}
+			System.out.print(i+"\t");
 			if((result+i)%7==0)
 				System.out.println();
+		
 		}
 
 	}	
@@ -1222,14 +1216,14 @@ public class Utility
 	 */
 	public void calenderQueue(int month , int year)
 	{
-		String[] Month = {"January","February", "March","April", "May", "June","July", "August", "September",
+		String[] Month = {"","January","February", "March","April", "May", "June","July", "August", "September",
 				"October", "November", "December"};
 		int[] noOfDays  = {0,31,28,31,30,31,30,31,31,30,31,30,31};
 		int result = dayOfWeek(month, 1, year);
 
 		//	CalenderQueueMethod deque = new CalenderQueueMethod();
 		MyQueue<String> queue=new MyQueue<>();
-		System.out.println("   \t\t\t"+Month[month-1]+" "+year);
+		System.out.println("   \t\t\t"+Month[month]+" "+year);
 		if( month == 2 && leapforCalender(year) )
 		{
 			noOfDays[2] = 29;
@@ -1356,8 +1350,8 @@ public class Utility
 			intarray[i]=Integer.parseInt(strarray[i]);
 		}return intarray;
 	}
-	
-	
+
+
 	/**this method return the prime numbers in 2D array
 	 */
 	public static void prime2D()
@@ -1397,14 +1391,14 @@ public class Utility
 				}	
 			}System.out.println();
 		}
-}
-	
+	}
+
 	//******************Prime Anagram 2D*****************************//		
 
-		/**This method print prime numbers which are anagram in 2D array
-		 * @param anagram is prime number which are anagram 
-		 */	
-	
+	/**This method print prime numbers which are anagram in 2D array
+	 * @param anagram is prime number which are anagram 
+	 */	
+
 	public  void AnagramPrime(List<Integer> list1)
 	{
 		int row=10,colomn=30;
@@ -1427,7 +1421,7 @@ public class Utility
 			temp=temp+100;
 		}
 		System.out.println();
-		
+
 		// printing 2D array
 		for(int i=0;i<row;i++)
 		{
@@ -1442,5 +1436,5 @@ public class Utility
 				}	
 			}System.out.println();
 		}		
-}
+	}
 }

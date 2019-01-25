@@ -6,12 +6,14 @@ private int maxsize;
 private T[] stack_array;
 private int top;
 
+
 @SuppressWarnings("unchecked")
 public Stack()
 {
 maxsize=1000;
 stack_array=(T[])new Object[maxsize];
 top=-1;
+
 }
 	@SuppressWarnings("unchecked")
 	public Stack(int size)
@@ -65,6 +67,11 @@ top=-1;
 	public boolean isFull()
 	{
 	return (top == maxsize - 1);
+	}
+	
+	public int getStackCapacity()
+	{
+		return maxsize;
 	}
 }
 

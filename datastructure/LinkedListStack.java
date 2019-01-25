@@ -13,7 +13,7 @@ public class LinkedListStack<T>
 	
 	public void push(T element)
 	{
-		Node new_node=new Node();
+		Node<T> new_node=new Node< >();
 		new_node.setData(element);
 		new_node.setNext(top_node);
 		top_node = new_node;

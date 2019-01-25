@@ -19,13 +19,15 @@ public class MyQueue<T>
 		size=0;
 	}
 	//Constructor
+	@SuppressWarnings("unchecked")
 	public MyQueue(int capacity)
 	{
-		items =(T[])new Object[capacity];
-		int front=-1;
-		int rear=-1;
-		int size=0;
 		this.capacity=capacity;
+		items =(T[])new Object[capacity];
+		front=-1;
+		 rear=-1;
+		size=0;
+		
 
 	}
 	

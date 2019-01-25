@@ -39,7 +39,7 @@ public class UnOrdered_main
 			boolean isKeyPresent;
 			isKeyPresent= list.search(key);
 			if(isKeyPresent) {
-				System.out.printf("\nkey '%s' is present in the list\n",key);
+				System.out.printf("\n key '%s' is present in the list\n",key);
 				list.remove(key);
 			}	
 			else {
