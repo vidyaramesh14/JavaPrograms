@@ -9,11 +9,8 @@ public class Calender
 	public static void main(String[] args) 
 	{
 		Utility utility = new Utility();
-		Scanner sc1=new Scanner(System.in);
-		System.out.println("Enter month : ");
-		int month = sc1.nextInt();
-		System.out.println("Enter year : ");
-		int year = sc1.nextInt();
+		int month=Integer.parseInt(args[0]);
+		int year=Integer.parseInt(args[1]);
 		utility.printCalender(month, year);
 	}
 }

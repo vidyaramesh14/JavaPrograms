@@ -46,6 +46,13 @@ public class MyQueue<T>
 		System.out.println("the queue is full");
 		return;
 	}
+	else if(rear==-1 && front==-1)
+	{
+		rear = (rear +1) % capacity;
+		front=rear;
+		items[rear] =  element;
+		size++;
+	}else
 	rear = (rear +1) % capacity;
 	items[rear] =  element;
 	size++;

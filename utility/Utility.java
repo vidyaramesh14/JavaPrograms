@@ -539,35 +539,109 @@ public class Utility
 
 	/*************************Prime Number of range 0 to 1000***************/
 
-	/***********************Prime Number(0-1000)*******************/
 
-	/**This method print prime number from 0 to till the range
-	 * whatever you want  
-	 * @param range store number and till that it will print
-	 * prime numbers
+	/** this method return the prime number of given range
+	 * @param l is lower range value
+	 * @param u is highest range value
+	 * @return list of primenumbers
 	 */
-	public static int[] printingPrimeNumber(int range) 
+	public static List<Integer> isPrime(int l,int u)
 	{
-		boolean isPrime = true;
-		int count = 0;
-		int primeno[]=new int[range];		   
-		for (int i = 0; i <= range; i++)         
-		{ 		  
-			for(int j=2; j<i ;j++)
+		List<Integer> list=new ArrayList<>();
+		int flag=0;
+		for(int i = l; i <= u; i++)
+		{
+			for( int j = 2; j < i; j++)
 			{
-				if(i%j==0)
+				if(i % j == 0)
 				{
-					isPrime=false;
+					flag = 0;
 					break;
 				}
-				else 	
-					isPrime=true;
+				else
+				{
+					flag = 1;
+				}
 			}
-			if(isPrime==true)
-				primeno[count++]=i;
+			if(flag == 1)
+			{
+				list.add(i);
+			}
+
 		}
-		return primeno ;		     
+		return list;
 	}
+	//****************************PrimeAnogram*********************************************
+	/**
+	 * in this algorithm the finding the anagram of the prime number that in the user limit
+	 * @param new_list it is the the list that are contains the prime number that are present in the user limit  
+	 * @return its returning the prime number that are anagram
+	 */
+
+	public static Set<String> PrimeAnogram(List<String>new_list)
+	{
+		Set<String>set=new HashSet<String>();
+		for(int i=0;i<new_list.size();i++)
+		{
+			for(int j=i+1;j<new_list.size();j++)
+			{
+				if(checkAnagram(new_list.get(i), new_list.get(j)))
+				{
+					set.add(new_list.get(i));
+					//set.add(new_list.get(j));
+					//System.out.println(new_list.get(i)+" "+new_list.get(j));
+
+				}
+			}
+		}
+		return set;
+	}
+	//***************************PrimePalindrome****************************************
+	/**
+	 * in this algorithm the finding the palindrome of the prime number that in the user limit
+	 * @param list it is the the list that are contains the prime number that are present in the user limit
+	 * @return 
+	 */
+
+	public static Set<String> PrimePalindrome(List<String>list)
+	{
+		Set<String>Pal_Set=new HashSet<String>();
+		java.util.Iterator<String> itr= list.iterator();
+		while(itr.hasNext())
+		{
+			String str=itr.next();
+			if(Palindrome(str))
+			{
+				Pal_Set.add(str);
+			}
+		}
+		return Pal_Set;
+
+	}
+	//***************************Palindrome**********************************************
+	/**
+	 * in this program finding out the given number is palindrome or not
+	 * @param str is the parameter that is passing by the prime palindrome
+	 * @return the boolean if both the string numbers are equal
+	 */
+	public static boolean Palindrome(String str)
+	{
+		String rev="";
+		int len=str.length();
+		for(int i=len-1;i>=0;i--)
+		{
+			rev=rev+str.charAt(i);
+		}
+		if(str.equals(rev))
+		{
+			return true;
+		}
+		return false;
+	}
+
+
+
+
 
 	/************************PrimeAnangramPalindrome*********************/	
 
@@ -1160,13 +1234,13 @@ public class Utility
 		{
 			noOfDays[2] = 29;
 		}									
-		
+
 		for(int i = 0 ;i<result ; i++)
 		{
 			//System.out.print("   ");
 			queue.enqueue("\t");
 		}
-		
+
 		for(int i=1;i<=noOfDays[month];i++)
 		{
 			if(i<=9)
@@ -1190,7 +1264,7 @@ public class Utility
 		}
 	}
 
-	
+
 	/**********************Calender Stack*****************************/
 
 	/** This method print calendar using Stack
@@ -1211,8 +1285,8 @@ public class Utility
 		{
 			noOfDays[2] = 29;
 		}									
-		
-	
+
+
 		//	for(int i=1;i<=noOfDays[month];i++)
 		for(int i=noOfDays[month];i>=1;i--)
 		{
@@ -1229,7 +1303,7 @@ public class Utility
 				stack.push("\n");
 			//System.out.println();
 		}
-	for(int i = result -1 ;i>=0 ; i--)	
+		for(int i = result -1 ;i>=0 ; i--)	
 		{
 			//System.out.print("   ");
 			stack.push("\t");
@@ -1282,88 +1356,91 @@ public class Utility
 			intarray[i]=Integer.parseInt(strarray[i]);
 		}return intarray;
 	}
-	/********************PrimeNumber in 2d array ***********************/
-
-	/**This method print prime number from 0 to n in 2 dimensional array
-	 * @param primenumber is list of prime number from 1 to n
+	
+	
+	/**this method return the prime numbers in 2D array
 	 */
-	public static int[][] twoDPrime(int[] primenumber)
+	public static void prime2D()
 	{
-		int row = 10 ,column = 27;
-		int[][] array = new int[row][column];
-		int temp = 100 , primeindex=0;
-		for(int i = 0;i<row; i++)
+		int row=10,colomn=30;
+		int [][]array=new int[row][colomn];
+		List<Integer>list=new ArrayList<Integer>();
+		int temp=100;
+		int k=0;
+		list=isPrime(0, 1000);
+		for(int i=0;i<row;i++)
 		{
-			for(int j= 0 ; j<column ; j++)
+			for(int j=0;j<colomn;j++)
 			{
-				if(primenumber[primeindex] <= temp )
+				if(k<list.size())
 				{
-					array[i][j] = primenumber[ primeindex];
-					primeindex++;
+					if(list.get(k)<=temp)
+					{
+						array[i][j]=list.get(k);
+						k++;
+					}
 				}
-			} 	
-			temp = temp + 100;
+			}
+			temp=temp+100;
 		}
-		//printing in 2D array
-		System.out.println("");
-		for(int i = 0 ;i<row ; i++)
+		System.out.println();
+		for(int i=0;i<row;i++)
 		{
-			for(int j= 0 ; j<column ; j++)
+			for(int j=0;j<colomn;j++)
 			{
-				if(primenumber[j]>2)
+				if(list.get(j)>0)
 				{
-					if(array[i][j] != 0)
+					if(array[i][j]!=0)
 					{
 						System.out.print(array[i][j]+"\t");
 					}
-				}
-			}
-			System.out.println();
-		}return array;
-	}	
-	/******************Prime Anagram 2D*****************************/		
+				}	
+			}System.out.println();
+		}
+}
+	
+	//******************Prime Anagram 2D*****************************//		
 
-	/**This method print prime numbers which are anagram in 2D array
-	 * @param anagram is prime number which are anagram 
-	 */
-	public static int[][] twoDPrimeAnagram(int[] anagram)
+		/**This method print prime numbers which are anagram in 2D array
+		 * @param anagram is prime number which are anagram 
+		 */	
+	
+	public  void AnagramPrime(List<Integer> list1)
 	{
-		int row = 20 ,column = 26;
-		int[][] anagramArray = new int[row][column];
-		int temp = 100 , primeindex=0;
-		for(int i = 0 ;i<row; i++)
+		int row=10,colomn=30;
+		int [][]array=new int[row][colomn];
+		int temp=100,k=0;
+		//System.out.println(list1);
+		for(int i=0;i<row;i++)
 		{
-			for(int j= 0 ; j<column ; j++)
+			for(int j=0;j<colomn;j++)
 			{
-				if(primeindex<anagramArray.length)
+				if(k<list1.size())
 				{
-					if(anagram[primeindex] <= temp )
+					if(list1.get(k)<=temp)
 					{
-						anagramArray[i][j] = anagram[primeindex];
-						primeindex++;
+						array[i][j]=list1.get(k);
+						k++;
 					}
 				}
-			} 	
-			temp = temp + 100;
-		}
-
-		System.out.println("");
-		for(int i = 0 ;i<row ; i++)
-		{
-			for(int j= 0 ; j<column ; j++)
-			{
-	 				if(anagram[j]>0)
-	 				{
-			
-				if(anagramArray[i][j] != 0)
-				{
-					System.out.print(anagramArray[i][j]+"\t");
-				}
-				
 			}
+			temp=temp+100;
+		}
+		System.out.println();
 		
-		}	 
-
-	}return anagramArray;
-	}
+		// printing 2D array
+		for(int i=0;i<row;i++)
+		{
+			for(int j=0;j<colomn;j++)
+			{
+				if(list1.get(j)>0)
+				{
+					if(array[i][j]!=0)
+					{
+						System.out.print(array[i][j]+"\t");
+					}
+				}	
+			}System.out.println();
+		}		
+}
 }
