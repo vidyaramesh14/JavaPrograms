@@ -414,7 +414,7 @@ public class Utility
 
 
 	/***********************TicTac Toe************************/
-	public static int[][] initializeGame() 
+	/*public int[][] initializeGame() 
 	{
 		int[][] game=new int[3][3];
 		for(int row=0;row<game.length; row++)
@@ -427,28 +427,270 @@ public class Utility
 	}
 
 
-	public static double ramdom()
+	public  double ramdom()
 	{
 		int value=(int)(Math.random()*3);
-		System.out.println(value+1);
+		//System.out.print(value+1);
 		return value;
 	}
+	public void displayBoard()
+	{int[][] game=new int[3][3];
+		//initializeBoard();
+		for(int row = 0; row<3;row++)
+		{
+			for(int col=0;col<3;col++ )
+			{
+				System.out.print("  "+ game[row][col]+"  ");
+				if(col==0 || col==1)
+				{
+					System.out.print("|");
+				}				
+			}
+			if(row==0 || row==1)				
+				System.out.print("\n-----------------\n");		
+		}
+	}
 
-	public static int[][] mark(int[][] game,int row,int col,int value)
+	public  int[][] mark(int[][] game,int row,int col,int value)
 	{
 		if(game[row][col]=='-')
 		{
 			game[row][col]=value;
 		}return game;
 	}
-	/*public static int[][] player(int[][] game)
+	public int[][] computerPlayer(int[][] game)
 	{
 		boolean flag=false;
 		while(flag==false)
 		{
-
-		}
+			int x=(int)ramdom();
+			int y=(int)ramdom();
+			if(game[x][y]=='-')
+			{
+				mark(game, x, y, 'O');
+				flag=true;
+			}
+			
+		}return game;
+	}
+	public  int[][] userPlayer(int[][] game)
+	{Scanner sc1=new Scanner(System.in);
+		boolean flag=false;
+		while(flag==false)
+		{	System.out.println("enter your value");
+			System.out.println("enter the value of x within 1,2,3 :");
+			int x=sc1.nextInt()-1;
+			
+			System.out.println("enter the value of y within 1,2,3 :");
+			int y=sc1.nextInt()-1;
+			
+			if(game[x][y]=='-')
+			{
+				mark(game, x, y, 'X');
+				flag=true;
+			}
+			
+		}return game;
+	}
+	public boolean check(int[][] game)
+	{ game=new int[3][3];
+		for(int i=0;i<=2;i++)
+		{
+			if(game[i][0]==game[i][1] && game[i][1]==game[i][2])
+			{
+				if(game[i][0]=='O' || game[i][1]=='X')
+						{
+						return true;
+						}
+			}
+			if(game[0][i]==game[1][i] && game[1][i]==game[2][i])
+			{
+				if(game[i][0]=='O' || game[i][1]=='X')
+						{
+						return true;
+						}
+			}int k=0, l=0;
+			if(game[k][k]==game[k+1][k+1] && game[k+1][k+1]==game[k+2][k+2])
+			{
+				if(game[i][0]=='O' || game[i][1]=='X')
+						{
+						return true;
+						}
+			}
+			if(game[l][l+2]==game[l+1][l+1] && game[l+1][l+1]==game[l+2][l])
+			{
+				if(game[i][0]=='O' || game[i][1]=='X')
+						{
+						return true;
+						}
+			}
+		}return false;
 	}*/
+	
+	
+	
+	char[][] gameboard = new char[3][3];
+	public void initializeBoard()
+	{
+		for(int row = 0;row < 3;row++)
+		{
+			for(int col = 0;col<3;col++)
+			{	
+				gameboard[row][col] = ' ';
+			}
+		}
+	}
+	public void displayBoard()
+	{
+		//initializeBoard();
+		for(int row = 0; row<gameboard.length;row++)
+		{
+			for(int col=0;col<gameboard[0].length;col++ )
+			{
+				System.out.print("  "+ gameboard[row][col]+"  ");
+				if(col==0 || col==1)
+				{
+					System.out.print("|");
+				}				
+			}
+			if(row==0 || row==1)				
+				System.out.print("\n-----------------\n");			
+		}
+	}
+	public void makeMove(char ch , int num)
+	{Scanner scanner=new Scanner(System.in);
+		if(	num == 1 )
+		{
+			System.out.println("Player..enter your position to mark ");
+			System.out.println("Row : ");
+			int i = scanner.nextInt();
+			System.out.println("Column : ");
+			int j = scanner.nextInt();
+			if(gameboard[i][j] == ' ')
+			{
+				gameboard[i][j] = ch;				
+			}
+			else
+			{
+				System.out.println("Already Marked...!!!");
+				makeMove( ch , num);
+			}
+		}
+		else if( num == 0 )
+		{						
+			computerMove(ch);
+		}
+	}
+	
+	public char[][] computerMove(char ch)
+	{
+		for(int i = 0 ;i<3; i++)
+		{	
+			//rows
+			if(gameboard[i][0]==gameboard[i][1] && gameboard[i][2] ==' ' && gameboard[i][0]!=' ')
+			{
+				gameboard[i][2] = ch;
+				return gameboard;
+			}
+			if(gameboard[i][1]==gameboard[i][2] && gameboard[i][0] == ' ' && gameboard[i][1]!=' ') 				
+			{
+				gameboard[i][0] = ch ;
+				return gameboard;
+			}
+			if(gameboard[i][0]== gameboard[i][2] && gameboard[i][1]==' ' && gameboard[i][1]!=' ')
+			{
+				gameboard[i][1] = ch ;
+				return gameboard;
+			}
+			//Column
+			if(gameboard[0][i]==gameboard[1][i] && gameboard[2][i] ==' ' && gameboard[1][i]!=' ')
+			{
+				gameboard[2][i] = ch;
+				return gameboard;
+			}
+			if(gameboard[1][i]==gameboard[2][i] && gameboard[0][i] == ' ' && gameboard[1][i]!=' ') 				
+			{
+				gameboard[0][i] = ch ;
+				return gameboard;
+			}
+			if(gameboard[0][i]== gameboard[2][i] && gameboard[1][i]==' ' && gameboard[2][i]!=' ')
+			{
+				gameboard[1][i] = ch ;
+				return gameboard;
+			}
+		}
+		
+		//Cross
+		if(gameboard[0][0]==gameboard[1][1] && gameboard[2][2] == ' ' && gameboard[1][1]!=' ') 				
+		{
+			gameboard[2][2] = ch ;
+			return gameboard;
+		}
+		if(gameboard[1][1]==gameboard[2][2] && gameboard[0][0] == ' ' && gameboard[1][1]!=' ') 				
+		{
+			gameboard[0][0] = ch ;
+			return gameboard;
+		}
+		if(gameboard[0][0]== gameboard[2][2] && gameboard[1][1]==' ' && gameboard[2][2]!=' ')
+		{
+			gameboard[1][1] = ch ;
+			return gameboard;
+		}
+		
+		
+		if(gameboard[0][2]== gameboard[1][1] && gameboard[2][0]==' ' && gameboard[0][2]!=' ')
+		{
+			gameboard[2][0] = ch ;
+			return gameboard;
+		}		
+		if(gameboard[1][1]==gameboard[2][0] && gameboard[0][2] == ' ' && gameboard[2][0]!=' ') 				
+		{
+			gameboard[0][2] = ch ;
+			return gameboard;
+		}
+		if(gameboard[0][2]== gameboard[2][0] && gameboard[1][1]==' ' && gameboard[2][0]!=' ')
+		{
+			gameboard[1][1] = ch ;
+			return gameboard;
+		}
+		
+		Random random = new Random();
+		int i = random.nextInt(3);
+		int j = random.nextInt(3);
+		if(gameboard[i][j] == ' ')
+		{
+			gameboard[i][j] = ch;				
+		}
+		else
+		{
+			makeMove(ch , 0);
+		}
+		return gameboard;
+	}
+	
+	public boolean winORLose()
+	{
+		for(int i = 0 ;i<3; i++)
+		{	//check for column
+			if(gameboard[0][i]==gameboard[1][i] && gameboard[1][i]==gameboard[2][i] && gameboard[1][i]!=' ')
+			{
+				return true;
+			}
+			//check for rows
+			if(gameboard[i][0]==gameboard[i][1] && gameboard[i][1]==gameboard[i][2] && gameboard[i][1]!=' ')
+			{
+				return true;
+			}
+		}//check for diagonal
+		if((gameboard[0][0]==gameboard[1][1] && gameboard[1][1]==gameboard[2][2] &&  gameboard[1][1]!=' ') || 
+				(gameboard[0][2]==gameboard[1][1] && gameboard[1][1]==gameboard[2][0] && gameboard[0][2]!=' '))
+		{
+			return true;
+		}
+		return false;
+	}			
+	
+	
 	/****************************Quadratic*************************/
 
 
