@@ -15,41 +15,41 @@ public class OrderedList<T> {
 
 		//default constructor
 		public OrderedList(){
-			first  = null;
-			last = null;
+			first=null;
+			last=null;
 		}
 
 		//public add 
 		public void add(T item) {
-			Node<T> new_node =new Node<T>(); 
+			Node<T> new_node=new Node<T>(); 
 			new_node.setData(item);
 			new_node.setNext(null);
 			if(isEmpty())
 			{
-				first = new_node;
-				last = first;
+				first=new_node;
+				last=first;
 				return;
 			}
 			if(!search(item)) {
 				
 				//Node<T> newNode = new_node;
-				Node<T> curr = first;
-				Node<T> prev = null;
-				while(curr != null && curr.compareTo(item) < 0) {
-					prev = curr;
-					curr = curr.getNext();
+				Node<T> curr=first;
+				Node<T> prev=null;
+				while(curr!=null && curr.compareTo(item)< 0) {
+					prev=curr;
+					curr=curr.getNext();
 				}
-				if(curr != null && curr == first) {//at first position
+				if(curr!=null&&curr==first) {//at first position
 					new_node.setNext(curr);
-					first = new_node;
+					first=new_node;
 				}
-				else if(curr != null) {// in-between position
+				else if(curr!=null) {// in-between position
 					prev.setNext(new_node);
 					new_node.setNext(curr);
 				}
 				else {//last position
 					last.setNext(new_node);
-					last = new_node;
+					last=new_node;
 				}
 			}
 			else
@@ -58,38 +58,40 @@ public class OrderedList<T> {
 
 		//remove item
 		public void remove(T item) {
-			Node<T>	temp = null;
-			Node<T> curr = null;
+			Node<T>	temp=null;
+			Node<T> curr=null;
 			if(isEmpty())
 				System.out.println("List is empty...!");
-			else if(first.getData().equals(item) && first.getNext() == null)// one item list
+			else if(first.getData().equals(item) && first.getNext()==null)// one item list
 			{
-				first = null;
-				last = null;
-				System.out.println(item + " removed from the list...!");
+				first=null;
+				last=null;
+				System.out.println(item +"removed from the list...!");
 			}
-			else if(first.getData().equals(item) && first.getNext() != null)
+			else if(first.getData().equals(item) && first.getNext()!=null)
 			{
 				//update only first
-				temp = first;
-				first = first.getNext();
-				temp = null;
-				System.out.println(item + " removed from the list...!");
+				temp=first;
+				first=first.getNext();
+				temp=null;
+				System.out.println(item +"removed from the list...!");
 			}
 			else {
-				temp = first;
-				curr = first.getNext();
-				while(curr != null) {
+				temp=first;
+				curr=first.getNext();
+				while(curr!=null) {
 					if(curr.getData().equals(item))
 					{
 						temp.setNext(curr.getNext());
 						curr.setNext(null);
-						System.out.println(item + " removed from the list...!");
+						System.out.println(item+"removed from the list...!");
+						
+						
 						break;
 					}
 					else {
-						temp = curr;
-						curr = curr.getNext();
+						temp=curr;
+						curr=curr.getNext();
 					}
 				}
 			}

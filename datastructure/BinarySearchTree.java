@@ -15,7 +15,7 @@ public class BinarySearchTree
 		/*	the formula is 	 nCr=n!/(n-r)!r!
 		 * 
 		 * formula for binarySearch 2nCn/(n+1) it becomes(2n!)/(n+1)! *n!
-		 */			int result1 = Utility.factorial(2*nodes);
+		 */	int result1 = Utility.factorial(2*nodes);
 		 //System.out.println("result1 :\t"+result1 );
 		 int result2 =   Utility.factorial(nodes +1);
 		 //System.out.println("result2 :\t"+result2 );

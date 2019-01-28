@@ -13,7 +13,7 @@ public class MyQueue<T>
 	public MyQueue()
 	{
 		capacity=1000;
-		items =(T[])new Object[capacity];
+		items=(T[])new Object[capacity];
 		front=0;
 		rear=-1;
 		size=0;
@@ -23,7 +23,7 @@ public class MyQueue<T>
 	public MyQueue(int capacity)
 	{
 		this.capacity=capacity;
-		items =(T[])new Object[capacity];
+		items=(T[])new Object[capacity];
 		front=-1;
 		 rear=-1;
 		size=0;
@@ -50,13 +50,13 @@ public class MyQueue<T>
 	}
 	else if(rear==-1 && front==-1)
 	{
-		rear = (rear +1) % capacity;
+		rear=(rear+1)%capacity;
 		front=rear;
-		items[rear] =  element;
+		items[rear]=element;
 		size++;
 	}else
-	rear = (rear +1) % capacity;
-	items[rear] =  element;
+	rear=(rear+1)%capacity;
+	items[rear]=element;
 	size++;
 }
 	
@@ -67,9 +67,9 @@ public class MyQueue<T>
 			System.out.println("Queue is empty...Enqueue some items before dequeuing it...!");
 			
 		}
-		T element= items[front]; 
-		front = (front + 1) % capacity; 
-		size = size - 1; 
+		T element=items[front]; 
+		front=(front + 1)%capacity; 
+		size=size - 1; 
 		return element; 
 	}
 	

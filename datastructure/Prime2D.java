@@ -8,6 +8,6 @@ public class Prime2D
 {
 	public static void main(String[] args) 
 	{
-			Utility .prime2D();
+			Utility.prime2D();
 	}
 }

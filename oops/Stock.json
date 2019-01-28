@@ -1,0 +1,10 @@
+{
+"Turtlemint":[{"name":"marketing",
+			 "share":50,
+			 "price":100
+			  }],
+"Meru":[{"name":"electronics",
+			 "share":50,
+			 "price":100
+		 }] 
+}

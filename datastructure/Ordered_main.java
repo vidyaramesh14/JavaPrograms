@@ -11,23 +11,23 @@ public class Ordered_main
 {
 	public static void main(String[] args) 
 	{
-		String path = "/home/admin1/Desktop/vidya/JAVA_PROGRAM/src/com/bridgelabz/datastructure/ordered.txt";
+		String path ="/home/admin1/Desktop/vidya/JAVA_PROGRAM/src/com/bridgelabz/datastructure/ordered.txt";
 		String[] numbers;
-		String line= "";
+		String line="";
 		int key;
 
 		
 		Scanner sc1=new Scanner(System.in);
-		try(BufferedReader br = new BufferedReader(new FileReader(path))){
-			String temp = null;
-			while((temp = br.readLine())!= null)
+		try(BufferedReader br=new BufferedReader(new FileReader(path))){
+			String temp=null;
+			while((temp=br.readLine())!=null)
 			{
-				line += temp;
+				line+=temp;
 			}
-			numbers = line.split(",");
+			numbers=line.split(",");
 			//create a linked list for the words
-			OrderedList<Integer> list = new OrderedList<>();
-			for(int i = 0; i < numbers.length ; i++) {
+			OrderedList<Integer>list=new OrderedList<>();
+			for(int i=0;i< numbers.length;i++) {
 				list.add(Integer.parseInt(numbers[i]));
 			}
 			System.out.println(" Numbers list :");
@@ -36,9 +36,9 @@ public class Ordered_main
 			//read the key to be searched
 			System.out.println(" Enter a number...! ");
 			try {
-				key = sc1.nextInt();
-				boolean isKeyPresent = list.search(key);
-				if(isKeyPresent) {
+					key=sc1.nextInt();
+					boolean isKeyPresent=list.search(key);
+					if(isKeyPresent) {
 					System.out.printf("key '%s' is present in the list\n",key);
 					list.remove(key);
 				}

@@ -1,7 +1,9 @@
 package com.bridgelabz.utility;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -14,6 +16,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
+
+import org.json.simple.parser.JSONParser;
 
 import com.bridgelabz.datastructure.MyQueue;
 import com.bridgelabz.datastructure.Stack;
@@ -1294,10 +1298,10 @@ public class Utility
 	 */
 	public static double monthlyPayment( int P , int Y , double R ) 
 	{
-		int  terms_in_month= (12 * Y);
-		double monthly_rate = R / (12*100);
-		double power = Math.pow((1+ monthly_rate ), -terms_in_month);
-		double	monthlyPay = ((P*terms_in_month)/ (1 - power));
+		int  terms_in_month=(12*Y);
+		double monthly_rate=R/(12*100);
+		double power = Math.pow((1+ monthly_rate ),-terms_in_month);
+		double	monthlyPay =((P*terms_in_month)/(1-power));
 		return monthlyPay;
 	}
 
@@ -1309,11 +1313,11 @@ public class Utility
 	 */
 	public static void sqrtNewtons(double c)
 	{
-		double epsilon = 1e-15;
-		double t = c;			
-		while(Math.abs(t - c/t) > epsilon*t)
+		double epsilon=1e-15;
+		double t=c;			
+		while(Math.abs(t-c/t) >epsilon*t)
 		{
-			t=(c/t + t)/2.0;
+			t=(c/t+t)/2.0;
 		}
 		System.out.println(" "+t);
 	}
@@ -1327,11 +1331,11 @@ public class Utility
 
 	public static char[] toBinary(int decimal)
 	{
-		String binaryDigits = "";
-		while(decimal > 0)
+		String binaryDigits="";
+		while(decimal>0)
 		{
-			binaryDigits += decimal % 2;
-			decimal = decimal / 2 ;
+			binaryDigits+= decimal%2;
+			decimal=decimal/2 ;
 		}
 		return binaryDigits.toCharArray();
 	}
@@ -1366,7 +1370,7 @@ public class Utility
 
 	public static int swapNibbles(int decimal) 
 	{ 
-		return ((decimal & 0x0F) << 4 | (decimal & 0xF0) >> 4); 
+		return ((decimal&0x0F)<<4 | (decimal & 0xF0)>> 4); 
 	} 
 	public void isPowerTwo(int decimal) //check entered number is 
 	//power of two
@@ -1389,7 +1393,7 @@ public class Utility
 	 */
 	public boolean leapforCalender(int yearnumber)
 	{Scanner scanner=new Scanner(System.in);
-	boolean isLeapYear = true; 
+	boolean isLeapYear=true; 
 	if(String.valueOf(yearnumber).length()<4)
 	{
 		System.out.println("Please enter 4 digit number :");
@@ -1423,19 +1427,19 @@ public class Utility
 	 * @param month is user input that which month calender you want to print
 	 * @param year is user input whose calendar you want to print 
 	 */
-	public void printCalender(int month , int year)
+	public void printCalender(int month,int year)
 	{
-		String[] Month = {"","January","February", "March","April", "May", "June","July", "August", "September",
-				"October", "November", "December"};
-		int[] noOfDays  = {0,31,28,31,30,31,30,31,31,30,31,30,31};
-		int result = dayOfWeek(month, 1, year);
+		String[] Month={"","January","February","March","April","May","June","July","August","September",
+				"October","November", "December"};
+		int[] noOfDays={0,31,28,31,30,31,30,31,31,30,31,30,31};
+		int result=dayOfWeek(month, 1, year);
 		System.out.println("   "+Month[month]+" "+year);
-		if( month == 2 && leapforCalender(year) )
+		if( month==2 && leapforCalender(year) )
 		{
-			noOfDays[2] = 29;  //For leap year days will be 29
+			noOfDays[2]=29;  //For leap year days will be 29
 		}									
 		System.out.println("S\tM\tTu\tW\tTh\tF\tSa");
-		for(int i = 0 ;i<result ; i++)
+		for(int i=0;i<result;i++)
 		{
 			System.out.print("\t");
 		}
@@ -1456,22 +1460,22 @@ public class Utility
 	 * @param month is user input for month
 	 * @param year
 	 */
-	public void calenderQueue(int month , int year)
+	public void calenderQueue(int month,int year)
 	{
-		String[] Month = {"","January","February", "March","April", "May", "June","July", "August", "September",
-				"October", "November", "December"};
-		int[] noOfDays  = {0,31,28,31,30,31,30,31,31,30,31,30,31};
-		int result = dayOfWeek(month, 1, year);
+		String[] Month={"","January","February","March","April","May","June","July","August","September",
+				"October","November","December"};
+		int[] noOfDays={0,31,28,31,30,31,30,31,31,30,31,30,31};
+		int result=dayOfWeek(month, 1, year);
 
 		//	CalenderQueueMethod deque = new CalenderQueueMethod();
 		MyQueue<String> queue=new MyQueue<>();
-		System.out.println("   \t\t\t"+Month[month]+" "+year);
-		if( month == 2 && leapforCalender(year) )
+		System.out.println("\t\t\t"+Month[month]+" "+year);
+		if(month==2&&leapforCalender(year))
 		{
-			noOfDays[2] = 29;
+			noOfDays[2]=29;
 		}									
 
-		for(int i = 0 ;i<result ; i++)
+		for(int i=0;i<result;i++)
 		{
 			//System.out.print("   ");
 			queue.enqueue("\t");
@@ -1507,23 +1511,23 @@ public class Utility
 	 * @param month is user input for month
 	 * @param year
 	 */
-	public void calenderStack(int month , int year)
+	public void calenderStack(int month,int year)
 	{
-		String[] Month = {"January","February", "March","April", "May", "June","July", "August", "September",
-				"October", "November", "December"};
-		int[] noOfDays  = {0,31,28,31,30,31,30,31,31,30,31,30,31};
-		int result = dayOfWeek(month, 1, year);
+		String[] Month={"January","February","March","April","May","June","July","August","September",
+				"October","November","December"};
+		int[] noOfDays={0,31,28,31,30,31,30,31,31,30,31,30,31};
+		int result = dayOfWeek(month,1,year);
 
 		//	CalenderQueueMethod deque = new CalenderQueueMethod();
 		Stack<String> stack=new Stack<>();
-		System.out.println("   \t\t\t"+Month[month-1]+" "+year);
-		if( month == 2 && leapforCalender(year) )
+		System.out.println("\t\t\t"+Month[month-1]+" "+year);
+		if(month==2 &&leapforCalender(year))
 		{
-			noOfDays[2] = 29;
+			noOfDays[2]=29;
 		}									
 
 
-		//	for(int i=1;i<=noOfDays[month];i++)
+	
 		for(int i=noOfDays[month];i>=1;i--)
 		{
 			if(i<=9)
@@ -1539,7 +1543,7 @@ public class Utility
 				stack.push("\n");
 			//System.out.println();
 		}
-		for(int i = result -1 ;i>=0 ; i--)	
+		for(int i=result-1;i>=0;i--)	
 		{
 			//System.out.print("   ");
 			stack.push("\t");
@@ -1565,7 +1569,7 @@ public class Utility
 		int fact=1;
 		for(int i=1;i<=n;i++)
 		{
-			fact = fact*i; 
+			fact=fact*i; 
 		}
 
 		return fact;
@@ -1678,5 +1682,26 @@ public class Utility
 				}	
 			}System.out.println();
 		}		
+	}
+	
+	/**********************************oops Program*****************************************/
+	
+	public static Object readJsonFile(File file)
+	{
+		Object obj=null;
+		JSONParser json_read=new JSONParser();
+		
+		try(BufferedReader br=new BufferedReader(new FileReader(file)))
+		{
+			obj=json_read.parse(br);
+		}catch(IOException e)
+		{
+			e.printStackTrace();
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return obj;
 	}
 }

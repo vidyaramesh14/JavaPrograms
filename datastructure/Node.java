@@ -25,7 +25,7 @@ private Node<T> next;
 	 * @param node next node
 	 */
 	public void setNext(Node<T> node) {
-		this.next = node;
+		this.next=node;
 	}
 
 	/**

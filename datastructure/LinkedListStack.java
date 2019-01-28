@@ -2,7 +2,7 @@ package com.bridgelabz.datastructure;
 
 public class LinkedListStack<T>
 {
-	private Node<T> top_node;
+	private Node<T>top_node;
 	int size;
 
 	public LinkedListStack()
@@ -16,7 +16,7 @@ public class LinkedListStack<T>
 		Node<T> new_node=new Node< >();
 		new_node.setData(element);
 		new_node.setNext(top_node);
-		top_node = new_node;
+		top_node=new_node;
 		size++;
 	}
 	public T  pop()

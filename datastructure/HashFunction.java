@@ -29,7 +29,8 @@ public class HashFunction {
 			
 			
 			//Storing into a integer array
-			for(int i=0;i<str.length;i++) {
+			for(int i=0;i<str.length;i++)
+			{
 				System.out.print(str[i]+" ");
 				arr[i]=Integer.parseInt(str[i]);
 			}
@@ -37,21 +38,25 @@ public class HashFunction {
 			
 			
 			 // Creates an empty HashMap 
-			 List<List<Integer>> arraylist = new ArrayList<List<Integer>>();  
-			 for(int i=0;i<11;i++) {
+			 List<List<Integer>> arraylist=new ArrayList<List<Integer>>();  
+			 for(int i=0;i<11;i++)
+			 {
 				 arraylist.add(new ArrayList<Integer>());
 			}
 			
 			// Traverse through the given array 
-		        for (int i = 0; i < arr.length; i++) { 
+		        for (int i=0;i<arr.length;i++)
+		        { 
 		        	// Get if the element is present 
-		            Integer c = hashFunction(arr[i]);
+		            Integer c=hashFunction(arr[i]);
 		         
 		            // Insert the element 
 		            arraylist.get(c).add(arr[i]);
 		        }
-		        for(List<Integer> l:arraylist) {
-		        	if(!l.isEmpty()) {
+		        for(List<Integer>l:arraylist) 
+		        {
+		        	if(!l.isEmpty())
+		        	{
 		        		//filewritter.write(l.print());
 		        	System.out.println(l);
 		        	}
@@ -61,14 +66,17 @@ public class HashFunction {
 				int c =hashFunction(key);
 				boolean s=arraylist.get(c).contains(key);
 				System.out.println(s);
-		        if(s) {
+		        if(s) 
+		        {
 		        	 arraylist.stream().filter(list-> list.contains(key)).findFirst().get().remove(key);
-		        }else {
+		        }else
+		        {
 		        	// Insert the element 
 		            arraylist.get(c).add(key);
 		        }
 		        BufferedWriter filewritter=new BufferedWriter(new FileWriter(text));
-		        arraylist.stream().forEach(list-> list.forEach(t -> {
+		        arraylist.stream().forEach(list-> list.forEach(t -> 
+		        {
 					try {
 						filewritter.write(t.intValue()+" ");
 					} catch (IOException e) {

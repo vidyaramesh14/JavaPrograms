@@ -14,7 +14,7 @@ public class Palindrom {
 		for(int i=0;i<input.length();i++)
 		{
 			char c=input.charAt(i);
-			boolean flag = deque.isFull();
+			boolean flag=deque.isFull();
 			if(!(flag))
 			{
 			deque.addRear(c);	
@@ -28,7 +28,7 @@ public class Palindrom {
 			{
 				System.out.println("deque is empty...");
 			}
-			char c=	deque.removeRear();
+			char c=deque.removeRear();
 			reverse+=c;
 		}while(!(deque.isEmpty()));
 		

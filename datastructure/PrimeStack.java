@@ -21,7 +21,7 @@ public class PrimeStack {
 				List<Integer>list=new ArrayList<Integer>();
 				List<Integer>list1=new ArrayList<Integer>();
 				List<String>l1=new ArrayList<String>();
-				list=Utility.isPrime(0, 1000);
+				list=Utility.isPrime(0,1000);
 				for(int i:list)
 				{
 					l1.add(String.valueOf(i));
