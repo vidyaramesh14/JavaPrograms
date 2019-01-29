@@ -4,11 +4,13 @@ import java.util.Scanner;
 
 public class Parentheses 
 {
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 			Scanner sc1=new Scanner(System.in);
 			Stack<Character> expStack =new Stack<>();
 			String expression;
-			do {
+			do 
+			{
 				System.out.println("Enter an arithmetic expression");
 				expression=sc1.next();
 			}while(expression.equals("")||expression==null);
@@ -23,11 +25,13 @@ public class Parentheses
 				{
 					if(ch=='('&& expStack.size()<expStack.getStackCapacity()) 
 						expStack.push(ch);
-					else if(ch==')'&&!expStack.isEmpty())  {
+					else if(ch==')'&&!expStack.isEmpty())  
+					{
 						expStack.pop();
 					}
 					else if(expStack.isFull())
-					{System.out.println("Stack is full..");
+					{
+						System.out.println("Stack is full..");
 						break;
 					}
 					else if(expStack.isEmpty())

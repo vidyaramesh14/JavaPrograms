@@ -66,7 +66,7 @@ top=-1;
 	 */
 	public boolean isFull()
 	{
-	return (top == maxsize - 1);
+	return (top==maxsize-1);
 	}
 	
 	public int getStackCapacity()

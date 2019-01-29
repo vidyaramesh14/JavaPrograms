@@ -23,7 +23,7 @@ import com.bridgelabz.utility.Utility;
 				System.out.print(i+" ");
 			}
 			//System.out.println(count);
-			
+			sc1.close();
 		}
 
 	}

@@ -18,11 +18,12 @@ public class Ordered_main
 
 		
 		Scanner sc1=new Scanner(System.in);
-		try(BufferedReader br=new BufferedReader(new FileReader(path))){
+		try(BufferedReader br=new BufferedReader(new FileReader(path)))
+		{
 			String temp=null;
 			while((temp=br.readLine())!=null)
 			{
-				line+=temp;
+			line+=temp;
 			}
 			numbers=line.split(",");
 			//create a linked list for the words
@@ -35,12 +36,13 @@ public class Ordered_main
 			list.printOrderedList();
 			//read the key to be searched
 			System.out.println(" Enter a number...! ");
-			try {
-					key=sc1.nextInt();
-					boolean isKeyPresent=list.search(key);
-					if(isKeyPresent) {
-					System.out.printf("key '%s' is present in the list\n",key);
-					list.remove(key);
+			try 
+			{
+						key=sc1.nextInt();
+						boolean isKeyPresent=list.search(key);
+						if(isKeyPresent) {
+						System.out.printf("key '%s' is present in the list\n",key);
+						list.remove(key);
 				}
 				else {
 					System.out.printf("key '%s' is not present in the list\n",key);

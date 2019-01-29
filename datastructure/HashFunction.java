@@ -68,29 +68,32 @@ public class HashFunction {
 				System.out.println(s);
 		        if(s) 
 		        {
-		        	 arraylist.stream().filter(list-> list.contains(key)).findFirst().get().remove(key);
+		        	 arraylist.stream().filter(list->list.contains(key)).findFirst().get().remove(key);
 		        }else
 		        {
 		        	// Insert the element 
 		            arraylist.get(c).add(key);
 		        }
 		        BufferedWriter filewritter=new BufferedWriter(new FileWriter(text));
-		        arraylist.stream().forEach(list-> list.forEach(t -> 
+		        arraylist.stream().forEach(list-> list.forEach(t-> 
 		        {
-					try {
+					try
+					{
 						filewritter.write(t.intValue()+" ");
-					} catch (IOException e) {
+					} catch (IOException e) 
+					{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				}) );
+				}));
 		                
        
 		
 		filewritter.close();
 		fileReader.close();
 	}
-	public static int hashFunction(int num) {
+	public static int hashFunction(int num) 
+	{
 		int reminder=num%11;
 		return reminder;
 	}

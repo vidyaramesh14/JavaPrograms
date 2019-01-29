@@ -1,8 +1,5 @@
 package com.bridgelabz.Algorithm;
 
-import java.util.List;
-import java.util.Set;
-
 import com.bridgelabz.utility.Utility;
 
 public class CheckPrimePalindrom {

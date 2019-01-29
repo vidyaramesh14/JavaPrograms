@@ -9,10 +9,11 @@ public class Banking
 	MyQueue<Double> queue;
 
 	int size;
-	public Banking() {
-		balance = 500;
-		size =10;
-		queue = new MyQueue<Double>(size);
+	public Banking() 
+	{
+		balance=500;
+		size=10;
+		queue=new MyQueue<Double>(size);
 		
 	}
 
@@ -20,8 +21,10 @@ public class Banking
 	 * depositing the money
 	 * @param amount the deposit amount
 	 */
-	public void deposit(Double amount) {
-		if(queue.isFull()) {
+	public void deposit(Double amount)
+	{
+		if(queue.isFull())
+		{
 			System.out.println("\t wait for some time...!");
 			return;
 		}
@@ -35,8 +38,7 @@ public class Banking
 	 */
 	public void withdraw(Double amount) 
 	{
-		
-		if(balance >amount) 
+		if(balance>amount) 
 		{
 		balance-=amount;
 		
@@ -54,38 +56,42 @@ public class Banking
 	 * main function to test the BankingCashCounter class
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		Scanner sc1=new Scanner(System.in);
-		Banking counter =  new Banking();
+		Banking counter=new Banking();
 		int operation; // 1=> deposit 2=>withdraw 3=> check balance
-		do {
+		do 
+		{
 			System.out.println("ENTER YOUR CHOICE: ");
 			System.out.println(" 1 => deposit \n 2 => withdraw \n 3 => balance\n 0 => exit");
-			operation =sc1.nextInt();
+			operation=sc1.nextInt();
 			
 			
-			switch(operation) {
-			case 1 : System.out.println("\tEnter the amount to be deposited...!");
-			Double depAmount = sc1.nextDouble();
+			switch(operation)
+			{
+			case 1:System.out.println("\tEnter the amount to be deposited...!");
+			Double depAmount=sc1.nextDouble();
 			counter.deposit(depAmount);
 			
 			break;
 
-			case 2 : System.out.println("\tEnter the amount to be withdrawn...!");
-			Double withdAmount = sc1.nextDouble();
+			case 2:System.out.println("\tEnter the amount to be withdrawn...!");
+			Double withdAmount=sc1.nextDouble();
 			counter.withdraw(withdAmount);
 			break;
 
-			case 3 : counter.checkBalance();
+			case 3:counter.checkBalance();
 				
 			break;
 
-			case 0 : break;//exiting
+			case 0:
+			break;//exiting
 
-			default : System.out.println("\tInvalid input...!");
+			default:System.out.println("\tInvalid input...!");
 			break;
 			}
-		}while(operation >=0 && operation <=3);
+		}while(operation>=0 && operation<=3);
 	}
 
 }

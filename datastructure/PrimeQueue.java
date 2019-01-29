@@ -36,7 +36,7 @@ public class PrimeQueue
 			{
 				queue.enqueue(list1.get(i));	// passing the data to the enqueue
 			}
-			int an = 0;
+			int an=0;
 			for(int j=0;j<list1.size();j++)
 			{
 				an=queue.dequeue();		//Dequeuing the data

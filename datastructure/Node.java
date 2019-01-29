@@ -24,7 +24,8 @@ private Node<T> next;
 	 * updates the nodes next link
 	 * @param node next node
 	 */
-	public void setNext(Node<T> node) {
+	public void setNext(Node<T> node) 
+	{
 		this.next=node;
 	}
 
@@ -32,11 +33,10 @@ private Node<T> next;
 	 * returns the next link of the node
 	 * @return next node reference
 	 */
-	public Node<T> getNext(){
+	public Node<T> getNext()
+	{
 		return this.next;
-	/**
-	 * compares the two items for the equality
-	 */}
+	}
 	public boolean equals(Object item) 
 	{
 		if(this.getData().equals((T)item))

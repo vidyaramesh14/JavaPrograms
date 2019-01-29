@@ -33,27 +33,27 @@ public class MyQueue<T>
 	
 	public boolean isEmpty()
 	{
-		return size==0;
+	return size==0;
 	}
 	
 	public boolean isFull()
 	{
-		return size==capacity;
+	return size==capacity;
 	}
 	
 	public void enqueue(T element)
 	{
 	if(isFull())
 	{
-		System.out.println("the queue is full");
-		return;
+	System.out.println("the queue is full");
+	return;
 	}
-	else if(rear==-1 && front==-1)
+	else if(rear==-1&&front==-1)
 	{
-		rear=(rear+1)%capacity;
-		front=rear;
-		items[rear]=element;
-		size++;
+	rear=(rear+1)%capacity;
+	front=rear;
+	items[rear]=element;
+	size++;
 	}else
 	rear=(rear+1)%capacity;
 	items[rear]=element;
@@ -64,7 +64,7 @@ public class MyQueue<T>
 	public T dequeue() {
 		if (isEmpty()) 
 		{
-			System.out.println("Queue is empty...Enqueue some items before dequeuing it...!");
+		System.out.println("Queue is empty...Enqueue some items before dequeuing it...!");
 			
 		}
 		T element=items[front]; 
@@ -78,7 +78,7 @@ public class MyQueue<T>
 	{
 		if(isEmpty())
 		{
-			System.out.println("the queue is empty");
+		System.out.println("the queue is empty");
 		}
 		return items[front];
 	}

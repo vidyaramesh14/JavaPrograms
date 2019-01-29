@@ -2,7 +2,8 @@ package com.bridgelabz.datastructure;
 
 import java.util.Scanner;
 
-public class Palindrom {
+public class Palindrom 
+{
 
 	public static void main(String[] args)
 	{
@@ -30,7 +31,8 @@ public class Palindrom {
 			}
 			char c=deque.removeRear();
 			reverse+=c;
-		}while(!(deque.isEmpty()));
+		}
+		while(!(deque.isEmpty()));
 		
 		
 		if(input.equals(reverse))

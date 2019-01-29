@@ -59,7 +59,7 @@ public Deque()
 		{
 			System.out.println("the queue is empty");
 		}
-		else if(rear==-1 && front==-1)
+		else if(rear==-1&&front==-1)
 		{
 			 element=items[front];
 			front=rear=-1;
@@ -72,7 +72,9 @@ public Deque()
 			}return element;
 	}
 	public void addRear(T element)
-	{	if(isFull())
+	{	
+		
+		if(isFull())
 		{
 			System.out.println("the queue is full ");
 		}
@@ -94,7 +96,8 @@ public Deque()
 	if(isEmpty())
 	{
 		System.out.println("the queue is empty");
-	}if(rear==-1&& front==-1)//single item queue
+	}
+	if(rear==-1&&front==-1)//single item queue
 	{
 		T element=items[front];
 		rear=front=-1;
