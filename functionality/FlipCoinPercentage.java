@@ -16,6 +16,7 @@ public class FlipCoinPercentage
 		int  tail_percentage= Utility.flipCoin(n);
 		int head_percentage=100-tail_percentage;
 		System.out.println(" Percentage of Head vs Tails: " +head_percentage+ ":"+tail_percentage);
+		sc1.close();
 	}
 
 

@@ -22,7 +22,7 @@ public class SquareRoot
 		{
 		System.out.println("Enter Double value only");
 		}
-		
+		sc1.close();
 		
 	}
 }

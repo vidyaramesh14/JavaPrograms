@@ -20,6 +20,7 @@ public class WindChillValue {
 			System.out.println("*******Invalid Input********");
 		}else
 		System.out.println("WindChillValue :"+res);
+		sc1.close();
 	}
 
 }

@@ -26,7 +26,7 @@ public class InsertionstdInput {
 		{   
 			System.out.print(i+" ");   
 		}    
-		
+		sc1.close();
 	}
 
 }

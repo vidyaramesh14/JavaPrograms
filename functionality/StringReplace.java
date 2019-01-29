@@ -18,6 +18,6 @@ public class StringReplace
 			String output = Utility.replaceString( userName);
 			System.out.println(output);
 		}while(userName.length()<3 );
-		
+		sc1.close();
 		}
 }

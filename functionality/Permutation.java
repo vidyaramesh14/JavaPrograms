@@ -12,8 +12,9 @@ public class Permutation {
 		Scanner sc1=new Scanner(System.in);
 		System.out.println("enter a String");
 		String s=sc1.next();
-		List list=	Utility.permutationRecursion(s, 0, s.length()-1);
+		List<String>list=	Utility.permutationRecursion(s, 0, s.length()-1);
 		System.out.println(list);
+		sc1.close();
 	}
 
 }

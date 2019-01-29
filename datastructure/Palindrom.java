@@ -11,7 +11,7 @@ public class Palindrom
 		System.err.println("enter string input");
 		String input=sc1.next();
 		
-		Deque<Character> deque=new Deque(500);
+		Deque<Character> deque=new Deque<Character>(500);
 		for(int i=0;i<input.length();i++)
 		{
 			char c=input.charAt(i);
@@ -41,6 +41,7 @@ public class Palindrom
 			}
         else
         	System.out.println(input+" is not a palindrome...");
+		sc1.close();
 	}
 
 }

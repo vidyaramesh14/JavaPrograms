@@ -18,7 +18,7 @@ public class Anagram {
 		boolean result=Utility.checkAnagram(a, b);
 		System.out.println(result);
 		//result=true? true:false;
-		
+		sc1.close();
 
 	}
 

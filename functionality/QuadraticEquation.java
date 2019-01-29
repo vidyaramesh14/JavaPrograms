@@ -24,6 +24,7 @@ public class QuadraticEquation {
 		double[] result=Utility.calculatingRoots(a, b, c);
 		for (int i = 0; i < result.length; i++) {
 			System.out.println(result[i]);
+			sc1.close();
 		}
 	}
 }

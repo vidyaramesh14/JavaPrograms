@@ -92,6 +92,7 @@ public class Banking
 			break;
 			}
 		}while(operation>=0 && operation<=3);
+		sc1.close();
 	}
 
 }

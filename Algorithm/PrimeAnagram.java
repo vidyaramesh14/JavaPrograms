@@ -3,7 +3,6 @@ package com.bridgelabz.Algorithm;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Set;
 
 import com.bridgelabz.utility.Utility;
@@ -14,7 +13,6 @@ public class PrimeAnagram
 	{
 		int start=0;
 		int end=1000;
-		
 		List<Integer>list=new ArrayList<Integer>();
 		list=Utility.isPrime(start, end);
 		

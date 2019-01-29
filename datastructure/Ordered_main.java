@@ -61,6 +61,6 @@ public class Ordered_main
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		sc1.close();
 	}
 }

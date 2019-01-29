@@ -37,6 +37,8 @@ private Node<T> next;
 	{
 		return this.next;
 	}
+	
+	@SuppressWarnings("unchecked")
 	public boolean equals(Object item) 
 	{
 		if(this.getData().equals((T)item))
@@ -50,6 +52,7 @@ private Node<T> next;
 	 * @return 0 if equal, + value if greater than passed arg, else - value
 	 */
 	
+	@SuppressWarnings("unchecked")
 	public int compareTo(T otherItem) {
 		return ((Comparable<T>) this.getData()).compareTo(otherItem);
 	}

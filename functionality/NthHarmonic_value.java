@@ -13,6 +13,7 @@ public class NthHarmonic_value {
 		int i=sc1.nextInt();
 		float res=	Utility.harMonicValue(i);
 		System.out.println("Nth Harmonic value:\t"+res);
+		sc1.close();
 	}
 
 }

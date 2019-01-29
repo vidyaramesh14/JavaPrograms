@@ -8,7 +8,7 @@ public class Stock {
 	public String getShareName() {
 		return sharename;
 	}
-	public void setName(String name) {
+	public void setName(String sharename) {
 		this.sharename=sharename;
 	}
 	public int getShares() {

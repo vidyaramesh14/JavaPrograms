@@ -1,12 +1,10 @@
 	package com.bridgelabz.datastructure;
 
-import java.io.BufferedReader;
+
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
+
 
 
 	public class UnOrdered_List<T> {
@@ -201,6 +199,7 @@ import java.util.Scanner;
 		}
 
 		//remove and return item at the given position
+		@SuppressWarnings("null")
 		public T pop(int pos)
 		{
 			if(isEmpty())

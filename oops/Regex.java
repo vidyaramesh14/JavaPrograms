@@ -41,6 +41,7 @@ public class Regex {
 		String date = sdf.format(currentDate);
 		input=input.replace("<<xx/xx/xxxx>>", date);
 		System.out.println(input);
+		sc1.close();
 	}
 
 }

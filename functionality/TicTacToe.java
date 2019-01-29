@@ -6,6 +6,7 @@ import com.bridgelabz.utility.Utility;
 
 public class TicTacToe {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args)
 	{
 		
@@ -60,6 +61,7 @@ public class TicTacToe {
 			}
 		}
 		System.out.println("\nGame Draw...!!!!!");
+		sc1.close();
 	}
 }
 

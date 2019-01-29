@@ -13,6 +13,7 @@ public class TemperatureConversion
 			int temperature=sc1.nextInt();
 		
 			Utility.temperatureConversion(temperature);
+			sc1.close();
 	}
 
 }

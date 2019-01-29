@@ -19,6 +19,7 @@ public class DistinctTriplet {
 		}
 		int res=Utility.triplets(a, n);
 		System.out.println("number of distinct triplets :"+res);
+		sc1.close();
 	}
 
 }

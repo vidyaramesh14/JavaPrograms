@@ -20,6 +20,7 @@ public class Gambler
 			int winpercentage=Utility.gamblerGame(stake,Goal,Num);
 			int loosepercentage=100-winpercentage;
 			System.out.println("Percentage of Win and Loss:\t" +winpercentage+ ":"+loosepercentage);
+			sc1.close();
 	    	
 	     }
 }

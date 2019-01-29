@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.bridgelabz.utility.Utility;
 
 public class HashFunction {
 	public static void main(String[] args) throws Exception {
+		@SuppressWarnings("resource")
 		Scanner sc1=new Scanner(System.in);
 		
 		String text="/home/admin1/Desktop/vidya/JAVA_PROGRAM/src/com/bridgelabz/datastructure/ordered.txt";
@@ -91,6 +91,7 @@ public class HashFunction {
 		
 		filewritter.close();
 		fileReader.close();
+		sc1.close();
 	}
 	public static int hashFunction(int num) 
 	{

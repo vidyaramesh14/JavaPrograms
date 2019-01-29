@@ -12,9 +12,10 @@ public class Nibble
 		Scanner sc1=new Scanner(System.in);
 		System.out.println("Enter  number : ");
 		int num=sc1.nextInt();
-	int res=Utility.nibbles(num);
-	System.out.println(" Decimal value is "+res);
+		int res=Utility.nibbles(num);
+		System.out.println(" Decimal value is "+res);
+		sc1.close();
 	}
-	
-	
+
+
 }

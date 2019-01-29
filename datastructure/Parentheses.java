@@ -51,6 +51,7 @@ public class Parentheses
 			{
 				System.out.println("Given expression is not balanced...!");
 			}
+			sc1.close();
 
 	}
 

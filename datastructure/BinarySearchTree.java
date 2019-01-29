@@ -6,6 +6,7 @@ import com.bridgelabz.utility.Utility;
 
 public class BinarySearchTree 
 {
+	@SuppressWarnings("resource")
 	public static void main(String[] args) 
 	{
 		Scanner sc1=new Scanner(System.in);
@@ -31,6 +32,7 @@ public class BinarySearchTree
 		 }
 
 		 System.out.println("Total numbers of BST is :"+finalResult);
+		 sc1.close();
 	}
 
 }

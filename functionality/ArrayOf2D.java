@@ -14,8 +14,8 @@ public class ArrayOf2D {
 
 		System.out.println("enter number of column");
 		int column=sc1.nextInt();
-		int[][] res=Utility.twoDarray(row, column);
-	
+		Utility.twoDarray(row, column);
+		sc1.close();
 	    
 	}
 

@@ -14,8 +14,9 @@ public class DistinctCoupon
 			System.out.println("Enter how many distinct coupons you wants to generate :");
 			int No_Of_Times=sc1.nextInt();
 		
-			Set s=Utility.distinctCoupon(No_Of_Times);
+			Set<String> s=Utility.distinctCoupon(No_Of_Times);
 			System.out.println("distinct coupon are:\n "+s);
+			sc1.close();
 			
 		}
 	}

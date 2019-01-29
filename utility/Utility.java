@@ -5,12 +5,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Random;
@@ -21,12 +18,11 @@ import org.json.simple.parser.JSONParser;
 
 import com.bridgelabz.datastructure.MyQueue;
 import com.bridgelabz.datastructure.Stack;
-import com.bridgelabz.functionality.FindLeapYear;
 
 public class Utility 
 {
 
-	private static final Class Utility = null;
+	
 	/************************String Replace **************************/
 	/**
 	 * This method replaces the template with the given input string
@@ -158,7 +154,7 @@ public class Utility
 	 * @param n is a input given by user
 	 * @return the list of prime factor
 	 */
-	public static List primeFactors(int n)
+	public static List<Integer> primeFactors(int n)
 	{	
 		List<Integer> list=new ArrayList<>();
 		for (int i = 2; i*i <= n; i++) 
@@ -180,9 +176,11 @@ public class Utility
 	 * @param Goal is achieve goal that is increment in amount
 	 * @return the Percentage of win
 	 */
+	@SuppressWarnings("unused")
 	public static int gamblerGame(int Stake, int Goal,int Num_of_times)
 	{
-		int win=0,loose=0;
+		int win=0;
+		int loose=0;
 		int winpercentage=0,loosepercentage=0;
 		int temp=Num_of_times;
 		if(Stake>0 && Stake<=Goal)
@@ -265,8 +263,9 @@ public class Utility
 			}
 			printwriter.println( );
 		}
-
+		sc1.close();
 		return array;
+		
 	}
 
 	/**************************Sum of Three Integer******************/
@@ -337,7 +336,9 @@ public class Utility
 	char temp=c[i];
 	c[i]=c[j];
 	c[j]=temp;
-	return str.valueOf(c);
+	@SuppressWarnings("static-access")
+	String res=str.valueOf(c);
+	return res;
 
 	}
 
@@ -347,7 +348,7 @@ public class Utility
 	 * @param last this also point to last  array element
 	 * @return
 	 */
-	public static List permutationRecursion(String str,int first,int last)
+	public static List<String> permutationRecursion(String str,int first,int last)
 	{
 		List<String> l=new ArrayList<>();
 
@@ -584,6 +585,7 @@ public class Utility
 		{						
 			computerMove(ch);
 		}
+		scanner.close();
 	}
 	
 	public char[][] computerMove(char ch)
@@ -1084,7 +1086,7 @@ public class Utility
 
 	}
 	System.out.println("your number is "+mid );
-
+	sc1.close();
 	return count;
 
 
@@ -1107,7 +1109,6 @@ public class Utility
 		{
 			line+=str;
 
-			//list.add(str);
 			System.out.println(line);
 
 		}	
@@ -1139,13 +1140,11 @@ public class Utility
 				high = mid-1;
 
 			}
-		}return -1;
-		//int result=	Utility.genericsBinarySearch(array, key);	
-		/*if(result < 0)
-	    	System.out.println("found");
-	    else
-	    	System.out.println(" not found");
-		 */
+			
+		}
+		br.close();
+		return -1;
+		
 	}
 
 	/***********************merge sort***********************/
@@ -1157,13 +1156,14 @@ public class Utility
 	 * @param mid is middle position of array
 	 * @param end is ending position  of array
 	 */
-	public static <T extends Comparable<T>> void merge(T[] arr, Class Utility, int start, int mid, int end)
+	@SuppressWarnings("unchecked")
+	public static <T extends Comparable<T>> void merge(T[] arr, int start, int mid, int end)
 	{
 		int left = mid-start+1;
 		int right = end - mid;  
-		Utility u=new Utility();
-		T LeftArray[] = (T[])Array.newInstance(Utility, left); 
-		T RightArray[] =(T[])Array.newInstance(Utility, right); 
+	
+		T[] LeftArray=(T[])new Object();
+		T[] RightArray=(T[])new Object();
 
 		for (int i=0; i<left; ++i)  
 			LeftArray[i] = arr[start + i];  
@@ -1172,45 +1172,45 @@ public class Utility
 			RightArray[j] = arr[mid + 1+ j];  
 
 
-		int i = 0, j = 0;  
-		int k = start;  
-		while (i<left&&j<right)  
+		int i=0, j=0;  
+		int k=start;  
+		while(i<left&&j<right)  
 		{  
-			if (LeftArray[i].compareTo(RightArray[j])<=0)  
+			if(LeftArray[i].compareTo(RightArray[j])<=0)  
 			{  
-				arr[k] = LeftArray[i];  
+				arr[k]=LeftArray[i];  
 				i++;  
 			}  
 			else  
 			{  
-				arr[k] = RightArray[j];  
+				arr[k]=RightArray[j];  
 				j++;  
 			}  
 			k++;  
 		}  
-		while (i<left)  
+		while(i<left)  
 		{  
-			arr[k] = LeftArray[i];  
+			arr[k]=LeftArray[i];  
 			i++;  
 			k++;  
 		}  
 
-		while (j<right)  
+		while(j<right)  
 		{  
-			arr[k] = RightArray[j];  
+			arr[k]=RightArray[j];  
 			j++;  
 			k++;  
 		}  
 	}  
 
-	public static<T extends Comparable<T>>void sort(T[] arr,Class Utility, int start, int end)  
+	public static<T extends Comparable<T>>void sort(T[] arr, int start, int end)  
 	{  
 		if (start<end)  
 		{  
 			int mid = (start+end)/2;  
-			sort(arr,Utility,start, mid);  
-			sort(arr ,Utility, mid+1, end);  
-			merge(arr,Utility,start, mid, end);  
+			sort(arr,start, mid);  
+			sort(arr , mid+1, end);  
+			merge(arr,start, mid, end);  
 		}  
 
 	}	
@@ -1275,17 +1275,18 @@ public class Utility
 		switch(i)
 		{
 		case 1:
-			float celsius = ((temperature-32) * 5)/9 ;
+			float celsius =((temperature-32)*5)/9 ;
 			System.out.println("Temperature in celsius : "+celsius);
 			break;
 
 		case 2:	
-			float fahrenheit = (temperature *9/5+32);
+			float fahrenheit =(temperature*9/5+32);
 			System.out.println("Temperature in fahrenheit : "+fahrenheit );
 			break;
 
 		default :
 			System.out.println("Invalid input");
+			sc1.close();
 		}
 	} 	
 
@@ -1352,7 +1353,7 @@ public class Utility
 			Number=Number/2;
 		}
 		result=0+result;
-		String left=result.substring(0,4);
+		result.substring(0,4);
 		String right=result.substring(4);
 		String binary_value=right+right;
 
@@ -1393,8 +1394,10 @@ public class Utility
 	 * year or not
 	 * 
 	 */
+	@SuppressWarnings("resource")
 	public boolean leapforCalender(int yearnumber)
 	{Scanner scanner=new Scanner(System.in);
+	
 	boolean isLeapYear=true; 
 	if(String.valueOf(yearnumber).length()<4)
 	{
@@ -1402,7 +1405,7 @@ public class Utility
 		yearnumber=scanner.nextInt();
 
 	}
-
+	
 	else if(yearnumber%4==0)
 	{
 		//if yr no. is divisible by 4 then check by 100
@@ -1412,6 +1415,7 @@ public class Utility
 			if(yearnumber%400==0)
 			{
 				//if no. divisible by 4,100 and 400 ie. leap year
+			
 				return true;
 			}
 			else
@@ -1423,6 +1427,7 @@ public class Utility
 	}
 	else
 		return false;
+	
 	return isLeapYear;
 	}
 	/** This method print calendar of any month and year 

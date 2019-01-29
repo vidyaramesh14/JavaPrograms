@@ -86,5 +86,12 @@ public class MyQueue<T>
 	{
 		return size;
 	}
+	public void show()
+	{
+		for(int i=0;i<size;i++)
+		{
+			System.out.print(items[i]);
+		}
+	}
 
 }

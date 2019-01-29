@@ -20,6 +20,7 @@ public class FindPowerOfTwo {
 		System.out.println();
 		int base =2;
 		Utility.powerOfTwo(base, input);
+		sc1.close();
 	}
 
 }

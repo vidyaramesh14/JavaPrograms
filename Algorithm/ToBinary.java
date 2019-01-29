@@ -16,5 +16,6 @@ public class ToBinary
 	{
 		System.out.print(res[i]);
 	}
+	sc1.close();
 	}
 }

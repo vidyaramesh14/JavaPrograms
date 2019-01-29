@@ -8,6 +8,7 @@ private int rear;
 private int size;
 private  int capacity=500;
 
+@SuppressWarnings("unchecked")
 public Deque()
 {
 	capacity=0;
@@ -17,6 +18,7 @@ public Deque()
 	size=0;
 }
 
+	@SuppressWarnings("unchecked")
 	public Deque(int capacity)
 	{
 		this.capacity=capacity;
@@ -91,6 +93,7 @@ public Deque()
 			size++;
 		}
 	}
+	
 	public T removeRear()
 	{
 	if(isEmpty())
@@ -99,7 +102,6 @@ public Deque()
 	}
 	if(rear==-1&&front==-1)//single item queue
 	{
-		T element=items[front];
 		rear=front=-1;
 	}
 		T element=items[rear];

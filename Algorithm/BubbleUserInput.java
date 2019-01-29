@@ -25,7 +25,8 @@ public class BubbleUserInput {
 		for(String i:res)
 		{   
 			System.out.print(i+" ");   
-		}    
+		} 
+		sc1.close();
 	}
 
 }
