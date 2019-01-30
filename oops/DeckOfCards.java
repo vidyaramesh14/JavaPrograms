@@ -1,115 +1,108 @@
 package com.bridgelabz.oops;
 
-import com.bridgelabz.datastructure.MyQueue;
 
-public class DeckOfCards<T>{
+public class DeckOfCards
+{
 
-	public static void main(String[] args) 
+	private int size=52;
+	private String[] suite={"Club","Diamond", "Heart", "Spade"};
+	private String[] rank={"2", "3", "4", "5", "6", "7", "8", "9", "10","Jack", "Queen", "King", "Ace"};
+	private String[] cards=new String[size];
+
+	public DeckOfCards()
 	{
-		String[] card= {"clubs","diamonds","hearts","spades"};
-		String[] rank= {"2","3","4","5","6","7","8","9","10","jack","queen","king","ace"};
-		
-		String[] setofcards=new String[52];
-		int pos=0;
-		
-		//initializing cards
-		for(int i=0;i<rank.length;i++)
+		this.initializeCards();
+	}
+
+	/**
+	 * initializing the cards in the deck
+	 */
+	public void initializeCards()
+	{
+		int count=0;
+		for (int i=0;i<rank.length;i++) 
 		{
-			for(int j=0;j<card.length;j++)
+			for(int j=0;j<suite.length;j++)
 			{
-				setofcards[pos++]=rank[i]+"-"+card[j];
+				cards[count++]=new String(rank[i]+"_"+suite[j]);
 			}
 		}
-		/*for(int i=0;i<setofcards.length;i++)
+	}
+	/**
+	 * shuffle the cards
+	 */
+	public void shuffle()
+	{
+		for (int i=0;i<cards.length;i++) 
 		{
-			System.out.print(setofcards[i]+",");
-		}*/
-		System.out.println();
-		
-		//shuffling of cards
-		for(int i=0;i<setofcards.length;i++)
-		{
-			int random=(int)(Math.random()*card.length);
-			String temp=setofcards[i];
-			setofcards[i]=setofcards[random];
-			setofcards[random]=temp;
+			String temp=cards[i];
+			int shufflePosition=(int)(Math.random()*cards.length);
+			cards[i]=cards[shufflePosition];
+			cards[shufflePosition]=temp;
 		}
-		
-		/*for(int i=0;i<setofcards.length;i++)
-		{
-			System.out.print(setofcards[i]+",");
-		}*/
-		
-		distributecardQueue(setofcards,4,9);
-		
-		
+	}
 
+	/**
+	 * get a card from the deck
+	 * @param position
+	 * @return
+	 */
+	public String getACard(int position) 
+	{
+		return cards[position];
 	}
 	
-	public static String[][] distributecards(String[] setofcards,int numofplayer,int numofcard)
+
+	/**
+	 * get the rank of a card
+	 * @param card a playing card
+	 * @return rank
+	 */
+	public static int rankOfCard(String card) 
 	{
-		String[][] distributecards=new String[numofplayer][numofcard];
-		/*int pos=0;
-		for(int i=0;i<numofplayer;i++)
+		int rank=-1;
+		String strValue=card.split("_")[0];
+		switch(strValue)
 		{
-			for(int j=0;j<numofcard;j++)
-			{
-				distributecards[i][j]=setofcards[pos++];
-			}
-		}*/
+		case "2":rank=2;
+		break;
 		
-		int player_num=1;
-		int pos = 0;
-		for(int i=0;i< numofplayer;i++)
-		{System.out.print("player "+player_num+" :"+"\n");
-			for(int j=0;j< numofcard;j++)
-			{
-				System.out.println(distributecards[i][j]=setofcards[pos++]);
-			}
-			player_num++;
-			System.out.println();
-		}
-		return distributecards;
-	}
-	public static void distributecardQueue(String[] setofcards,int numofplayer,int numofcard)
-	{
-		MyQueue<String> queue=new MyQueue<String>();
-		String[][] distributecards=new String[numofplayer][numofcard];
+		case "3":rank=3;
+		break;  
 		
-		String[] cards = new String[numofcard];
-		for(int i= 0;i<numofplayer;i++)
-		{
-			for(int j=0;j<numofcard;j++)
-			{
-				cards[j] = distributecards[i][j];   // copying in 1D array
-			}
-			queue.enqueue("\nPlayer "+(i+1)+" Cards");
-			sortCards(cards);
+		case "4":rank=4;
+		break;
+		
+		case "5":rank=5;
+		break;
+		
+		case "6":rank=6;
+		break;
+		case "7":rank=7;
+		break;
+		case "8":rank=8;
+		break;
+		
+		case "9":rank=9;
+		break;
+		
+		case "10":rank=10;
+		break;
+		
+		case "Jack":rank=11;
+		break;
+		
+		case "Queen":rank=12;
+		break;
+		
+		case "King":rank=13;
+		break;
+		
+		case "Ace":rank=14;
+		break;
 		}
-		queue.show();   //Printing sorted cards
-	}
-	
-	/**This method sort the cards by rank
-	 * @param cards are players cards
-	 */public static void sortCards(String[] cards)
-		{
-			MyQueue<String> queue=new MyQueue<String>();
-			char[] numberRank = {'A','2','3','4','5','6','7','8','9','0','J','Q','K'};
-			for(int i = 0 ; i < numberRank.length;i++)
-			{
-				for(int j = 0 ; j < cards.length ; j++)
-				{
-					String card = cards[j];    
-					char cardRank = card.charAt(j);   //For checking first element in cards array
-					if(cardRank == numberRank[i]) 
-					{
-						queue.enqueue(card);  //add sorted card in queue
-					}
-				}
-			}
-		}
-	
+		return rank;
 }
-	
+}
 
 

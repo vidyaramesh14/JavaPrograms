@@ -18,6 +18,7 @@ import org.json.simple.parser.JSONParser;
 
 import com.bridgelabz.datastructure.MyQueue;
 import com.bridgelabz.datastructure.Stack;
+import com.bridgelabz.oops.InventoryFactory;
 
 public class Utility 
 {
@@ -1691,9 +1692,10 @@ public class Utility
 		}		
 	}
 	
-	/**********************************oops Program*****************************************/
+	/**********************************oops Program
+	 * @param class1 *****************************************/
 	
-	public static Object readJsonFile(File file)
+	public static Object readJsonFile(File file, Class<InventoryFactory> class1)
 	{
 		Object obj=null;
 		JSONParser json_read=new JSONParser();

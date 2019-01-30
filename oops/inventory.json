@@ -2,38 +2,38 @@
 
     "Rice":[
         {
-            "name": "Shrilalmahal Basmati",
-            "weight": 5,
-            "price": 167.90
+            "name":"Shrilalmahal Basmati",
+            "weight":5,
+            "price":167.90
         },
         {
-            "name": "India Gate Basmati",
-            "weight": 3,
-            "price": 132.50
+            "name":"India Gate Basmati",
+            "weight":3,
+            "price":132.50
         }
     ],
     "Wheat":[
         {
-            "name": "Pillsbury Chikki Fresh Atta",
-            "weight": 7,
-            "price": 38.25
+            "name":"Pillsbury Chikki Fresh Atta",
+            "weight":7,
+            "price":38.25
         },
         {
-            "name": "Patanjali Chikki Atta",
-            "weight": 2,
-            "price": 35.20
+            "name":"Patanjali Chikki Atta",
+            "weight":2,
+            "price":35.20
         }
     ],
     "Pulse":[
         {
-            "name": "Tata Sampann Chana Dal",
-            "weight": 2,
-            "price": 90
+            "name":"Tata Sampann Chana Dal",
+            "weight":2,
+            "price":90
         },
         {
-            "name": "Agro Fresh Black Chana",
-            "weight": 12,
-            "price": 98
+            "name":"Agro Fresh Black Chana",
+            "weight":12,
+            "price":98
         }
 ]
 

@@ -1,6 +1,7 @@
 package com.bridgelabz.oops;
 
 import java.io.File;
+import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -9,7 +10,7 @@ import com.bridgelabz.utility.Utility;
 
 public class Inventory 
 {
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		File file=new File("/home/admin1/Desktop/vidya/JAVA_PROGRAM/src/com/bridgelabz/oops/inventory.json");
         JSONObject inventory=(JSONObject)Utility.readJsonFile(file);
         
@@ -62,7 +63,16 @@ public class Inventory
         }
         System.out.println("\n\t Total Wheats Availbale ="+totalWheatAvailble+"Kgs");
         System.out.println("\t****************************************************************\n\n");
-}
+}*/
+	public static void main(String[] args) 
+	{
+		File file=new File("/home/admin1/Desktop/vidya/JAVA_PROGRAM/src/com/bridgelabz/oops/inventory.json");
+		InventoryFactory  inventory=(InventoryFactory)Utility.readJsonFile(file,InventoryFactory.class);
+		List<Product>  list=inventory.getInventoryFactory();
+		
+	
+	}
+	
 
 }
 

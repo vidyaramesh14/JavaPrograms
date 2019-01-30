@@ -61,15 +61,16 @@ public class MyQueue<T>
 }
 	
 	
-	public T dequeue() {
-		if (isEmpty()) 
+	public T dequeue() 
+	{
+		if(isEmpty()) 
 		{
 		System.out.println("Queue is empty...Enqueue some items before dequeuing it...!");
 			
 		}
 		T element=items[front]; 
-		front=(front + 1)%capacity; 
-		size=size - 1; 
+		front=(front+1)%capacity; 
+		size=size-1; 
 		return element; 
 	}
 	
