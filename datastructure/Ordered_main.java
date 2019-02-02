@@ -11,7 +11,7 @@ public class Ordered_main
 {
 	public static void main(String[] args) 
 	{
-		String path ="/home/admin1/Desktop/vidya/JAVA_PROGRAM/src/com/bridgelabz/datastructure/ordered.txt";
+		String path ="src/Ordered.txt";
 		String[] numbers;
 		String line="";
 		int key;

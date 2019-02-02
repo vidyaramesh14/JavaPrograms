@@ -1,58 +1,63 @@
 package com.bridgelabz.datastructure;
 
+
+
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
-public class OrderedList<T> 
+	
+	
+public class OrderedList<T>
 {
-		private Node<T> first;
-		private Node<T> last;
+	private Node<T> first;
+	private Node<T> last;
 
-		//default constructor
-		public OrderedList()
-		{
-			first=null;
-			last=null;
-		}
+	//default constructor
+	public OrderedList()
+	{
+		first=null;
+		last=null;
+	}
 
 		//public add 
-		public void add(T item) 
+		public void add(T item)
 		{
-			Node<T> new_node=new Node<T>(); 
-			new_node.setData(item);
-			new_node.setNext(null);
 			if(isEmpty())
 			{
-				first=new_node;
+				first=NodeFactoty.getNode(item);
 				last=first;
 				return;
 			}
 			if(!search(item))
 			{
-				
-				//Node<T> newNode = new_node;
+				Node<T> newNode=NodeFactoty.getNode(item);
 				Node<T> curr=first;
 				Node<T> prev=null;
-				while(curr!=null&&curr.compareTo(item)<0) 
+				while(curr!=null && curr.compareTo(item)<0) 
 				{
 					prev=curr;
 					curr=curr.getNext();
 				}
-				if(curr!=null&&curr==first)
-				{//at first position
-					new_node.setNext(curr);
-					first=new_node;
+				if(curr!=null && curr==first) //at first position
+				{
+					newNode.setNext(curr);
+					first=newNode;
 				}
-				else if(curr!=null) 
-				{// in-between position
-					prev.setNext(new_node);
-					new_node.setNext(curr);
+				else if(curr!=null) //in-between position
+				{
+					prev.setNext(newNode);
+					newNode.setNext(curr);
 				}
-				else
-				{//last position
-					last.setNext(new_node);
-					last=new_node;
+				else //last position
+				{
+					last.setNext(newNode);
+					last=newNode;
 				}
 			}
 			else
@@ -66,52 +71,50 @@ public class OrderedList<T>
 			Node<T> curr=null;
 			if(isEmpty())
 				System.out.println("List is empty...!");
-			else if(first.getData().equals(item) && first.getNext()==null)// one item list
+			else if(first.getData().equals(item) &&first.getNext()==null)// one item list
 			{
-			first=null;
-			last=null;
-			System.out.println(item +"removed from the list...!");
+				first=null;
+				last=null;
+				//System.out.println(item + " removed from the list...!");
 			}
-			else if(first.getData().equals(item)&&first.getNext()!=null)
+			else if(first.getData().equals(item) &&first.getNext()!=null)
 			{
 				//update only first
-			temp=first;
-			first=first.getNext();
-			temp=null;
-			System.out.println(item +"removed from the list...!");
+				temp=first;
+				first=first.getNext();
+				temp=null;
+				System.out.println(item+" removed from the list...!");
 			}
-			else
+			else 
 			{
-			temp=first;
+				temp=first;
 				curr=first.getNext();
-				while(curr!=null) 
-				{
+				while(curr!=null) {
 					if(curr.getData().equals(item))
 					{
-					temp.setNext(curr.getNext());
-					curr.setNext(null);
-					System.out.println(item+"removed from the list...!");
-					break;
+						temp.setNext(curr.getNext());
+						curr.setNext(null);
+						System.out.println(item+" removed from the list...!");
+						break;
 					}
-					else 
-					{
-					temp=curr;
-					curr=curr.getNext();
+					else {
+						temp=curr;
+						curr=curr.getNext();
 					}
 				}
 			}
 		}
 		//check the item is present in the list
-		public boolean search(T item)
+		public boolean search(T item) 
 		{
 			if(first==null)
-			return false;
+				return false;
 			Node<T> temp=first;
 			while(temp!=null) 
 			{
-			if(temp.getData().equals(item))
+				if(temp.getData().equals(item))
 				return true;
-			temp=temp.getNext();
+				temp=temp.getNext();
 			}
 			return false;
 		}
@@ -121,20 +124,21 @@ public class OrderedList<T>
 		{
 			if(isEmpty())
 			{
-			System.out.println("List is empty...!");
-			return null;
+				System.out.println("List is empty...!");
+				return null;
 			}
-			if(first==last)
-			{//remove the only item in the list
-			first=last=null;
-			return first.getData();
+			if(first==last)//remove the only item in the list
+			{
+				Node<T> temp=first;
+				first=last=null;
+				return temp.getData();
 			}
 			Node<T> curr=first;
 			Node<T> prev=first;
-			while(curr.getNext()!=null) 
+			while(curr.getNext()!=null)
 			{//traverse to reach the last item in the list
-				prev=curr;
-				curr=curr.getNext();
+				prev = curr;
+				curr = curr.getNext();
 			}
 			//remove the curr item which is the last item in the list
 			last=prev;
@@ -147,34 +151,33 @@ public class OrderedList<T>
 		{
 			if(isEmpty())
 			{
-			System.out.println("List is empty...!");
-			return null;
+				System.out.println("List is empty...!");
+				return null;
 			}
-		Node<T> curr=first;
-		Node<T> prev=first;
+			Node<T> curr=first;
+			Node<T> prev=first;
 
 			int  count=-1;
-			while(curr!=null)//traverse to reach to reach the given position
+			while(curr!=null) //traverse to reach to reach the given position
 			{
 				count++;
 				if(count==pos &&count==0)// removal at 0th position, update first
 				{
-				  first=curr.getNext();
-				curr.setNext(null);
-				return curr.getData();
+					first=curr.getNext();
+					curr.setNext(null);
+					return curr.getData();
 				}
-				
-				else if(count==pos&& curr==last) // remoavl at the last position
+				else if(count==pos&&curr==last) // remove at the last position
 				{
-				last=prev;
-				last.setNext(null);
-				return curr.getData();
+					last=prev;
+					last.setNext(null);
+					return curr.getData();
 				}
 				else if(count==pos)//removal in-between
 				{
-				prev.setNext(curr.getNext());
-				curr.setNext(null);
-				return curr.getData();
+					prev.setNext(curr.getNext());
+					curr.setNext(null);
+					return curr.getData();
 				}
 				prev=curr;
 				curr=curr.getNext();
@@ -186,19 +189,19 @@ public class OrderedList<T>
 		public boolean isEmpty() 
 		{
 			if(first==null)
-			return true;
+				return true;
 			else
-			return false;
+				return false;
 		}
 		//size of list
-		public int size() 
+		public int size()
 		{
-			int count=0;
+			int count = 0;
 			Node<T> temp=first;
 			while(temp!=null) 
 			{
-			count++;
-			temp=temp.getNext();
+				count++;
+				temp=temp.getNext();
 			}
 			return count;
 		}
@@ -206,28 +209,28 @@ public class OrderedList<T>
 		{
 			if(isEmpty())
 			{
-			System.out.println("List is empty...!");
-			return -1;//error case
+				System.out.println("List is empty...!");
+				return -1;//error case
 			}
 			Node<T> curr=first;
 			int  count=-1;
-			while(curr !=null)
+			while(curr!=null) 
 			{
-			count++;
-			if(curr.getData()==item)
-			return  count;
+				count++;
+				if(curr.getData()==item)
+					return count;
 			}
-			System.out.println(item + "not found in the list...!");
+			System.out.println(item+"not found in the list...!");
 			return -1;
 		}
 		//display the nodes of the UnorderedList
 		public void printOrderedList() 
 		{
-		Node<T> curr=first;
-			while(curr!=null) 
+			Node<T> curr=first;
+			while(curr!=null)
 			{
-			System.out.print("  " +curr.getData());
-			curr=curr.getNext();
+				System.out.print(" "+curr.getData());
+				curr=curr.getNext();
 			}
 			System.out.println();
 		}
@@ -238,22 +241,88 @@ public class OrderedList<T>
 			if(list==null)
 				return;
 
-		Node<T> curr=first;
-		try(BufferedWriter bw=new BufferedWriter(new FileWriter(filePath,false)))
+			Node<T> curr=first;
+			try(BufferedWriter bw=new BufferedWriter(new FileWriter(filePath,false)))
 			{
-				while(curr!=null)
+				while(curr!=null) 
 				{
-				bw.write(curr.getData().toString()+",");
-				curr=curr.getNext();
+					bw.write(curr.getData().toString()+",");
+					curr=curr.getNext();
 				}
-			} 
-			catch (IOException e)
+			} catch(IOException e) 
 			{
-			e.printStackTrace();
+				e.printStackTrace();
 			}
 		}
 
-		
+		public static void main(String[] args) 
+		{
+			String path="resource/numbers.txt";
+			String[] numbers;
+			String line="";
+			int key;
 
+			try(BufferedReader br=new BufferedReader(new FileReader(path)))
+			{
+				String temp=null;
+				while((temp=br.readLine())!= null)
+				{
+					line+=temp;
+				}
+				numbers=line.split(",");
+				//create a linked list for the words
+				OrderedList<Integer> list=new OrderedList<>();
+				for(int i=0;i<numbers.length;i++) {
+					list.add(Integer.parseInt(numbers[i]));
+				}
+				System.out.println("***************** Numbers list : *****************************");
+				//display data of each node in the list
+				list.printOrderedList();
+				//read the key to be searched
+				System.out.println("************** Enter the key...! **********************");
+				try {Scanner sc1=new Scanner(System.in);
+					key=sc1.nextInt();
+					boolean isKeyPresent=list.search(key);
+					if(isKeyPresent)
+					{
+						System.out.printf("key '%s' is present in the list\n",key);
+						list.remove(key);
+					}
+					else {
+						System.out.printf("key '%s' is not present in the list\n",key);
+						list.add(key);
+					}
+					//display data of each node in the list
+					list.printOrderedList();
+					sc1.close();
+				}
+				catch(InputMismatchException e)
+				{
+					System.out.println("Key must be a number ...!");
+				}
+				//write back the list to file
+				list.writeToFile(list,path);
+			} catch (FileNotFoundException e) 
+			{
+				e.printStackTrace();
+			} catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
+
+		}
+	  
+		/**
+		 * gives the first pointer
+		 * @return
+		 */
+		public Node<T> getFirst()
+		{
+			return this.first;
+		}
 	}
+
+	
+
+	
 

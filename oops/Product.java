@@ -4,25 +4,26 @@ package com.bridgelabz.oops;
 import java.util.List;
 
 public class Product 
-{
-	String product_name;
-	List<ProductList> product_property;
-	
-	public void setProductName(String product_name)
+{	
+	private String productName;
+	private List<ProductProperties> properties;
+	public String getProductName() 
 	{
-		this.product_name=product_name;
+		return productName;
 	}
-	public String getProductName()
+	public void setProductName(String productName)
 	{
-		return product_name;
+		this.productName=productName;
 	}
-	public void setProductProperty(List<ProductList> product_property)
+	public List<ProductProperties> getProperties() 
 	{
-		this.product_property=product_property;
+		return properties;
 	}
-	public List<ProductList> getProductProperty()
+	public void setProperties(List<ProductProperties> properties)
 	{
-		return product_property;
+		this.properties=properties;
 	}
 
 }
+
+

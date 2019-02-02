@@ -12,6 +12,6 @@ public class ProductList
 	}	
 	public void setInventory(List<Product> inventory) 
 	{
-		this.inventory = inventory;
+		this.inventory=inventory;
 	}
 }

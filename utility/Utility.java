@@ -1,8 +1,11 @@
 package com.bridgelabz.utility;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -1167,10 +1170,10 @@ public class Utility
 		T[] RightArray=(T[])new Object();
 
 		for (int i=0; i<left; ++i)  
-			LeftArray[i] = arr[start + i];  
+			LeftArray[i]=arr[start + i];  
 
 		for (int j=0; j<right; ++j)  
-			RightArray[j] = arr[mid + 1+ j];  
+			RightArray[j]=arr[mid + 1+ j];  
 
 
 		int i=0, j=0;  
@@ -1491,15 +1494,8 @@ public class Utility
 
 		for(int i=1;i<=noOfDays[month];i++)
 		{
-			if(i<=9)
-			{
-				queue.enqueue("\t"+i);
-			}
-			else if(i>9)
-			{
-				queue.enqueue("\t"+i);
-			}
-
+			
+			queue.enqueue("\t"+i);
 			if((result+i)%7==0)
 				queue.enqueue("\n");
 			//System.out.println();
@@ -1538,15 +1534,15 @@ public class Utility
 	
 		for(int i=noOfDays[month];i>=1;i--)
 		{
-			if(i<=9)
+			/*if(i<=9)
 			{
 				stack.push("\t"+i);
 			}
 			else if(i>9)
 			{
-				stack.push("\t"+i);
-			}
-
+				
+			}*/
+			stack.push("\t"+i);
 			if((result-1+i)%7==0)
 				stack.push("\n");
 			//System.out.println();
@@ -1692,8 +1688,47 @@ public class Utility
 		}		
 	}
 	
-	/**********************************oops Program
-	 * @param class1 *****************************************/
+	
+	/*********************************************************/
+	public static String[] readFromFile(File file) 
+	{
+		String[] numbers=null;
+		String line="";
+
+		try(BufferedReader br=new BufferedReader(new FileReader(file)))
+		{
+			String temp=null;
+			while((temp=br.readLine())!=null)
+			{
+				line+=temp;
+			}
+			numbers=line.split(",");
+		} catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		} catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+		return numbers;
+}
+	public static void writeToFile(int[] list,File file)
+	{
+		if(list==null||list.length==0)
+			return;
+
+		try(BufferedWriter bw=new BufferedWriter(new FileWriter(file,false)))
+		{
+			for (int i=0;i<list.length;i++)
+			{
+				bw.write(list[i]+",");
+			}
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+}
+	/**********************************oops Program * @param class1 *****************************************/
 	
 	public static Object readJsonFile(File file, Class<InventoryFactory> class1)
 	{
