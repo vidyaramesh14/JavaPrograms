@@ -7,7 +7,7 @@ public class PrototypeEmployee implements Cloneable{
 private List<String> empList;
 	
 	public PrototypeEmployee(){
-		empList = new ArrayList<String>();
+		empList=new ArrayList<String>();
 	}
 	
 	public PrototypeEmployee(List<String> list){
@@ -15,10 +15,10 @@ private List<String> empList;
 	}
 	public void loadData(){
 		//read all employees from database and put into the list
-		empList.add("Pankaj");
-		empList.add("Raj");
+		empList.add("adc");
+		empList.add("xyz");
 		empList.add("David");
-		empList.add("Lisa");
+		empList.add("shree");
 	}
 	
 	public List<String> getEmpList() {
@@ -27,8 +27,8 @@ private List<String> empList;
 
 	@Override
 	public Object clone() throws CloneNotSupportedException{
-			List<String> temp = new ArrayList<String>();
-			for(String s : this.getEmpList()){
+			List<String> temp=new ArrayList<String>();
+			for(String s:this.getEmpList()){
 				temp.add(s);
 			}
 			return new PrototypeEmployee(temp);
