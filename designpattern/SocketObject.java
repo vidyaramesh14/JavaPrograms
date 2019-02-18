@@ -1,8 +1,8 @@
 package com.bridgelabz.designpattern;
-
+/*Object Adapter uses Java Composition and adapter contains the source object*/
 public class SocketObject implements SocketAdapter{
-private Socket sock = new Socket();
-	
+	//Using Composition for adapter pattern
+	private Socket sock = new Socket();
 	
 	public Volt get120Volt() 
 	{

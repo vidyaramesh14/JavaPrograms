@@ -93,7 +93,7 @@ public class ObserverDesignPattern
         // this will maintain all loans information
         Newspaper printMedia = new Newspaper();
         Internet onlineMedia = new Internet();
-        Loan personalLoan = new Loan("Personal Loan", 1f,"Standard Charterd");
+        Loan personalLoan = new Loan("Personal Loan", 12,"Standard Charterd");
         personalLoan.registerObserver(printMedia);
         personalLoan.registerObserver(onlineMedia);
         personalLoan.setInterest(2f);

@@ -1,5 +1,5 @@
 package com.bridgelabz.designpattern;
-
+/*Class Adapter uses java inheritance and extends the source interface, in our case Socket class*/
 public class SocketClass extends Socket implements SocketAdapter {
 	public Volt get120Volt() {
 		return getVolt();

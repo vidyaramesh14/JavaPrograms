@@ -26,6 +26,9 @@ private List<String> empList;
 	}
 
 	@Override
+	/*object cloning refers to creation of exact copy of an object.it creates a new instance of the class
+	of current object and initialize all the fields.
+	**/
 	public Object clone() throws CloneNotSupportedException{
 			List<String> temp=new ArrayList<String>();
 			for(String s:this.getEmpList()){

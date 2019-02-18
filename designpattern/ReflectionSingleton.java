@@ -4,13 +4,12 @@ import java.lang.reflect.Constructor;
 
 public class ReflectionSingleton {
 
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		EagerInitializedSingleton instance1=EagerInitializedSingleton.getnewinstance();
 		EagerInitializedSingleton instance2=null;
 		try
 		{
-		@SuppressWarnings("rawtypes")
+		//take array of DeclaredConstructors
 		Constructor[] temp_con=EagerInitializedSingleton.class.getDeclaredConstructors();
 			for(Constructor<EagerInitializedSingleton> con:temp_con)
 			{
